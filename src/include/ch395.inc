@@ -65,3 +65,21 @@ CH395_EEPROM_READ             = $EB
 CH395_READ_GPIO_REG           = $EC
 CH395_WRITE_GPIO_REG          = $ED
 
+; Status
+
+CH395_ERR_SUCCESS = $00 ; Success
+CH395_ERR_BUSY    = $10 ; Occupé, indiquant que la commande est en cours d'exécution
+CH395_ERR_MEM     = $11 ; Erreur de gestion de la mémoire
+CH395_ERR_BUF     = $12 ; Erreur de tampon
+CH395_ERR_TIMEOUT = $13 ; Timeout
+CH395_ERR_RTE     = $14 ; Erreur de routage
+CH395_ERR_ABRT    = $15 ; Abandon de la connexion
+CH395_ERR_RST     = $16 ; Connexion réinitialisée
+CH395_ERR_CLSD    = $17 ; Connexion fermée
+CH395_ERR_CONN    = $18 ; Pas de connexion
+CH395_ERR_VAL     = $19 ; Mauvaise valeur
+CH395_ERR_ARG     = $1A ; Erreur de paramètre 
+CH395_ERR_USE     = $1B ; Déjà utilisé
+CH395_ERR_IF      = $1C ; Erreur MAC
+CH395_ERR_ISCONN  = $1D ; Connecté
+CH395_ERR_OPEN    = $20 ; Ouvert 
