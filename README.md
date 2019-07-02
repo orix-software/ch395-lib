@@ -1,3 +1,3 @@
-ch376-lib
+ch395-lib
 
 ca65 syntax

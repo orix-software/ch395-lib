@@ -1,15 +1,15 @@
-# supports up to 8 sockets
-# 10/100M
-# PPPOE,IP,DHCP, ARP,ICMP,IGMP,UDP,TCP
-# 24K ram
-# 4KEEPROM
-# 8 GPIO
+; supports up to 8 sockets
+; 10/100M
+; PPPOE,IP,DHCP, ARP,ICMP,IGMP,UDP,TCP
+; 24K ram
+; 4KEEPROM
+; 8 GPIO
 
 CH395_GET_IC_VER              = $01
 CH395_SET_BAUDRATE            = $02
 CH395_ENTER_SLEEP             = $03
 CH395_RESET_ALL	              = $05 ; 50ms
-CH395_CHECK_EXIST			  = $06
+CH395_CHECK_EXIST             = $06
 CH395_SET_PHY                 = $20
 CH395_GET_GLOB_INT_STATUS_ALL = $19
 CH395_SET_MAC_ADDR            = $21 ; 6 ?
@@ -18,7 +18,7 @@ CH395_SET_GWIP_ADDR           = $23 ; 4
 CH395_SET_MASK_ADDR           = $24 ; 4
 CH395_SET_MAC_FILT            = $25
 CH395_GET_PHY_STATUS          = $26
-CH395_INIT_CH395              = $27
+CH395_INIT                    = $27
 CH395_GET_UNREACH_IPPORT      = $28
 CH395_GET_GLOB_INT_STATUS     = $29
 CH395_SET_RETRAN_COUNT        = $2A
