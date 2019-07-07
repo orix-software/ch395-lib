@@ -4,33 +4,133 @@
 
 #include <conio.h>
 
-void menu () {
+void status() {
+    
+    cputsxy(2,7,"Firmware version :");
+    cputsxy(2,8,"IP address : ");
+}
+
+void quit() {
 
 }
 
-char *firmware_version_str="CH395 firmware version : ";
-char *ipaddress_str="IP address : ";
+unsigned char config (unsigned char enable_dhcp) {
+    unsigned char key;
+    unsigned char current_menu=0;
+    while (1) {
+        if (current_menu==0) bgcolor(COLOR_GREEN);
+        if (enable_dhcp==1)
+            cputsxy(2,7,"Enable DHCP : [X]");
+        else
+            cputsxy(2,7,"Enable DHCP : [ ]");
+        
+        cclearxy (0,8,13);
+        key=cgetc();
+        if (key==8 || key==27 || key==9) {
+            cclearxy (0,7,20);
+            break;
+        }
+        if (key==' ') {
+            if (current_menu==0) {
+                if (enable_dhcp==1) 
+                    enable_dhcp=0;
+                else
+                    enable_dhcp=1;
+            }
+        }
+    }
+    return key;
+}
+
+void menu (unsigned char current_menu) {
+    
+    if (current_menu==0)
+        bgcolor (COLOR_RED);
+    else
+    {
+        bgcolor (COLOR_BLACK); 
+    }
+    
+
+    cputsxy(2,5,"STATUS");
+
+    if (current_menu==1)
+        bgcolor (COLOR_RED);
+    else
+    {
+        bgcolor (COLOR_BLACK); 
+    }
+
+    cputsxy(10,5,"CONFIG");
+    
+    if (current_menu==2)
+        bgcolor (COLOR_RED);
+    else
+    {
+        bgcolor (COLOR_BLACK); 
+    }
+    
+    cputsxy(18,5,"QUIT");
+    
+    bgcolor (COLOR_BLACK);
+    gotoxy(24,5);
+    cputc(' '); 
+    
+
+}
 
 int main() {
     unsigned char version;
+    unsigned char current_menu=0;
+    unsigned char key;
+    unsigned char validate=1;
+    unsigned char enable_dhcp=0;
+    unsigned char redraw=1;
     clrscr();
-
+    
     //version=ch395_get_ic_ver();
     bgcolor (COLOR_BLUE);
     textcolor(COLOR_WHITE);
     gotoxy(2,1);
-    cputs("+---------------------------------+");
+    cputs("+------------------------------------+");
     gotoxy(2,2);
    
-    cputs("|          CH395 Config tool      |");
+    cputs("|          CH395 Config tool         |");
     gotoxy(2,3);
-    cputs("+---------------------------------+");
-    gotoxy(2,5);
-    bgcolor (COLOR_MAGENTA);
-    cputs(firmware_version_str);
-    gotoxy(2,7);
-    cputs(ipaddress_str);
-    
+    cputs("+------------------------------------+");
+
+    while (1) {
+        menu(current_menu);
+        if (current_menu==0) status();
+        if (current_menu==1) {
+            key=config(enable_dhcp);
+            redraw=0;
+        }            
+        if (current_menu==2 && validate==0) break;
+        if (validate==0) validate=1;
+
+        if (redraw==1) 
+            key=cgetc();
+        else
+            redraw=1;
+
+        if (key==9) {
+            if (current_menu!=2)
+                current_menu++;
+        }
+        if (key==8) {
+            if (current_menu!=0)
+                current_menu--;
+        }
+        if (key==13)
+            validate=0;
+
+        if (key==27) break;
+    }
+    clrscr();
+    /* 
+
+    */
     //cputsxy(0,2,firmware_version_str);
     //cputsxy(strlen(firmware_version_str)+2,2,ch395_get_ic_ver());
 
