@@ -3,6 +3,7 @@
 #include <telestrat.h>
 
 #include <conio.h>
+unsigned char enable_dhcp;
 
 void status() {
     
@@ -14,7 +15,7 @@ void quit() {
 
 }
 
-unsigned char config (unsigned char enable_dhcp) {
+unsigned char config () {
     unsigned char key;
     unsigned char current_menu=0;
     while (1) {
@@ -84,7 +85,6 @@ int main() {
     unsigned char current_menu=0;
     unsigned char key;
     unsigned char validate=1;
-    unsigned char enable_dhcp=0;
     unsigned char redraw=1;
     clrscr();
     
@@ -103,7 +103,7 @@ int main() {
         menu(current_menu);
         if (current_menu==0) status();
         if (current_menu==1) {
-            key=config(enable_dhcp);
+            key=config();
             redraw=0;
         }            
         if (current_menu==2 && validate==0) break;
