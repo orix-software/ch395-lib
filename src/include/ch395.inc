@@ -5,6 +5,9 @@
 ; 4KEEPROM
 ; 8 GPIO
 
+CH395_COMMAND_PORT            := $381
+CH395_DATA_PORT               := $380
+
 CH395_GET_IC_VER              = $01
 CH395_SET_BAUDRATE            = $02
 CH395_ENTER_SLEEP             = $03

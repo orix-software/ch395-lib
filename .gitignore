@@ -3,3 +3,4 @@ a.o65
 error.txt
 *.ld65
 *.o
+*.lib

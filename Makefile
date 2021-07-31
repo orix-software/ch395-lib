@@ -5,17 +5,19 @@ OBJECTS8=$(SOURCES8:.s=.o)
 #OBJECTS16=$(SOURCES16:.s=.o)
 
 
-all: tool $(SOURCES8) $(OBJECTS8)
+all: $(SOURCES8) $(OBJECTS8) tool 
 
 $(OBJECTS8): $(SOURCES8)
-	mkdir target/telestrat/lib/ -p
+	@mkdir target/telestrat/lib/ -p
 	@ca65 -ttelestrat $(@:.o=.s) -o $@ --include-dir src/include
 	@ar65 r ch395-8.lib  $@
-	cp ch395-8.lib target/telestrat/lib/
+	@cp ch395-8.lib target/telestrat/lib/
 
 tool: 
-	mkdir -p target/telestrat/ch395cfg/
+	@mkdir -p target/telestrat/ch395cfg/
 	cl65 -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/ch395cfg
+	cp	target/telestrat/ch395cfg/ch395cfg /s/bin/c
+
 
 clean:
 	rm src/6502/*.o
