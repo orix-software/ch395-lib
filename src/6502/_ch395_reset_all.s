@@ -4,7 +4,8 @@
 .export _ch395_reset_all
 
 .proc _ch395_reset_all
-    lda #CH395_RESET_ALL
+    lda     #CH395_RESET_ALL
+    sta     CH395_COMMAND_PORT
     rts
 .endproc
 

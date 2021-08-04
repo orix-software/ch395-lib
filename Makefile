@@ -16,6 +16,7 @@ $(OBJECTS8): $(SOURCES8)
 tool: 
 	@mkdir -p target/telestrat/ch395cfg/
 	cl65 -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/ch395cfg
+	#cl65 -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o d
 	cp	target/telestrat/ch395cfg/ch395cfg /s/bin/c
 
 

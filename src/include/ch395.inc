@@ -70,19 +70,44 @@ CH395_WRITE_GPIO_REG          = $ED
 
 ; Status
 
-CH395_ERR_SUCCESS = $00 ; Success
-CH395_ERR_BUSY    = $10 ; Occupé, indiquant que la commande est en cours d'exécution
-CH395_ERR_MEM     = $11 ; Erreur de gestion de la mémoire
-CH395_ERR_BUF     = $12 ; Erreur de tampon
-CH395_ERR_TIMEOUT = $13 ; Timeout
-CH395_ERR_RTE     = $14 ; Erreur de routage
-CH395_ERR_ABRT    = $15 ; Abandon de la connexion
-CH395_ERR_RST     = $16 ; Connexion réinitialisée
-CH395_ERR_CLSD    = $17 ; Connexion fermée
-CH395_ERR_CONN    = $18 ; Pas de connexion
-CH395_ERR_VAL     = $19 ; Mauvaise valeur
-CH395_ERR_ARG     = $1A ; Erreur de paramètre 
-CH395_ERR_USE     = $1B ; Déjà utilisé
-CH395_ERR_IF      = $1C ; Erreur MAC
-CH395_ERR_ISCONN  = $1D ; Connecté
-CH395_ERR_OPEN    = $20 ; Ouvert 
+CH395_ERR_SUCCESS             = $00 ; Success
+CH395_ERR_BUSY                = $10 ; Occupé, indiquant que la commande est en cours d'exécution
+CH395_ERR_MEM                 = $11 ; Erreur de gestion de la mémoire
+CH395_ERR_BUF                 = $12 ; Erreur de tampon
+CH395_ERR_TIMEOUT             = $13 ; Timeout
+CH395_ERR_RTE                 = $14 ; Erreur de routage
+CH395_ERR_ABRT                = $15 ; Abandon de la connexion
+CH395_ERR_RST                 = $16 ; Connexion réinitialisée
+CH395_ERR_CLSD                = $17 ; Connexion fermée
+CH395_ERR_CONN                = $18 ; Pas de connexion
+CH395_ERR_VAL                 = $19 ; Mauvaise valeur
+CH395_ERR_ARG                 = $1A ; Erreur de paramètre 
+CH395_ERR_USE                 = $1B ; Déjà utilisé
+CH395_ERR_IF                  = $1C ; Erreur MAC
+CH395_ERR_ISCONN              = $1D ; Connecté
+CH395_ERR_OPEN                = $20 ; Ouvert 
+
+CH395_DHCP_ENABLE_VAL  = $00
+CH395_DHCP_DISABLE_VAL = $01
+
+CH395_SOCKET0 = 0
+CH395_SOCKET1 = 1
+CH395_SOCKET2 = 2
+CH395_SOCKET3 = 3
+CH395_SOCKET4 = 4
+CH395_SOCKET5 = 5
+CH395_SOCKET6 = 6
+CH395_SOCKET7 = 7
+
+CH395_PROTO_TYPE_TCP     = $03
+CH395_PROTO_TYPE_UDP     = $02
+CH395_PROTO_TYPE_MAC_RAW = $01
+CH395_PROTO_TYPE_IP_RAW  = $00
+
+
+CH395_SINT_STAT_TIM_OUT     = $40
+CH395_SINT_STAT_DISCONNECT  = $10
+CH395_SINT_STAT_CONNECT     = $08
+CHE95_SINT_STAT_RECV        = $04
+CH395_SINT_STAT_SEND_OK     = $02
+CH395_SINT_STAT_SENBUF_FREE = $01         

@@ -12,6 +12,7 @@
     jsr     popax     ; get port
     sta     CH395_DATA_PORT 
     stx     CH395_DATA_PORT 
+
     
     rts
 .endproc
