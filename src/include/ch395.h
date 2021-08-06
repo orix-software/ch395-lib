@@ -25,7 +25,10 @@ void ch395_open_socket_sn(unsigned char ID_SOCKET);
 void ch395_tcp_connect_sn(unsigned char ID_SOCKET);
 void ch395_get_recv_len_sn(unsigned char ID_SOCKET);
 void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET);
+void ch395_close_socket_sn(unsigned char ID_SOCKET);
 unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
+unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
+unsigned char ch395_get_phy_status();
 
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);
@@ -47,8 +50,8 @@ unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 #define CH395_ERR_ISCONN   0x1D /*  Connecté*/
 #define CH395_ERR_OPEN     0x20 /* Ouvert */
 
-#define CH395_DHCP_ENABLE  0x01
-#define CH395_DHCP_DISABLE 0x00
+#define CH395_DHCP_ENABLE  0x00
+#define CH395_DHCP_DISABLE 0x01
 
 #define CH395_SOCKET0      0
 #define CH395_SOCKET1      1
@@ -71,3 +74,9 @@ unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 #define CHE95_SINT_STAT_RECV        0x04
 #define CH395_SINT_STAT_SEND_OK     0x02
 #define CH395_SINT_STAT_SENBUF_FREE 0x01         
+
+#define CH395_PHY_DISCONN                               0x01
+#define CH395_PHY_10M_FLL                               0x02
+#define CH395_PHY_10M_HALF                              0x04
+#define CH395_PHY_100M_FLL                              0x08
+#define CH395_PHY_100M_HALF                             0x10

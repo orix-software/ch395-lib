@@ -1,6 +1,6 @@
 .include "ch395.inc"
 
-60
+
 .import popax
 
 .export _ch395_set_sour_port_sn

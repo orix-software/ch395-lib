@@ -81,8 +81,10 @@ void menu (unsigned char current_menu) {
 
 }
 
-static unsigned char macaddress[8];
-static unsigned char ip_infos[20];
+unsigned char macaddress[8];
+unsigned char ip_infos[20];
+
+unsigned char retdis;
 
 int main() {
     unsigned char version;
@@ -91,35 +93,69 @@ int main() {
     unsigned char validate=1;
     unsigned char redraw=1;
     unsigned char checkexist;
-    unsigned char ret;
+    static unsigned char ret;
     static unsigned int i=0;
     unsigned int score=0;
     unsigned int nb_ok=0;
     unsigned char ip_addr_dest[]={192,168,1,75};
-    unsigned char getUrl[100];
+    char getUrl[100];
+    unsigned char testBusy=0;
+    unsigned char error=0;
 
     
     version=ch395_get_ic_ver();
     printf("Version : %d\n",version);
+    if (version==0) {
+            printf("Exit with version equal to 0 ! reset is starting\n");
+            // reset
+            ch395_reset_all();
+            return 0;
+    }
+
+
+   
+
+
+
     checkexist=ch395_check_exist();
     printf("Check exist : %x\n",checkexist);
-    //while ((ret=ch395_get_dhcp_status())!=CH395_DHCP_DISABLE) {
-        printf("Ch395 init\n");
-        ch395_init();
-        while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS)
-            printf("Waiting status for init : %x\n",ret);
+    printf("Ch395 init\n");
+    ch395_init();
+    while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS) {
+        printf("Waiting status for init : %x\n",ret);
+        if (ret==CH395_ERR_BUSY) testBusy++;
+        if (testBusy==10) { 
+            error=1;
+            break;
+        }
+    }
+    retdis=ch395_get_phy_status();
+    // Test for cable disconnected must be _AFTER_ ch395 init
+    if (retdis==CH395_PHY_DISCONN) {
+        printf("Error : Cable disconnected\n");
+        ch395_reset_all();
+        return 0;
+    }
+
+        if (error==1) {
+            printf("Exit with busy reached ! reset is starting\n");
+            // reset
+            ch395_reset_all();
+            return 0;
+        }
         printf("Ch395 stack init success ! \n");
-            printf("Start dhcp\n");
+        printf("Start dhcp\n");
         ch395_dhcp_enable(CH395_DHCP_ENABLE);
-        while ((ret=ch395_get_dhcp_status())!=CH395_DHCP_DISABLE)
+        while ((ret=ch395_get_dhcp_status())==CH395_DHCP_DISABLE)
             printf("Dhcp status : %x\n",ret);
     //}
     
     //while (1) {
-        i++;
+      //  i++;
         ch395_get_mac_adress(macaddress);
-        if (macaddress[0]==0x84 && macaddress[1]==0xc2 && macaddress[2]==0xe4 && macaddress[3]==0xef && macaddress[4]==0x0f && macaddress[5]==0x0d) nb_ok++;
-        printf("Mac address : %x:%x:%x:%x:%x:%x %d/%d\n",macaddress[0],macaddress[1],macaddress[2],macaddress[3],macaddress[4],macaddress[5],nb_ok,i);
+        //if (macaddress[0]==0x84 && macaddress[1]==0xc2 && macaddress[2]==0xe4 && macaddress[3]==0xef && macaddress[4]==0x0f && macaddress[5]==0x0d) nb_ok++;
+        if (macaddress[0]==0x00 && macaddress[1]==0x03 && macaddress[2]==0x46 && macaddress[3]==0x46 && macaddress[4]==0x80 && macaddress[5]==0x80) nb_ok++;
+            printf("Mac address : %x:%x:%x:%x:%x:%x %d/%d\n",macaddress[0],macaddress[1],macaddress[2],macaddress[3],macaddress[4],macaddress[5],nb_ok,i);
         //if (i==100) break;
     //}
     //return 0;
@@ -146,14 +182,18 @@ int main() {
     ch395_set_sour_port_sn(200,CH395_SOCKET0);
 
     ch395_open_socket_sn(CH395_SOCKET0);
-    while ((ret=ch395_get_cmd_status())==CH395_ERR_BUSY)
+    while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS) {
     //while (1)
-        printf("Waiting for connexion (Busy): %x\n",ret);
+        printf("Open Socket : %x\n",ret);
+        if (ret==CH395_ERR_OPEN) break;
+    }
     printf("Connection OK !\n");
     printf("Tcp connect now\n");
     ch395_tcp_connect_sn(CH395_SOCKET0);
     while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS) {
         printf("Waiting for tcp connect : %x\n",ret);
+        if (ret==CH395_ERR_ISCONN)
+            break;
         if (ret==CH395_ERR_CLSD) {
             printf("Tcp connection closed\n");
             break;
@@ -161,7 +201,9 @@ int main() {
     }
     printf("Tcp connect ok %x",ret);
     strcpy(getUrl,"GET /oric/jede.html");
-    ch395_write_send_buf_sn(getUrl, 15,CH395_SOCKET0);        
+    //ch395_write_send_buf_sn(getUrl, 15,CH395_SOCKET0);
+    ch395_close_socket_sn(CH395_SOCKET0);
+    
 
     return 0;
 
