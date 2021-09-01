@@ -101,6 +101,7 @@ int main() {
     char getUrl[100]={'G','E','T',' ','/',0x0d,0x0a,0x0d,0x0a};
     unsigned char testBusy=0;
     unsigned char error=0;
+    unsigned char *ret_ptr;
     
 
     
@@ -175,6 +176,11 @@ int main() {
 
     //ch395_close_socket_sn(CH395_SOCKET0);
    */ 
+    ret_ptr=ch395_get_socket_status_sn(CH395_SOCKET0); // return 2 bytes
+    if (ret_ptr[0]==CH395_SOCKET_OPEN) {
+        ch395_close_socket_sn(CH395_SOCKET0);  
+        printf("Closing socket ...\n");
+    }
     printf("Connection to %d.%d.%d.%d:%d\n",ip_addr_dest[0],ip_addr_dest[1],ip_addr_dest[2],ip_addr_dest[3],portDst);
     printf("Setting Proto\n");
     ch395_set_proto_type_sn(CH395_PROTO_TYPE_TCP,CH395_SOCKET0);

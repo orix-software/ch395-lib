@@ -98,7 +98,7 @@ int main() {
     unsigned char ip_addr_dest[]={192,168,1,75};
     unsigned int portDst=80;
     unsigned char setmacaddressforge[]={0x84,0xc2,0xe4,0xef,0x0f,0x0d};
-    char getUrl[100]={'G','E','T',' ','/',0x0d,0x0a,0x0d,0x0a};
+    char getUrl[100];
     unsigned char testBusy=0;
     unsigned char error=0;
     
@@ -112,7 +112,7 @@ int main() {
         ch395_reset_all();
         return 0;
     }
-/*
+
     checkexist=ch395_check_exist();
     printf("Check exist : %x\n",checkexist);
     printf("Ch395 init\n");
@@ -127,14 +127,14 @@ int main() {
     }
     // Set mac address
     //
-    //ch395_set_mac_adress(setmacaddressforge);
+    ch395_set_mac_adress(setmacaddressforge);
     // Test for cable disconnected must be _AFTER_ ch395 init
-
+    /*
     if (ret==CH395_PHY_DISCONN) {
         printf("Error : Cable disconnected\n");
         return 0;
     }
-
+*/
         if (error==1) {
             printf("Exit with busy reached ! reset is starting\n");
             // reset
@@ -142,16 +142,10 @@ int main() {
             return 0;
         }
         printf("Ch395 stack init success ! \n");
-
-        ch395_get_ip_inf(ip_infos);
-        // No ip affected start dhcp
-        if (ip_infos[0]==0) {
-            printf("Start dhcp\n");
-            ch395_dhcp_enable(CH395_DHCP_ENABLE);
-            while ((ret=ch395_get_dhcp_status())==CH395_DHCP_STATUS_DISABLED)
-                printf("Dhcp status : %x\n",ret);
-            printf("Dhcp started\n");
-        }
+        printf("Start dhcp\n");
+        ch395_dhcp_enable(CH395_DHCP_ENABLE);
+        while ((ret=ch395_get_dhcp_status())==CH395_DHCP_STATUS_DISABLED)
+            printf("Dhcp status : %x\n",ret);
     //}
     
     //while (1) {
@@ -165,61 +159,43 @@ int main() {
     //return 0;
     // 84:c2:e4:ef:0f:0d
     
-  
-
+    printf("Dhcp started\n");
+    ch395_get_ip_inf(ip_infos);
     printf("Ip : %d.%d.%d.%d\n",ip_infos[0],ip_infos[1],ip_infos[2],ip_infos[3]);
     printf("Gateway : %d.%d.%d.%d\n",ip_infos[4],ip_infos[5],ip_infos[6],ip_infos[7]);
     printf("Mask : %d.%d.%d.%d\n",ip_infos[8],ip_infos[9],ip_infos[10],ip_infos[11]);
     printf("DNS1 : %d.%d.%d.%d\n",ip_infos[12],ip_infos[13],ip_infos[14],ip_infos[15]);
     printf("DNS2 : %d.%d.%d.%d\n",ip_infos[16],ip_infos[17],ip_infos[18],ip_infos[19]);
 
-    //ch395_close_socket_sn(CH395_SOCKET0);
-   */ 
-    printf("Connection to %d.%d.%d.%d:%d\n",ip_addr_dest[0],ip_addr_dest[1],ip_addr_dest[2],ip_addr_dest[3],portDst);
-    printf("Setting Proto\n");
-    ch395_set_proto_type_sn(CH395_PROTO_TYPE_TCP,CH395_SOCKET0);
-    printf("Setting IP\n");
-    ch395_set_ip_addr_sn(ip_addr_dest,CH395_SOCKET0);
-   
-    printf("Setting dest port %d\n",portDst);
-    ch395_set_des_port_sn(portDst,CH395_SOCKET0);
-    printf("Setting source port\n");
-    ch395_set_sour_port_sn(200,CH395_SOCKET0);
 
-    ch395_open_socket_sn(CH395_SOCKET0);
+    //printf("Connection to %d.%d.%d.%d:%d\n",ip_addr_dest[0],ip_addr_dest[1],ip_addr_dest[2],ip_addr_dest[3],portDst);
+    printf("Starting server ... \n" );
+    ch395_close_socket_sn(CH395_SOCKET1);
+    printf("Setting Proto\n");
+    ch395_set_proto_type_sn(CH395_PROTO_TYPE_TCP,CH395_SOCKET1);
+
+    printf("Setting source port\n");
+    ch395_set_sour_port_sn(200,CH395_SOCKET1);
+
+    ch395_open_socket_sn(CH395_SOCKET1);
     while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS) {
-    //while (1)
-        
         if (ret==CH395_ERR_BUSY)
             printf("Socket open ... Busy\n");
-        //if (ret==CH395_ERR_OPEN) break;
     }
-    //printf("Open Socket : %x\n",ret);
-    printf("Connection OK !\n");
-    printf("Tcp connect now\n");
-    ch395_tcp_connect_sn(CH395_SOCKET0);
-    while ((ret=ch395_get_cmd_status())!=CH395_ERR_SUCCESS) {
-        printf("Waiting for tcp connect : %x\n",ret);
-        /*
-        if (ret==CH395_ERR_ISCONN)
+    printf("Tcp connect now in server mode\n");
+    printf("Waiting for connection...");
+    while (1) {
+        ret=ch395_get_int_status_sn(CH395_SOCKET1);
+
+        if (ret!=0) {
+            printf("Something is connected");
             break;
-        if (ret==CH395_ERR_CLSD) {
-            printf("Tcp connection closed\n");
-            break;
-            
         }
-        */
     }
-    printf("Tcp connect ok %x\n",ret);
-    ret=ch395_get_int_status_sn(CH395_SOCKET0);
-    printf("Ret : %d",ret);
 
-    //strcpy(getUrl,"GET /");
-    ch395_write_send_buf_sn(getUrl, 9,CH395_SOCKET0);
-
-
-    
-    ch395_close_socket_sn(CH395_SOCKET0);
+  //  strcpy(getUrl,"GET /oric/jede.html");
+    //ch395_write_send_buf_sn(getUrl, 15,CH395_SOCKET0);
+    ch395_close_socket_sn(CH395_SOCKET1);
     
 
     return 0;

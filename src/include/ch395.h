@@ -9,7 +9,7 @@ unsigned char ch395_check_exist();
 void ch395_init();
 unsigned char ch395_get_cmd_status();
 void ch395_get_mac_adress(unsigned char macaddress[]);
-
+void ch395_set_mac_adress(unsigned char macaddress[]);
 void ch395_get_ip_inf(unsigned char ip_infos[]);
 
 void ch395_dhcp_enable(unsigned char mode);
@@ -27,7 +27,7 @@ void ch395_get_recv_len_sn(unsigned char ID_SOCKET);
 void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET);
 void ch395_close_socket_sn(unsigned char ID_SOCKET);
 unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
-unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
+unsigned char *ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes
 unsigned char ch395_get_phy_status();
 
 
@@ -50,8 +50,11 @@ unsigned char ch395_get_phy_status();
 #define CH395_ERR_ISCONN   0x1D /*  Connecté*/
 #define CH395_ERR_OPEN     0x20 /* Ouvert */
 
-#define CH395_DHCP_ENABLE  0x00
-#define CH395_DHCP_DISABLE 0x01
+#define CH395_DHCP_ENABLE  0x01
+#define CH395_DHCP_DISABLE 0x00
+
+#define CH395_DHCP_STATUS_ENABLED  0x00
+#define CH395_DHCP_STATUS_DISABLED 0x01
 
 #define CH395_SOCKET0      0
 #define CH395_SOCKET1      1
@@ -67,7 +70,6 @@ unsigned char ch395_get_phy_status();
 #define CH395_PROTO_TYPE_MAC_RAW    0x01
 #define CH395_PROTO_TYPE_IP_RAW     0x00
 
-
 #define CH395_SINT_STAT_TIM_OUT     0x40
 #define CH395_SINT_STAT_DISCONNECT  0x10
 #define CH395_SINT_STAT_CONNECT     0x08
@@ -80,3 +82,19 @@ unsigned char ch395_get_phy_status();
 #define CH395_PHY_10M_HALF                              0x04
 #define CH395_PHY_100M_FLL                              0x08
 #define CH395_PHY_100M_HALF                             0x10
+
+#define CH395_SOCKET_CLOSED                             0x00
+#define CH395_SOCKET_OPEN                               0x05
+
+
+#define CH395_TCP_CLOSED                                0x00 // Shutdown
+#define CH395_TCP_LISTEN                                0x01
+#define CH395_TCP_SYN_SENT                              0x02
+#define CH395_TCP_SYN_REVD                              0x03
+#define CH395_TCP_ESTABLISHED                           0x04
+#define CH395_TCP_FIN_WAIT_1                            0x05
+#define CH395_TCP_FIN_WAIT_2                            0x06
+#define CH395_TCP_CLOSE_WAIT                            0x07
+#define CH395_TCP_CLOSING                               0x08
+#define CH395_TCP_LAST_ACK                              0x09
+#define CH395_TCP_TIME_WAIT                             0x0A

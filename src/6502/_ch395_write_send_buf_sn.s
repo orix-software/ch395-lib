@@ -17,10 +17,10 @@
 
     sta     CH395_DATA_PORT ; set length
     sta     length
-    sta     $6000
+
     stx     CH395_DATA_PORT ; set length
     stx     length+1
-    stx     $6001
+
 
     jsr     popax
     sta     ptr1
@@ -34,7 +34,7 @@
     sta     CH395_DATA_PORT ; set length
     sta     $BB80,y
     iny
-    cpy     #5
+    dec     length
     bne     @loop
     rts
     dec     length
