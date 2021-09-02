@@ -1,5 +1,6 @@
-
-.include "../include/ch395.inc"
+.ifndef CH395_COMMAND_PORT
+    .include "../include/ch395.inc"
+.endif    
 
 .export _ch395_get_ip_inf
 
@@ -23,4 +24,3 @@
 
     rts
 .endproc
-

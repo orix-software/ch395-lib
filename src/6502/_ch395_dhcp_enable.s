@@ -1,5 +1,6 @@
-
-.include "ch395.inc"
+.ifndef CH395_COMMAND_PORT
+   .include "ch395.inc"
+.endif   
 
 .export _ch395_dhcp_enable
 
@@ -9,4 +10,3 @@
    sta     CH395_DATA_PORT        
    rts
 .endproc 
-

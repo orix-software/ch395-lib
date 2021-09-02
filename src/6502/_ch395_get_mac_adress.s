@@ -1,5 +1,6 @@
-
-.include "ch395.inc"
+.ifndef CH395_COMMAND_PORT
+    .include "ch395.inc"
+.endif    
 
 .importzp ptr1
 

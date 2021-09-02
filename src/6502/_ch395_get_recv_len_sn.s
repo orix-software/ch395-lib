@@ -1,9 +1,11 @@
-.include "ch395.inc"
-
-
+.ifndef CH395_COMMAND_PORT
+    .include "ch395.inc"
+.endif    
 
 .export _ch395_get_recv_len_sn
+
 ; void ch395_get_recv_len_sn(unsigned char ID_SOCKET)
+
 .proc _ch395_get_recv_len_sn
     ldx     #CH395_GET_RECV_LEN_SN
     stx     CH395_COMMAND_PORT

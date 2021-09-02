@@ -1,13 +1,17 @@
-.include "ch395.inc"
+.ifndef CH395_COMMAND_PORT
+    .include "ch395.inc"
+.endif    
 
 .import popax
 
 .importzp ptr1
 
 .export _ch395_write_send_buf_sn
+
 ; void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET)
+
 .proc _ch395_write_send_buf_sn
-   ; rts
+
     ldy     #CH395_WRITE_SEND_BUF_SN
     sty     CH395_COMMAND_PORT
 
@@ -20,7 +24,6 @@
 
     stx     CH395_DATA_PORT ; set length
     stx     length+1
-
 
     jsr     popax
     sta     ptr1
@@ -35,14 +38,13 @@
     iny
     dec     length
     bne     @loop
+@exit:    
     rts
-    
-    dec     length
-    bne     @loop
-    ldy     #$00
-    inc     ptr1+1
+    lda     length+1
+    beq     @exit
     dec     length+1
-    bne     @restart
+    jmp     @exit
+    
 
     rts
 length:

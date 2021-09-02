@@ -1,4 +1,6 @@
-.include "ch395.inc"
+.ifndef CH395_COMMAND_PORT
+    .include "ch395.inc"
+.endif    
 
 .export _ch395_clear_recv_buf_sn
 ; void ch395_clear_recv_buf_sn(unsigned char ID_SOCKET)

@@ -1,4 +1,6 @@
-.include "ch395.inc"
+.ifndef CH395_COMMAND_PORT
+    .include "ch395.inc"
+.endif    
 
 .import popax
 
@@ -36,16 +38,15 @@
     iny
     dec     length
     bne     @loop
+@exit:    
     rts
 
-    dec     length
-    bne     @loop
-    ldy     #$00
-    inc     ptr1+1
+    lda     length+1
+    beq     @exit
     dec     length+1
-    bne     @restart
+    jmp     @exit
 
-    rts
+    
 length:
     .res 2
 
