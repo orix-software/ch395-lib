@@ -23,8 +23,11 @@ void ch395_set_des_port_sn(unsigned int port,unsigned char ID_SOCKET);
 void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET);
 void ch395_open_socket_sn(unsigned char ID_SOCKET);
 void ch395_tcp_connect_sn(unsigned char ID_SOCKET);
-void ch395_get_recv_len_sn(unsigned char ID_SOCKET);
-void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET);
+unsigned int ch395_get_recv_len_sn(unsigned char ID_SOCKET);
+
+void ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+
 void ch395_close_socket_sn(unsigned char ID_SOCKET);
 unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 unsigned char *ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes

@@ -4,11 +4,11 @@
 
 .importzp ptr1
 
-.export _ch395_write_send_buf_sn
-; void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET)
-.proc _ch395_write_send_buf_sn
+.export _ch395_read_recv_buf_sn
+; void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET)
+.proc _ch395_read_recv_buf_sn
    ; rts
-    ldy     #CH395_WRITE_SEND_BUF_SN
+    ldy     #CH395_READ_RECV_BUF_SN
     sty     CH395_COMMAND_PORT
 
     sta     CH395_DATA_PORT
@@ -30,13 +30,14 @@
 @restart:
     ldy     #$00
 @loop:    
-    lda     (ptr1),y
-    sta     CH395_DATA_PORT ; set length
+    lda     CH395_DATA_PORT ; set length
+    sta     (ptr1),y
+
     iny
     dec     length
     bne     @loop
     rts
-    
+
     dec     length
     bne     @loop
     ldy     #$00

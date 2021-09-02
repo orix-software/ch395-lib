@@ -87,8 +87,10 @@ CH395_ERR_IF                  = $1C ; Erreur MAC
 CH395_ERR_ISCONN              = $1D ; Connecté
 CH395_ERR_OPEN                = $20 ; Ouvert 
 
-CH395_DHCP_ENABLE_VAL  = $00
-CH395_DHCP_DISABLE_VAL = $01
+CH395_DHCP_ENABLE_VAL         = $00
+CH395_DHCP_DISABLE_VAL        = $01
+
+CH395_NUMBER_MAX_SOCKET       = $08
 
 CH395_SOCKET0 = 0
 CH395_SOCKET1 = 1
@@ -110,4 +112,28 @@ CH395_SINT_STAT_DISCONNECT  = $10
 CH395_SINT_STAT_CONNECT     = $08
 CHE95_SINT_STAT_RECV        = $04
 CH395_SINT_STAT_SEND_OK     = $02
-CH395_SINT_STAT_SENBUF_FREE = $01         
+CH395_SINT_STAT_SENBUF_FREE = $01
+
+
+CH395_PHY_DISCONN                               = $01
+CH395_PHY_10M_FLL                               = $02
+CH395_PHY_10M_HALF                              = $04
+CH395_PHY_100M_FLL                              = $08
+CH395_PHY_100M_HALF                             = $10
+
+CH395_SOCKET_CLOSED                             = $00
+CH395_SOCKET_OPEN                               = $05
+
+
+CH395_TCP_CLOSED                                = $00
+CH395_TCP_LISTEN                                = $01
+CH395_TCP_SYN_SENT                              = $02
+CH395_TCP_SYN_REVD                              = $03
+CH395_TCP_ESTABLISHED                           = $04
+CH395_TCP_FIN_WAIT_1                            = $05
+CH395_TCP_FIN_WAIT_2                            = $06
+CH395_TCP_CLOSE_WAIT                            = $07
+CH395_TCP_CLOSING                               = $08
+CH395_TCP_LAST_ACK                              = $09
+CH395_TCP_TIME_WAIT                             = $0A
+

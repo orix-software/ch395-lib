@@ -84,8 +84,6 @@ void menu (unsigned char current_menu) {
 static unsigned char macaddress[8];
 static unsigned char ip_infos[20];
 
-    unsigned char Mybuffer[512];
-
 int main() {
     unsigned char version;
     unsigned char current_menu=0;
@@ -104,7 +102,6 @@ int main() {
     unsigned char testBusy=0;
     unsigned char error=0;
     unsigned char *ret_ptr;
-
     
 
     
@@ -116,14 +113,6 @@ int main() {
         ch395_reset_all();
         return 0;
     }
-    ret=ch395_get_phy_status();
-
-    if (ret==CH395_PHY_DISCONN) {
-        printf("Error : Cable disconnected\n");
-        return 0;
-    }
-
-
 /*
     checkexist=ch395_check_exist();
     printf("Check exist : %x\n",checkexist);
@@ -209,7 +198,6 @@ int main() {
         
         if (ret==CH395_ERR_BUSY)
             printf("Socket open ... Busy\n");
-        printf("Waiting to socket response %d\n",ret);
         //if (ret==CH395_ERR_OPEN) break;
     }
     //printf("Open Socket : %x\n",ret);
@@ -234,19 +222,9 @@ int main() {
 
     //strcpy(getUrl,"GET /");
     ch395_write_send_buf_sn(getUrl, 9,CH395_SOCKET0);
-
-    while (1) {
-         ret=ch395_get_int_status_sn(CH395_SOCKET0);
-         printf("Socket status : %d\n",ret);
-         if (ret==0) break;
-
-    }
     length=ch395_get_recv_len_sn(CH395_SOCKET0);
-    
     printf("Length received : %d\n",length);
-    ch395_read_recv_buf_sn(Mybuffer, 512,CH395_SOCKET0);
-    for (i=0;i<512;i++) 
-        printf("%c",Mybuffer[i]);
+
     
     ch395_close_socket_sn(CH395_SOCKET0);
     
