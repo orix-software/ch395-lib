@@ -87,8 +87,13 @@ CH395_ERR_IF                  = $1C ; Erreur MAC
 CH395_ERR_ISCONN              = $1D ; Connecté
 CH395_ERR_OPEN                = $20 ; Ouvert 
 
-CH395_DHCP_ENABLE_VAL         = $00
-CH395_DHCP_DISABLE_VAL        = $01
+CH395_DHCP_ENABLE             = $01
+CH395_DHCP_DISABLE            = $00
+
+
+
+CH395_DHCP_STATUS_ENABLED     = $00
+CH395_DHCP_STATUS_DISABLED    = $01
 
 CH395_NUMBER_MAX_SOCKET       = $08
 
