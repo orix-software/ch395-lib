@@ -4,7 +4,9 @@
 
 .export _ch395_get_ip_inf
 
-.importzp ptr1
+.ifndef ptr1
+    .importzp ptr1
+.endif
 
 .proc _ch395_get_ip_inf
     sta     ptr1
