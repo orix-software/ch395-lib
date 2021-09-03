@@ -2,7 +2,9 @@
     .include "ch395.inc"
 .endif    
 
-.importzp ptr1
+.ifndef ptr1
+    .importzp ptr1
+.endif    
 
 .export _ch395_get_mac_adress
 

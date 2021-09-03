@@ -15,7 +15,6 @@
 	lda     #CH395_GET_IP_INF
     sta     CH395_COMMAND_PORT 
 
-
     ldy     #$00
 @loop:
     lda     CH395_DATA_PORT
