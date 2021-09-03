@@ -2,8 +2,6 @@
     .include "ch395.inc"
 .endif    
 
-.importzp ptr1
-
 .export _ch395_get_glob_int_status
 
 .proc _ch395_get_glob_int_status
@@ -15,4 +13,3 @@
     ldx     CH395_DATA_PORT
     rts
 .endproc
-
