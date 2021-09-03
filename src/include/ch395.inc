@@ -140,3 +140,4 @@ CH395_TCP_CLOSING                               = $08
 CH395_TCP_LAST_ACK                              = $09
 CH395_TCP_TIME_WAIT                             = $0A
 
+GINT_STAT_DHCP                                  = $08

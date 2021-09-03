@@ -33,6 +33,8 @@ unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 unsigned char *ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes
 unsigned char ch395_get_phy_status();
 
+unsigned int ch395_get_glob_int_status();
+
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);
 
