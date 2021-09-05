@@ -22,8 +22,9 @@
     sta     CH395_DATA_PORT
 
 .ifdef      FROM_ASSEMBLY
-    sty     length
-    stx     length+1
+    lda     length
+    ldx     length+1
+    
 .else
     jsr     popax   
     sta     length
