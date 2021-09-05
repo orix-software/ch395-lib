@@ -2,9 +2,11 @@
     .include "ch395.inc"
 .endif    
 
-.import popax
 
-.importzp ptr1
+.ifndef      FROM_ASSEMBLY
+    .import popax
+    .importzp ptr1
+.endif
 
 .export _ch395_write_send_buf_sn
 
@@ -12,23 +14,35 @@
 
 .proc _ch395_write_send_buf_sn
 
+.ifdef      FROM_ASSEMBLY
+    sty     length
+    stx     length+1
+.endif
+
     ldy     #CH395_WRITE_SEND_BUF_SN
     sty     CH395_COMMAND_PORT
 
     sta     CH395_DATA_PORT
 
+.ifdef      FROM_ASSEMBLY
+    lda     length
+    ldx     length+1
+.else
     jsr     popax
-
-    sta     CH395_DATA_PORT ; set length
     sta     length
-
-    stx     CH395_DATA_PORT ; set length
     stx     length+1
+.endif
+    sta     CH395_DATA_PORT ; set length
+    stx     CH395_DATA_PORT ; set length
+    
 
+; In assembly ptr1 is already set
+.ifdef      FROM_ASSEMBLY
+.else
     jsr     popax
     sta     ptr1
     stx     ptr1+1
-
+.endif
 
 @restart:
     ldy     #$00
