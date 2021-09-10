@@ -50,7 +50,7 @@
     lda     (ptr1),y
     sta     CH395_DATA_PORT ; set length
     iny
-    dec     length
+    cpy     length
     bne     @loop
 @exit:    
     rts
