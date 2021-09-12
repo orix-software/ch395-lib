@@ -51,7 +51,7 @@
     sta     (ptr1),y
 
     iny
-    dec     length
+    cpy     length
     bne     @loop
 @exit:    
     rts

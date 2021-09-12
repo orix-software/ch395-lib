@@ -2,8 +2,11 @@
     .include "ch395.inc"
 .endif    
 
+
+
 .ifndef FROM_ASSEMBLY
     .importzp ptr1
+    .import popax    
 .endif    
 
 ; _ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket)

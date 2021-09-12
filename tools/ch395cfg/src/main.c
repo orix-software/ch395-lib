@@ -112,7 +112,7 @@ int main() {
         ch395_reset_all();
         return 0;
     }
-/*
+
     checkexist=ch395_check_exist();
     printf("Check exist : %x\n",checkexist);
     printf("Ch395 init\n");
@@ -125,6 +125,7 @@ int main() {
             break;
         }
     }
+    /*
     // Set mac address
     //
     //ch395_set_mac_adress(setmacaddressforge);
@@ -142,8 +143,9 @@ int main() {
             return 0;
         }
         printf("Ch395 stack init success ! \n");
+        */
 
-        ch395_get_ip_inf(ip_infos);
+        ch395_get_ip_inf(ip_infos);/*
         // No ip affected start dhcp
         if (ip_infos[0]==0) {
             printf("Start dhcp\n");
@@ -166,7 +168,7 @@ int main() {
     // 84:c2:e4:ef:0f:0d
     
   
-
+*/
     printf("Ip : %d.%d.%d.%d\n",ip_infos[0],ip_infos[1],ip_infos[2],ip_infos[3]);
     printf("Gateway : %d.%d.%d.%d\n",ip_infos[4],ip_infos[5],ip_infos[6],ip_infos[7]);
     printf("Mask : %d.%d.%d.%d\n",ip_infos[8],ip_infos[9],ip_infos[10],ip_infos[11]);
@@ -174,7 +176,7 @@ int main() {
     printf("DNS2 : %d.%d.%d.%d\n",ip_infos[16],ip_infos[17],ip_infos[18],ip_infos[19]);
 
     //ch395_close_socket_sn(CH395_SOCKET0);
-   */ 
+  
     printf("Connection to %d.%d.%d.%d:%d\n",ip_addr_dest[0],ip_addr_dest[1],ip_addr_dest[2],ip_addr_dest[3],portDst);
     printf("Setting Proto\n");
     ch395_set_proto_type_sn(CH395_PROTO_TYPE_TCP,CH395_SOCKET0);

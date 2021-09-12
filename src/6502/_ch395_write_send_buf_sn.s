@@ -4,7 +4,7 @@
 
 
 .ifndef      FROM_ASSEMBLY
-    .import popax
+    .import popax    
     .importzp ptr1
 .endif
 
@@ -48,7 +48,7 @@
     ldy     #$00
 @loop:    
     lda     (ptr1),y
-    sta     CH395_DATA_PORT ; set length
+    sta     CH395_DATA_PORT 
     iny
     cpy     length
     bne     @loop
