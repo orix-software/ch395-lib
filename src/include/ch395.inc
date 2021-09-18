@@ -147,5 +147,4 @@ CH395_GINT_STAT_DHCP                            = $08
 CH395_FUN_PARA_FLAG_TCP_SERVER                  = $02
 CH395_FUN_PARA_FLAG_LOW_PWR                     = $04
 CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $08
-CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $10
-CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             = $20
+CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             = $10
