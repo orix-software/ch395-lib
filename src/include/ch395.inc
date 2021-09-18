@@ -140,4 +140,12 @@ CH395_TCP_CLOSING                               = $08
 CH395_TCP_LAST_ACK                              = $09
 CH395_TCP_TIME_WAIT                             = $0A
 
-GINT_STAT_DHCP                                  = $08
+GINT_STAT_DHCP                                  = $08 ; Duplicate and should be removed
+CH395_GINT_STAT_DHCP                            = $08
+
+
+CH395_FUN_PARA_FLAG_TCP_SERVER                  = $02
+CH395_FUN_PARA_FLAG_LOW_PWR                     = $04
+CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $08
+CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $10
+CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             = $20
