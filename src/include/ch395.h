@@ -37,7 +37,8 @@ void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
 
 unsigned int ch395_get_glob_int_status();
 void ch395_clear_recv_buf_sn(unsigned char socket);
-
+void ch395_set_fun_para(unsigned char flag);
+void void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);
@@ -107,3 +108,8 @@ void ch395_clear_recv_buf_sn(unsigned char socket);
 #define CH395_TCP_CLOSING                               0x08
 #define CH395_TCP_LAST_ACK                              0x09
 #define CH395_TCP_TIME_WAIT                             0x0A
+
+#define CH395_FUN_PARA_FLAG_TCP_SERVER                  0x02
+#define CH395_FUN_PARA_FLAG_LOW_PWR                     0x04
+#define CH395_FUN_PARA_FLAG_SOCKET_CLOSE                0x08
+#define CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             0x10
