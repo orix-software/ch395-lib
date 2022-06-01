@@ -53,7 +53,7 @@
     iny
     cpy     length
     bne     @loop
-@exit:
+
     tya
     clc
     adc     ptr1
@@ -68,7 +68,8 @@
     lda     #$FF
     sta     length
     jmp     @restart
-
+@exit:
+    rts
 
 length:
     .res 2
