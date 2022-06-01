@@ -50,7 +50,7 @@
 
 
 @read_256_bytes:
-    dec     length+1
+
     ldy     #$00
 @loop2:
     lda     CH395_DATA_PORT ; set length
@@ -62,6 +62,7 @@
     inc     ptr1+1
 
     lda     length+1
+    cmp     #$01
     beq     @exit
     dec     length+1
     jmp     @read_256_bytes
