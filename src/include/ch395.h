@@ -38,7 +38,7 @@ void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
 unsigned int ch395_get_glob_int_status();
 void ch395_clear_recv_buf_sn(unsigned char socket);
 void ch395_set_fun_para(unsigned char flag);
-void void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
+void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);

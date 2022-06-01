@@ -1,11 +1,11 @@
 .ifndef CH395_COMMAND_PORT
     .include "ch395.inc"
-.endif    
+.endif
 
 .ifndef      FROM_ASSEMBLY
     .import popax
     .importzp ptr1
-.endif    
+.endif
 
 .export _ch395_read_recv_buf_sn
 ; void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET)
@@ -24,46 +24,52 @@
 .ifdef      FROM_ASSEMBLY
     lda     length
     ldx     length+1
-    
+
 .else
-    jsr     popax   
+    jsr     popax
     sta     length
     stx     length+1
 .endif
- 
+
 
     sta     CH395_DATA_PORT ; set length
     stx     CH395_DATA_PORT ; set length
-    
+
 
 .ifdef      FROM_ASSEMBLY
 .else
     jsr     popax
     sta     ptr1
     stx     ptr1+1
-.endif    
+.endif
 
 
 @restart:
     ldy     #$00
-@loop:    
+@loop:
     lda     CH395_DATA_PORT ; set length
     sta     (ptr1),y
 
     iny
     cpy     length
     bne     @loop
-@exit:    
-    rts
+@exit:
+    tya
+    clc
+    adc     ptr1
+    bcc     @no_inc
+    inc     ptr1+1
+@no_inc:
+    sta     ptr1
 
     lda     length+1
     beq     @exit
     dec     length+1
-    jmp     @exit
+    lda     #$FF
+    sta     length
+    jmp     @restart
 
-    
+
 length:
     .res 2
-
-
 .endproc
