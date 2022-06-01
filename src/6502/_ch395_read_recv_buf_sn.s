@@ -55,7 +55,6 @@
 @loop2:
     lda     CH395_DATA_PORT ; set length
     sta     (ptr1),y
-    BRK_TELEMON XWR0
     iny
     bne     @loop2
 
@@ -80,7 +79,6 @@
 @loop:
     lda     CH395_DATA_PORT ; set length
     sta     (ptr1),y
-    BRK_TELEMON XWR0
     iny
     cpy     length
     bne     @loop
