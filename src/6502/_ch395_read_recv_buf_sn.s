@@ -44,32 +44,45 @@
 .endif
 
 
-@restart:
+    lda     length+1
+    beq     @read_only_length
+
+
+
+@read_256_bytes:
+    dec     length+1
     ldy     #$00
-@loop:
+@loop2:
     lda     CH395_DATA_PORT ; set length
     sta     (ptr1),y
-
     iny
-    cpy     length
-    bne     @loop
+    bne     @loop2
 
-    tya
-    clc
-    adc     ptr1
-    bcc     @no_inc
     inc     ptr1+1
-@no_inc:
-    sta     ptr1
 
     lda     length+1
     beq     @exit
     dec     length+1
-    lda     #$FF
-    sta     length
-    jmp     @restart
+    jmp     @read_256_bytes
 @exit:
+    lda     length
+    beq     @go_rts
+    jsr     @read_only_length
+@go_rts:
     rts
+
+
+
+@read_only_length:
+    ldy     #$00
+@loop:
+    lda     CH395_DATA_PORT ; set length
+    sta     (ptr1),y
+    iny
+    cpy     length
+    bne     @loop
+    rts
+
 
 length:
     .res 2
