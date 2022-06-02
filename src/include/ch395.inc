@@ -148,3 +148,9 @@ CH395_FUN_PARA_FLAG_TCP_SERVER                  = $02
 CH395_FUN_PARA_FLAG_LOW_PWR                     = $04
 CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $08
 CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             = $10
+
+
+CH395_GINT_STAT_SOCK0                           = 16
+CH395_GINT_STAT_SOCK1                           = 32
+CH395_GINT_STAT_SOCK2                           = 64
+CH395_GINT_STAT_SOCK3                           = 128
