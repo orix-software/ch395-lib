@@ -81,11 +81,11 @@ CH395_ERR_RST                 = $16 ; Connexion réinitialisée
 CH395_ERR_CLSD                = $17 ; Connexion fermée
 CH395_ERR_CONN                = $18 ; Pas de connexion
 CH395_ERR_VAL                 = $19 ; Mauvaise valeur
-CH395_ERR_ARG                 = $1A ; Erreur de paramètre 
+CH395_ERR_ARG                 = $1A ; Erreur de paramètre
 CH395_ERR_USE                 = $1B ; Déjà utilisé
 CH395_ERR_IF                  = $1C ; Erreur MAC
 CH395_ERR_ISCONN              = $1D ; Connecté
-CH395_ERR_OPEN                = $20 ; Ouvert 
+CH395_ERR_OPEN                = $20 ; Ouvert
 
 CH395_DHCP_ENABLE_VAL         = $01
 CH395_DHCP_DISABLE_VAL        = $00
@@ -124,8 +124,8 @@ CH395_PHY_10M_HALF                              = $04
 CH395_PHY_100M_FLL                              = $08
 CH395_PHY_100M_HALF                             = $10
 
-CH395_SOCKET_CLOSED                             = $00
-CH395_SOCKET_OPEN                               = $05
+CH395_SOCKET_CLOSED                             = $05
+CH395_SOCKET_OPEN                               = $00
 
 
 CH395_TCP_CLOSED                                = $00
