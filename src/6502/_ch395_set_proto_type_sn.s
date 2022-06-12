@@ -15,9 +15,9 @@
 
 .ifdef      FROM_ASSEMBLY
     stx     CH395_DATA_PORT ; tcp mode
-.else    
+.else
     jsr     popa
     sta     CH395_DATA_PORT ; tcp mode
-.endif    
+.endif
     rts
 .endproc
