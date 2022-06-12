@@ -124,8 +124,8 @@ CH395_PHY_10M_HALF                              = $04
 CH395_PHY_100M_FLL                              = $08
 CH395_PHY_100M_HALF                             = $10
 
-CH395_SOCKET_CLOSED                             = $05
-CH395_SOCKET_OPEN                               = $00
+CH395_SOCKET_CLOSED                             = $00
+CH395_SOCKET_OPEN                               = $05
 
 
 CH395_TCP_CLOSED                                = $00
