@@ -2,7 +2,7 @@
     .include "../include/ch395.inc"
 .endif
 
-.proc _ch395_set_ipdraw_pro_sn
+.proc _ch395_set_ipraw_pro_sn
     ; A the socket
     ; X the mode proto
 
