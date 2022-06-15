@@ -117,7 +117,6 @@ CH395_SINT_STAT_RECV        = $04
 CH395_SINT_STAT_SEND_OK     = $02
 CH395_SINT_STAT_SENBUF_FREE = $01
 
-
 CH395_PHY_DISCONN                               = $01
 CH395_PHY_10M_FLL                               = $02
 CH395_PHY_10M_HALF                              = $04
@@ -126,7 +125,6 @@ CH395_PHY_100M_HALF                             = $10
 
 CH395_SOCKET_CLOSED                             = $00
 CH395_SOCKET_OPEN                               = $05
-
 
 CH395_TCP_CLOSED                                = $00
 CH395_TCP_LISTEN                                = $01
