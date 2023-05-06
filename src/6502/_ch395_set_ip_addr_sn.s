@@ -1,14 +1,14 @@
 .ifndef CH395_COMMAND_PORT
     .include "ch395.inc"
-.endif    
+.endif
 
 .ifndef ptr1
     .importzp ptr1
-.endif    
+.endif
 
 .ifndef      FROM_ASSEMBLY
     .import popax
-.endif    
+.endif
 
 .export _ch395_set_ip_addr_sn
 
@@ -20,9 +20,8 @@
     sty     ptr1
     stx     ptr1+1
 .else
-  
 
-.endif    
+.endif
 
     ldx     #CH395_SET_IP_ADDR_SN
     stx     CH395_COMMAND_PORT
@@ -33,9 +32,8 @@
     jsr     popax ; get ip_addr
     sta     ptr1
     stx     ptr1+1
-.endif    
-    
-    
+.endif
+
     ; send IP
     ldy     #$00
 @loop:
@@ -44,8 +42,6 @@
     iny
     cpy     #04
     bne     @loop
-
-
 
     rts
 .endproc
