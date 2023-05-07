@@ -1,13 +1,11 @@
 .ifndef CH395_COMMAND_PORT
     .include "ch395.inc"
-.endif    
-
-
+.endif
 
 .ifndef FROM_ASSEMBLY
     .importzp ptr1
-    .import popax    
-.endif    
+    .import popax
+.endif
 
 ; _ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket)
 
@@ -20,10 +18,9 @@
     stx     ptr1+1
 .else
 
-.endif    
+.endif
 
-	ldy     #CH395_GET_REMOT_IPP_SN
-    
+    ldy     #CH395_GET_REMOT_IPP_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT
 
@@ -32,18 +29,17 @@
     jsr     popax
     sta     ptr1
     stx     ptr1+1
-.endif    
+.endif
 
     ldy     #$00
 @loop:
 
     lda     CH395_DATA_PORT
     sta     (ptr1),y
-      
+
     iny
     cpy     #$06
     bne     @loop
 
     rts
 .endproc
-
