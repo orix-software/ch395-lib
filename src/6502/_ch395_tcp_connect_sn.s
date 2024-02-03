@@ -1,6 +1,6 @@
 .ifndef CH395_COMMAND_PORT
     .include "ch395.inc"
-.endif    
+.endif
 
 .export _ch395_tcp_connect_sn
 

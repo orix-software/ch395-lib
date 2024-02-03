@@ -9,10 +9,7 @@
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT
     lda     CH395_DATA_PORT
-.ifdef      FROM_ASSEMBLY    
-.else
     ldx     #$00
-.endif
     rts
 .endproc
 

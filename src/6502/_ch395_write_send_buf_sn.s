@@ -1,10 +1,10 @@
 .ifndef CH395_COMMAND_PORT
     .include "ch395.inc"
-.endif    
+.endif
 
 
 .ifndef      FROM_ASSEMBLY
-    .import popax    
+    .import popax
     .importzp ptr1
 .endif
 
@@ -34,7 +34,7 @@
 .endif
     sta     CH395_DATA_PORT ; set length
     stx     CH395_DATA_PORT ; set length
-    
+
 
 ; In assembly ptr1 is already set
 .ifdef      FROM_ASSEMBLY
@@ -46,19 +46,19 @@
 
 @restart:
     ldy     #$00
-@loop:    
+@loop:
     lda     (ptr1),y
-    sta     CH395_DATA_PORT 
+    sta     CH395_DATA_PORT
     iny
     cpy     length
     bne     @loop
-@exit:    
+@exit:
     rts
     lda     length+1
     beq     @exit
     dec     length+1
     jmp     @exit
-    
+
 
     rts
 length:

@@ -4,10 +4,15 @@
 .endif
 
 .export _ch395_get_socket_status_sn
+.export ch395_get_socket_status_sn
 
 ; unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
 
+ch395_get_socket_status_sn = _ch395_get_socket_status_sn
+
 .proc _ch395_get_socket_status_sn
+    ; Returns in A socket status (close/open)
+    ; X : the TCP state
     ldx     #CH395_GET_SOCKET_STATUS_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT

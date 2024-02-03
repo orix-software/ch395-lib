@@ -1,6 +1,6 @@
 .ifndef CH395_COMMAND_PORT
     .include "../include/ch395.inc"
-.endif    
+.endif
 
 .export _ch395_get_ip_inf
 
@@ -13,7 +13,7 @@
     stx     ptr1+1
 
 	lda     #CH395_GET_IP_INF
-    sta     CH395_COMMAND_PORT 
+    sta     CH395_COMMAND_PORT
 
     ldy     #$00
 @loop:
