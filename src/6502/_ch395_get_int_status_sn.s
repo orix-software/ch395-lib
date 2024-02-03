@@ -10,6 +10,8 @@
 .endproc
 
 .proc ch395_get_int_status_sn
+    ;;@modifyA
+    ;;@modifyX
 	ldx     #CH395_GET_INT_STATUS_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT

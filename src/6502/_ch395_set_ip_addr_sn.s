@@ -11,10 +11,13 @@
 .endif
 
 .export _ch395_set_ip_addr_sn
-
-; void ch395_set_ip_addr_sn(unsigned char ip_addr[],unsigned char ID_SOCKET)
+.export ch395_set_ip_addr_sn
 
 .proc _ch395_set_ip_addr_sn
+    ;;@proto void ch395_set_ip_addr_sn(unsigned char ip_addr[],unsigned char ID_SOCKET)
+.endproc
+
+.proc ch395_set_ip_addr_sn
 
 .ifdef      FROM_ASSEMBLY
     sty     ptr1

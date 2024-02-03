@@ -11,8 +11,10 @@
 .endproc
 
 .proc ch395_get_socket_status_sn
-    ; Returns in A socket status (close/open)
+    ;;@brief Returns in A socket status (close/open)
     ; X : the TCP state
+    ;;@modifyX
+    ;;@modifyA
     ldx     #CH395_GET_SOCKET_STATUS_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT

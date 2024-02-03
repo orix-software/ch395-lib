@@ -9,10 +9,13 @@
 .endif
 
 .export _ch395_write_send_buf_sn
-
-; void ch395_write_send_buf_sn(unsigned char *msg, unsigned int length,unsigned char ID_SOCKET)
+.export ch395_write_send_buf_sn
 
 .proc _ch395_write_send_buf_sn
+    ;;@proto
+.endproc
+
+.proc ch395_write_send_buf_sn
 
 .ifdef      FROM_ASSEMBLY
     sty     length
@@ -58,9 +61,8 @@
     beq     @exit
     dec     length+1
     jmp     @exit
-
-
     rts
+
 length:
     .res 2
 

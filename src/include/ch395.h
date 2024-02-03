@@ -2,23 +2,20 @@
 //typedef ch395macaddress byte[6];
 
 unsigned char ch395_get_ic_ver();
-
-//ch395macaddress *ch395_get_mac_adress();
-void ch395_reset_all();
+void          ch395_reset_all();
 unsigned char ch395_check_exist();
-void ch395_init();
+void          ch395_init();
 unsigned char ch395_get_cmd_status();
-void ch395_get_mac_adress(unsigned char macaddress[]);
-void ch395_set_mac_adress(unsigned char macaddress[]);
-void ch395_get_ip_inf(unsigned char ip_infos[]);
+void          ch395_get_mac_adress(unsigned char macaddress[]);
+void          ch395_set_mac_adress(unsigned char macaddress[]);
+void          ch395_get_ip_inf(unsigned char ip_infos[]);
 
-void ch395_dhcp_enable(unsigned char mode);
-
+void          ch395_dhcp_enable(unsigned char mode);
 unsigned char ch395_get_dhcp_status();
 
 
-void ch395_set_ip_addr_sn(unsigned char ip_addr[],unsigned char ID_SOCKET);
-void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET);
+void          ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET);
+void          ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET);
 void ch395_set_des_port_sn(unsigned int port,unsigned char ID_SOCKET);
 void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET);
 void ch395_open_socket_sn(unsigned char ID_SOCKET);
@@ -85,7 +82,7 @@ void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 #define CH395_SINT_STAT_CONNECT     0x08
 #define CHE95_SINT_STAT_RECV        0x04
 #define CH395_SINT_STAT_SEND_OK     0x02
-#define CH395_SINT_STAT_SENBUF_FREE 0x01         
+#define CH395_SINT_STAT_SENBUF_FREE 0x01
 
 #define CH395_PHY_DISCONN                               0x01
 #define CH395_PHY_10M_FLL                               0x02

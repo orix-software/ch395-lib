@@ -4,10 +4,15 @@
 .endif
 
 .export _ch395_set_mac_adress
+.export ch395_set_mac_adress
 
 .importzp ptr1
 
 .proc _ch395_set_mac_adress
+.endproc
+
+.proc ch395_set_mac_adress
+    ;;@brief Set mac address
     ldy     #CH395_SET_MAC_ADDR
     sty     CH395_COMMAND_PORT
     sta     ptr1

@@ -10,6 +10,10 @@
 .endproc
 
 .proc ch395_get_recv_len_sn
+    ;;@modifyA
+    ;;@modifyX
+    ;;@returnsA
+    ;;@returnsX
     ldx     #CH395_GET_RECV_LEN_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; send socket

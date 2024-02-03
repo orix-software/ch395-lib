@@ -6,7 +6,7 @@
 .export ch395_check_exist
 
 .proc _ch395_check_exist
-    ;;@proto
+    ;;@proto unsigned char ch395_check_exist();
 .endproc
 
 .proc ch395_check_exist

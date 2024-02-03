@@ -13,14 +13,17 @@
 .endproc
 
 .proc ch395_get_mac_adress
+    ;;@modifyA
+    ;;@modifyX
+    ;;@modifyY
     sta     ptr1
     stx     ptr1+1
 	lda     #CH395_GET_MAC_ADDR
     sta     CH395_COMMAND_PORT
 
     ldy     #$00
-@loop:
 
+@loop:
     lda     CH395_DATA_PORT
     sta     (ptr1),y
 

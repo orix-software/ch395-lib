@@ -11,6 +11,9 @@
 .endif
 
 .proc _ch395_get_ip_inf
+    ;;@modifyA
+    ;;@modifyX
+    ;;@modifyY
     sta     ptr1
     stx     ptr1+1
 

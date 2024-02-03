@@ -12,6 +12,7 @@
 
 .proc ch395_get_ic_ver
     ;;@brief Get ch395 firmware version
+    ;;@modifyA
 	lda     #CH395_GET_IC_VER
     sta     CH395_COMMAND_PORT
     lda     CH395_DATA_PORT

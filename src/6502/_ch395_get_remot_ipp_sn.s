@@ -17,6 +17,9 @@
 
 
 .proc ch395_get_remot_ipp_sn
+    ;;@modifyA
+    ;;@modifyX
+    ;;@modifyY
 
 .ifdef FROM_ASSEMBLY
     sty     ptr1

@@ -18,6 +18,7 @@ echo "" >> docs/code/$VERSION/c.md
 echo $VERSION
 
 for I in `ls src/6502/*.s`; do
+echo $I
 cat  $I | python3 docs/ca65todoc.py >> docs/code/$VERSION/assembly.md
 cat  $I | python3 docs/ca65todoc_c_proto.py >> docs/code/$VERSION/c.md
 cat  $I | python3 docs/ca65todoc.py >> docs/code/assembly.md

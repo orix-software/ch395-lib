@@ -9,6 +9,7 @@
 .endproc
 
 .proc ch395_dhcp_enable
+   ;;@brief Enable or not dhcp
    ;;@inputA The mode to activate DHCP mode
    ;;@modifyX
    ldx     #CH395_DHCP_ENABLE
