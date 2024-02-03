@@ -10,8 +10,13 @@
 ; _ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket)
 
 .export _ch395_get_remot_ipp_sn
+.export ch395_get_remot_ipp_sn
 
 .proc _ch395_get_remot_ipp_sn
+.endproc
+
+
+.proc ch395_get_remot_ipp_sn
 
 .ifdef FROM_ASSEMBLY
     sty     ptr1

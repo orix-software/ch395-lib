@@ -60,7 +60,43 @@ Close socket
 
 
 
+## ch395_get_dhcp_status
+
+
+
+## ch395_get_glob_int_status
+
+
+
 ## ch395_get_ic_ver
+
+***Description***
+
+Get ch395 firmware version
+
+
+
+## ch395_get_int_status_sn
+
+
+
+## ch395_get_mac_adress
+
+
+
+## ch395_get_phy_status
+
+
+
+## ch395_get_recv_len_sn
+
+
+
+## ch395_get_remot_ipp_sn
+
+
+
+## ch395_get_socket_status_sn
 
 
 

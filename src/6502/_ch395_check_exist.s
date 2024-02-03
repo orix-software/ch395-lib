@@ -3,7 +3,6 @@
 .endif
 
 .export _ch395_check_exist
-
 .export ch395_check_exist
 
 .proc _ch395_check_exist

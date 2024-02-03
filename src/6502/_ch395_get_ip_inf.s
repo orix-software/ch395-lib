@@ -2,6 +2,8 @@
     .include "../include/ch395.inc"
 .endif
 
+    .include "telestrat.inc"
+
 .export _ch395_get_ip_inf
 
 .ifndef ptr1
@@ -16,6 +18,7 @@
     sta     CH395_COMMAND_PORT
 
     ldy     #$00
+
 @loop:
     lda     CH395_DATA_PORT
     sta     (ptr1),y

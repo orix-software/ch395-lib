@@ -4,3 +4,4 @@ error.txt
 *.ld65
 *.o
 *.lib
+target/

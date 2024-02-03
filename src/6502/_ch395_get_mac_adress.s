@@ -7,8 +7,12 @@
 .endif
 
 .export _ch395_get_mac_adress
+.export ch395_get_mac_adress
 
 .proc _ch395_get_mac_adress
+.endproc
+
+.proc ch395_get_mac_adress
     sta     ptr1
     stx     ptr1+1
 	lda     #CH395_GET_MAC_ADDR
