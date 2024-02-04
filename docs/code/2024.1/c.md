@@ -26,6 +26,12 @@ Close socket
 
 
 
+## unsigned int ch395_get_glob_int_status();
+
+***Description***
+
+Get General interrupt Status
+
 
 
 ***Description***
@@ -45,6 +51,10 @@ Get ch395 firmware version
 
 
 ## void ch395_get_recv_len_sn(unsigned char ID_SOCKET)
+
+***Description***
+
+Get the length received from socket
 
 
 
@@ -86,7 +96,7 @@ Set ip addr
 
 
 
-## void ch395_set_ip_addr_sn(unsigned char ip_addr[],unsigned char ID_SOCKET)
+## void ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET)
 
 
 

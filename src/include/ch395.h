@@ -16,26 +16,26 @@ unsigned char ch395_get_dhcp_status();
 
 void          ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET);
 void          ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET);
-void ch395_set_des_port_sn(unsigned int port,unsigned char ID_SOCKET);
-void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET);
-void ch395_open_socket_sn(unsigned char ID_SOCKET);
-void ch395_tcp_connect_sn(unsigned char ID_SOCKET);
-void ch395_tcp_listen_sn(unsigned char ID_SOCKET);
-unsigned int ch395_get_recv_len_sn(unsigned char ID_SOCKET);
+void          ch395_set_des_port_sn(unsigned int port,unsigned char ID_SOCKET);
+void          ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET);
+void          ch395_open_socket_sn(unsigned char ID_SOCKET);
+void          ch395_tcp_connect_sn(unsigned char ID_SOCKET);
+void          ch395_tcp_listen_sn(unsigned char ID_SOCKET);
+unsigned int  ch395_get_recv_len_sn(unsigned char ID_SOCKET);
 
-void ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
-void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+void          ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+void          ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
 
-void ch395_close_socket_sn(unsigned char ID_SOCKET);
+void          ch395_close_socket_sn(unsigned char ID_SOCKET);
 unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 unsigned char *ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes
 unsigned char ch395_get_phy_status();
-void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
+void          ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
 
-unsigned int ch395_get_glob_int_status();
-void ch395_clear_recv_buf_sn(unsigned char socket);
-void ch395_set_fun_para(unsigned char flag);
-void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
+unsigned char ch395_get_glob_int_status();
+void          ch395_clear_recv_buf_sn(unsigned char socket);
+void          ch395_set_fun_para(unsigned char flag);
+void          ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);
@@ -63,14 +63,14 @@ void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 #define CH395_DHCP_STATUS_ENABLED  0x00
 #define CH395_DHCP_STATUS_DISABLED 0x01
 
-#define CH395_SOCKET0      0
-#define CH395_SOCKET1      1
-#define CH395_SOCKET2      2
-#define CH395_SOCKET3      3
-#define CH395_SOCKET4      4
-#define CH395_SOCKET5      5
-#define CH395_SOCKET6      6
-#define CH395_SOCKET7      7
+#define CH395_SOCKET0              0
+#define CH395_SOCKET1              1
+#define CH395_SOCKET2              2
+#define CH395_SOCKET3              3
+#define CH395_SOCKET4              4
+#define CH395_SOCKET5              5
+#define CH395_SOCKET6              6
+#define CH395_SOCKET7              7
 
 #define CH395_PROTO_TYPE_TCP        0x03
 #define CH395_PROTO_TYPE_UDP        0x02

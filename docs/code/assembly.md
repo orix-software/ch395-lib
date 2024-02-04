@@ -7,6 +7,17 @@
 Checks if ch395 exists
 
 
+***Example***
+
+```ca65
+ jsr ch395_get_glob_int_status
+ cmp #$AA
+ beq ch395_connected
+ rts
+ch395_connected:
+```
+
+
 ***Modify***
 
 * Accumulator 
@@ -82,10 +93,22 @@ Get cmd status
 
 ## ch395_get_glob_int_status
 
+***Description***
+
+Get General interrupt Status
+
 
 ***Modify***
 
 * Accumulator 
+
+***Example***
+
+```ca65
+ jsr ch395_get_glob_int_status
+ ; check accumulator to get interrupts states
+```
+
 
 
 ## ch395_get_ic_ver
@@ -122,14 +145,39 @@ Get ch395 firmware version
 ## ch395_get_phy_status
 
 
+***Modify***
+
+* Accumulator 
+
 
 ## ch395_get_recv_len_sn
+
+***Description***
+
+Get the length received from socket
+
+
+***Example***
+
+```ca65
+ lda #$01 ; Socket 1
+ jsr ch395_get_recv_len_sn
+ ; check A and X for length received
+ch395_connected:
+```
 
 
 ***Modify***
 
 * Accumulator 
 * X Register 
+
+***Returns***
+
+* Accumulator : The length
+
+* X Register : The length
+
 
 
 ## ch395_get_remot_ipp_sn
@@ -233,6 +281,10 @@ Set ip addr
 
 
 ## ch395_set_ip_addr_sn
+
+***Description***
+
+Set Socket Ip address to connect with
 
 
 

@@ -14,10 +14,12 @@
 .export ch395_set_ip_addr_sn
 
 .proc _ch395_set_ip_addr_sn
-    ;;@proto void ch395_set_ip_addr_sn(unsigned char ip_addr[],unsigned char ID_SOCKET)
+    ;;@proto void ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET)
+
 .endproc
 
 .proc ch395_set_ip_addr_sn
+    ;;@brief Set Socket Ip address to connect with
 
 .ifdef      FROM_ASSEMBLY
     sty     ptr1

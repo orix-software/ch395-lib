@@ -944,6 +944,13 @@
 <h2 id="ch395_check_exist">ch395_check_exist</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Checks if ch395 exists</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_glob_int_status</span>
+<span class="w"> </span><span class="k">cmp</span><span class="w"> </span><span class="p">#</span><span class="mh">$AA</span>
+<span class="w"> </span><span class="k">beq</span><span class="w"> </span><span class="n">ch395_connected</span>
+<span class="w"> </span><span class="k">rts</span>
+<span class="nl">ch395_connected:</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -995,10 +1002,16 @@
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_get_glob_int_status">ch395_get_glob_int_status</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get General interrupt Status</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 </ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_glob_int_status</span>
+<span class="w"> </span><span class="c1">; check accumulator to get interrupts states</span>
+</code></pre></div>
 <h2 id="ch395_get_ic_ver">ch395_get_ic_ver</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get ch395 firmware version</p>
@@ -1020,11 +1033,32 @@
 <li>Y Register </li>
 </ul>
 <h2 id="ch395_get_phy_status">ch395_get_phy_status</h2>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Accumulator </li>
+</ul>
 <h2 id="ch395_get_recv_len_sn">ch395_get_recv_len_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get the length received from socket</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span><span class="w"> </span><span class="c1">; Socket 1</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_recv_len_sn</span>
+<span class="w"> </span><span class="c1">; check A and X for length received</span>
+<span class="nl">ch395_connected:</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 <li>X Register </li>
+</ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>
+<p>Accumulator : The length</p>
+</li>
+<li>
+<p>X Register : The length</p>
+</li>
 </ul>
 <h2 id="ch395_get_remot_ipp_sn">ch395_get_remot_ipp_sn</h2>
 <p><strong><em>Modify</em></strong></p>
@@ -1079,6 +1113,8 @@
 <p><strong><em>Description</em></strong></p>
 <p>Set ip addr</p>
 <h2 id="ch395_set_ip_addr_sn">ch395_set_ip_addr_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Set Socket Ip address to connect with</p>
 <h2 id="ch395_set_ipraw_pro_sn">ch395_set_ipraw_pro_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set ipraw protocol on socket</p>
