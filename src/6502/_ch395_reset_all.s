@@ -8,6 +8,10 @@
 .proc _ch395_reset_all
     ;;@proto void ch395_reset_all()
     ;;@brief Reset ch395
+    ;;@```c
+    ;;@`  ch395_reset_all();
+    ;;@`  ; Wait a bit
+    ;;@```
 .endproc
 
 .proc ch395_reset_all

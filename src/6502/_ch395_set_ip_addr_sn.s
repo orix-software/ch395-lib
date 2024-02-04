@@ -15,30 +15,25 @@
 
 .proc _ch395_set_ip_addr_sn
     ;;@proto void ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET)
-
+    pha
+    jsr     popax ; get ip_addr
+    sta     ptr1
+    stx     ptr1+1
+    pla
+    jmp     ch395_set_ip_addr_sn::entry_point_c
 .endproc
 
 .proc ch395_set_ip_addr_sn
     ;;@brief Set Socket Ip address to connect with
 
-.ifdef      FROM_ASSEMBLY
+
     sty     ptr1
     stx     ptr1+1
-.else
 
-.endif
-
+entry_point_c:
     ldx     #CH395_SET_IP_ADDR_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id
-
-.ifdef      FROM_ASSEMBLY
-.else
-    jsr     popax ; get ip_addr
-    sta     ptr1
-    stx     ptr1+1
-.endif
-
     ; send IP
     ldy     #$00
 @loop:

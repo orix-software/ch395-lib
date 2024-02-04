@@ -320,13 +320,29 @@ Get remote ip connected to the socket
 
 ***Description***
 
-Returns in A socket status (close/open)
+Returns in A socket status (close/open ...)
 
 
 ***Modify***
 
 * X Register 
 * Accumulator 
+
+***Returns***
+
+* Accumulator : The status
+
+* X Register : The state
+
+
+***Example***
+
+```ca65
+ lda #$01 ; Socket 1
+ jsr ch395_get_socket_status_sn
+ ; check A and X for the state
+```
+
 
 
 ## ch395_init
@@ -382,6 +398,14 @@ Reset ch395
 
 Retran period
 
+***Input***
+
+* Accumulator : Period 
+* X Register : Period 
+
+***Modify***
+
+* Y Register 
 
 ***Example***
 
@@ -392,14 +416,6 @@ Retran period
  rts
 ```
 
-***Input***
-
-* Accumulator : Period 
-* X Register : Period 
-
-***Modify***
-
-* Y Register 
 
 
 ## ch395_set_des_port_sn
@@ -407,6 +423,10 @@ Retran period
 
 
 ## ch395_set_fun_para
+
+***Description***
+
+Set fun para
 
 ***Input***
 
@@ -420,13 +440,17 @@ Retran period
 
 ## ch395_set_gwip_addr
 
+***Description***
+
+Set gateway ip addr
+
 
 
 ## ch395_set_ip_addr
 
 ***Description***
 
-Set ip addr
+Set ip row
 
 
 
@@ -460,6 +484,13 @@ Set mac address
 
 ## ch395_set_retran_count
 
+***Description***
+
+Set retran period
+
+***Input***
+
+* Accumulator : Retran period
 
 
 ## ch395_set_sour_port_sn
@@ -480,5 +511,8 @@ Set mac address
 
 ## ch395_write_send_buf_sn
 
+***Input***
+
+* Accumulator : Socket ID
 
 

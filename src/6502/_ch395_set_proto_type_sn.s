@@ -9,20 +9,14 @@
 
 .proc _ch395_set_proto_type_sn
     ;;@proto void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET)
+    jsr     popa
+    sta     CH395_DATA_PORT ; tcp mode
 .endproc
-
-
 
 .proc ch395_set_proto_type_sn
     ldy     #CH395_SET_PROTO_TYPE_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id
-
-.ifdef      FROM_ASSEMBLY
     stx     CH395_DATA_PORT ; tcp mode
-.else
-    jsr     popa
-    sta     CH395_DATA_PORT ; tcp mode
-.endif
     rts
 .endproc

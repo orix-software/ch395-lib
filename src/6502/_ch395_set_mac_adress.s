@@ -9,6 +9,7 @@
 .importzp ptr1
 
 .proc _ch395_set_mac_adress
+    ;;@proto void          ch395_set_mac_adress(unsigned char macaddress[]);
 .endproc
 
 .proc ch395_set_mac_adress
@@ -19,6 +20,7 @@
     stx     ptr1+1
 
     ldy     #$00
+
 @loop:
     lda     (ptr1),y
     sta     CH395_DATA_PORT

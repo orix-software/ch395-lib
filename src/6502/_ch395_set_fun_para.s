@@ -7,9 +7,11 @@
 
 .proc _ch395_set_fun_para
     ;;@proto void ch395_set_fun_para(unsigned char flag)
+    ;;@brief Set fun para
 .endproc
 
 .proc ch395_set_fun_para
+    ;;@brief Set fun para
     ;;@inputA Value
     ;;@modifyY
     ;;@modifyA

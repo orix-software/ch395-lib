@@ -5,9 +5,8 @@
 .export _ch395_tcp_listen_sn
 .export ch395_tcp_listen_sn
 
-; void ch395_tcp_listen_sn(unsigned char ID_SOCKET)
-
 .proc _ch395_tcp_listen_sn
+    ;;@proto void ch395_tcp_listen_sn(unsigned char ID_SOCKET)
 .endproc
 
 .proc ch395_tcp_listen_sn

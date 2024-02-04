@@ -98,6 +98,10 @@ Get remote ip connected to the socket
 
 ## unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
 
+***Description***
+
+Returns in A socket status (close/open ... )
+
 
 
 ## void ch395_init();
@@ -124,13 +128,29 @@ Reset ch395
 
 
 
+## void ch395_retran_period(unsigned int period);
 
+***Description***
+
+Retran period
+
+
+
+## void ch395_set_des_port_sn(unsigned int port, unsigned char ID_SOCKET);
 
 
 
 ## void ch395_set_fun_para(unsigned char flag)
 
+***Description***
 
+Set fun para
+
+
+
+***Description***
+
+Set gateway ip addr
 
 
 
@@ -144,11 +164,15 @@ Set ip addr
 
 
 
+## void ch395_set_ipraw_pro_sn(unsigned char ID_SOCKET);
+
 ***Description***
 
 Set ipraw protocol on socket
 
 
+
+## void ch395_set_mac_adress(unsigned char macaddress[]);
 
 
 
@@ -156,13 +180,27 @@ Set ipraw protocol on socket
 
 
 
+## void ch395_set_retran_count(unsigned int period);
+
+***Description***
+
+Set retran period
 
 
 
+## void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET)
 
 
 
+## void ch395_tcp_connect_sn(unsigned char ID_SOCKET)
 
+
+
+## void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)
+
+
+
+## void ch395_tcp_listen_sn(unsigned char ID_SOCKET)
 
 
 

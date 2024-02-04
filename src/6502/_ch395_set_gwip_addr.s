@@ -6,9 +6,11 @@
 .export ch395_set_gwip_addr
 
 .proc _ch395_set_gwip_addr
+    ;;@brief Set gateway ip addr
 .endproc
 
 .proc ch395_set_gwip_addr
+    ;;@brief Set gateway ip addr
 	lda #CH395_SET_GWIP_ADDR
     rts
 .endproc

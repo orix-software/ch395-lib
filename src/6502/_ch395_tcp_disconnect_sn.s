@@ -6,9 +6,8 @@
 .export ch395_tcp_disconnect_sn
 
 .proc _ch395_tcp_disconnect_sn
+    ;;@proto void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)
 .endproc
-
-; void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)
 
 .proc ch395_tcp_disconnect_sn
     ldy     #CH395_TCP_DISNCONNECT_SN

@@ -10,9 +10,14 @@ void          ch395_get_mac_adress(unsigned char macaddress[]);
 void          ch395_set_mac_adress(unsigned char macaddress[]);
 void          ch395_get_ip_inf(unsigned char ip_infos[]);
 
+void          ch395_set_ipraw_pro_sn(unsigned char ID_SOCKET);
+
 void          ch395_dhcp_enable(unsigned char mode);
 unsigned char ch395_get_dhcp_status();
+void          ch395_retran_period(unsigned int period);
+void          ch395_set_retran_count(unsigned char period);
 
+void          ch395_set_ip_addr(unsigned char fix);
 
 void          ch395_set_ip_addr_sn(unsigned char ip_addr[], unsigned char ID_SOCKET);
 void          ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET);

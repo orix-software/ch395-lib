@@ -879,12 +879,26 @@
 </ul>
 <h2 id="ch395_get_socket_status_sn">ch395_get_socket_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Returns in A socket status (close/open)</p>
+<p>Returns in A socket status (close/open ...)</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>X Register </li>
 <li>Accumulator </li>
 </ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>
+<p>Accumulator : The status</p>
+</li>
+<li>
+<p>X Register : The state</p>
+</li>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span><span class="w"> </span><span class="c1">; Socket 1</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_socket_status_sn</span>
+<span class="w"> </span><span class="c1">; check A and X for the state</span>
+</code></pre></div>
 <h2 id="ch395_init">ch395_init</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Initialize ch395</p>
@@ -914,12 +928,6 @@
 <h2 id="ch395_retran_period">ch395_retran_period</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Retran period</p>
-<p><strong><em>Example</em></strong></p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
-<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
-<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
-<span class="w"> </span><span class="k">rts</span>
-</code></pre></div>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Period </li>
@@ -929,8 +937,16 @@
 <ul>
 <li>Y Register </li>
 </ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
+<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <h2 id="ch395_set_des_port_sn">ch395_set_des_port_sn</h2>
 <h2 id="ch395_set_fun_para">ch395_set_fun_para</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Set fun para</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Value </li>
@@ -941,9 +957,11 @@
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_set_gwip_addr">ch395_set_gwip_addr</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Set gateway ip addr</p>
 <h2 id="ch395_set_ip_addr">ch395_set_ip_addr</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set ip addr</p>
+<p>Set ip row</p>
 <h2 id="ch395_set_ip_addr_sn">ch395_set_ip_addr_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set Socket Ip address to connect with</p>
@@ -955,11 +973,21 @@
 <p>Set mac address</p>
 <h2 id="ch395_set_proto_type_sn">ch395_set_proto_type_sn</h2>
 <h2 id="ch395_set_retran_count">ch395_set_retran_count</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Set retran period</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : Retran period</li>
+</ul>
 <h2 id="ch395_set_sour_port_sn">ch395_set_sour_port_sn</h2>
 <h2 id="ch395_tcp_connect_sn">ch395_tcp_connect_sn</h2>
 <h2 id="ch395_tcp_disconnect_sn">ch395_tcp_disconnect_sn</h2>
 <h2 id="ch395_tcp_listen_sn">ch395_tcp_listen_sn</h2>
-<h2 id="ch395_write_send_buf_sn">ch395_write_send_buf_sn</h2></div>
+<h2 id="ch395_write_send_buf_sn">ch395_write_send_buf_sn</h2>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : Socket ID</li>
+</ul></div>
 
   <hr>
 <div class="md-source-file">
