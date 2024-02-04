@@ -56,9 +56,27 @@ Check interrupt socket status
 
 
 
+## void ch395_get_ip_inf(unsigned char ip_infos[]);
+
+***Description***
+
+Get ip info
 
 
 
+## void ch395_get_mac_adress(unsigned char macaddress[]);
+
+***Description***
+
+Get mac address
+
+
+
+## unsigned char ch395_get_phy_status();
+
+***Description***
+
+Get physical status
 
 
 
@@ -69,6 +87,12 @@ Check interrupt socket status
 Get the length received from socket
 
 
+
+## void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
+
+***Description***
+
+Get remote ip connected to the socket
 
 
 

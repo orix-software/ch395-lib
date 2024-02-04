@@ -2,46 +2,35 @@
     .include "ch395.inc"
 .endif
 
-.ifndef FROM_ASSEMBLY
+
     .importzp ptr1
     .import popax
-.endif
 
-; _ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket)
 
 .export _ch395_get_remot_ipp_sn
 .export ch395_get_remot_ipp_sn
 
-.proc _ch395_get_remot_ipp_sn
-.endproc
-
 
 .proc ch395_get_remot_ipp_sn
+    ;;@brief Get remote ip connected to the socket
+    ;;@inputA The Socket for the ip to get
+    ;;@inputX The ptr (high) to store the ip
+    ;;@inputY The ptr (low) to store the ip
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY
 
-.ifdef FROM_ASSEMBLY
     sty     ptr1
     stx     ptr1+1
-.else
 
-.endif
-
+enter_c_proto:
     ldy     #CH395_GET_REMOT_IPP_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT
 
-.ifdef FROM_ASSEMBLY
-.else
-    jsr     popax
-    sta     ptr1
-    stx     ptr1+1
-.endif
-
     ldy     #$00
-@loop:
 
+@loop:
     lda     CH395_DATA_PORT
     sta     (ptr1),y
 
@@ -51,3 +40,17 @@
 
     rts
 .endproc
+
+
+.proc _ch395_get_remot_ipp_sn
+    ;;@proto void          ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
+    ;;@brief Get remote ip connected to the socket
+
+    pha
+    jsr     popax
+    sta     ptr1
+    stx     ptr1+1
+    pla
+    jmp     ch395_get_remot_ipp_sn::enter_c_proto
+.endproc
+

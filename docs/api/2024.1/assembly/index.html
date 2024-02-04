@@ -1061,12 +1061,6 @@
 <h2 id="ch395_get_int_status_sn">ch395_get_int_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Check interrupt socket status</p>
-<p><strong><em>Example</em></strong></p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_SOCKET1</span><span class="w"> </span><span class="c1">; Check socket 1</span>
-<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_int_status_sn</span>
-<span class="w"> </span><span class="c1">; Check interrupt type</span>
-<span class="w"> </span><span class="k">rts</span>
-</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -1076,7 +1070,20 @@
 <ul>
 <li>Accumulator : Status of selected socket</li>
 </ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_SOCKET1</span><span class="w"> </span><span class="c1">; Check socket 1</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_int_status_sn</span>
+<span class="w"> </span><span class="c1">; Check interrupt type</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <h2 id="ch395_get_ip_inf">ch395_get_ip_inf</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get ip info</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : the ptr to modify</li>
+<li>X Register : the ptr to modify</li>
+</ul>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -1084,17 +1091,44 @@
 <li>Y Register </li>
 </ul>
 <h2 id="ch395_get_mac_adress">ch395_get_mac_adress</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get mac address</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : the ptr</li>
+<li>X Register : the ptr</li>
+</ul>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 <li>X Register </li>
 <li>Y Register </li>
 </ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>
+<p>Accumulator : the content of ptr modified</p>
+</li>
+<li>
+<p>X Register : the content of ptr modified</p>
+</li>
+</ul>
 <h2 id="ch395_get_phy_status">ch395_get_phy_status</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get physical status</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 </ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>Accumulator : The physical status</li>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_phy_status</span>
+<span class="w"> </span><span class="c1">; Check A physical status</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <h2 id="ch395_get_recv_len_sn">ch395_get_recv_len_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get the length received from socket</p>
@@ -1119,6 +1153,14 @@
 </li>
 </ul>
 <h2 id="ch395_get_remot_ipp_sn">ch395_get_remot_ipp_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get remote ip connected to the socket</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : The Socket for the ip to get</li>
+<li>X Register : The ptr (high) to store the ip</li>
+<li>Y Register : The ptr (low) to store the ip</li>
+</ul>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>

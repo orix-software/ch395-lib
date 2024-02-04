@@ -12,9 +12,14 @@
 .endif
 
 .proc _ch395_get_ip_inf
+    ;;@proto void          ch395_get_ip_inf(unsigned char ip_infos[]);
+    ;;@brief Get ip info
 .endproc
 
 .proc ch395_get_ip_inf
+    ;;@brief Get ip info
+    ;;@inputA the ptr to modify
+    ;;@inputX the ptr to modify
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY

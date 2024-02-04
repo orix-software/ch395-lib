@@ -8,13 +8,20 @@
 
 .proc _ch395_get_socket_status_sn
     ;;@proto unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
+    ;;@brief Returns in A socket status (close/open ... )
 .endproc
 
 .proc ch395_get_socket_status_sn
-    ;;@brief Returns in A socket status (close/open)
-    ; X : the TCP state
+    ;;@brief Returns in A socket status (close/open ...)
     ;;@modifyX
     ;;@modifyA
+    ;;@returnsA The status
+    ;;@returnsX The state
+    ;;@```ca65
+    ;;@`  lda #$01 ; Socket 1
+    ;;@`  jsr ch395_get_socket_status_sn
+    ;;@`  ; check A and X for the state
+    ;;@```
     ldx     #CH395_GET_SOCKET_STATUS_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT

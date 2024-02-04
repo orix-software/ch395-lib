@@ -9,8 +9,7 @@
     ;;@proto void ch395_get_recv_len_sn(unsigned char ID_SOCKET)
     ;;@brief Get the length received from socket
     ;;@```c
-    ;;@`  lda #$01 ; Socket 1
-    ;;@`  length_received = ch395_get_recv_len_sn();
+    ;;@`  length_received = ch395_get_recv_len_sn(1);
     ;;@```
 .endproc
 

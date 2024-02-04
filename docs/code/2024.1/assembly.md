@@ -177,16 +177,6 @@ Get ch395 firmware version
 Check interrupt socket status
 
 
-***Example***
-
-```ca65
- lda #CH395_SOCKET1 ; Check socket 1
- jsr ch395_get_int_status_sn
- ; Check interrupt type
- rts
-```
-
-
 ***Modify***
 
 * Accumulator 
@@ -197,9 +187,27 @@ Check interrupt socket status
 * Accumulator : Status of selected socket
 
 
+***Example***
+
+```ca65
+ lda #CH395_SOCKET1 ; Check socket 1
+ jsr ch395_get_int_status_sn
+ ; Check interrupt type
+ rts
+```
+
+
 
 ## ch395_get_ip_inf
 
+***Description***
+
+Get ip info
+
+***Input***
+
+* Accumulator : the ptr to modify
+* X Register : the ptr to modify
 
 ***Modify***
 
@@ -210,6 +218,14 @@ Check interrupt socket status
 
 ## ch395_get_mac_adress
 
+***Description***
+
+Get mac address
+
+***Input***
+
+* Accumulator : the ptr
+* X Register : the ptr
 
 ***Modify***
 
@@ -217,13 +233,38 @@ Check interrupt socket status
 * X Register 
 * Y Register 
 
+***Returns***
+
+* Accumulator : the content of ptr modified
+
+* X Register : the content of ptr modified
+
+
 
 ## ch395_get_phy_status
+
+***Description***
+
+Get physical status
 
 
 ***Modify***
 
 * Accumulator 
+
+***Returns***
+
+* Accumulator : The physical status
+
+
+***Example***
+
+```ca65
+ jsr ch395_get_phy_status
+ ; Check A physical status
+ rts
+```
+
 
 
 ## ch395_get_recv_len_sn
@@ -258,6 +299,15 @@ ch395_connected:
 
 ## ch395_get_remot_ipp_sn
 
+***Description***
+
+Get remote ip connected to the socket
+
+***Input***
+
+* Accumulator : The Socket for the ip to get
+* X Register : The ptr (high) to store the ip
+* Y Register : The ptr (low) to store the ip
 
 ***Modify***
 
