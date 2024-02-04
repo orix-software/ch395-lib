@@ -24,6 +24,12 @@ Close socket
 
 
 
+## unsigned char ch395_get_dhcp_status();
+
+***Description***
+
+Get dhcp status
+
 
 
 ## unsigned int ch395_get_glob_int_status();
@@ -34,6 +40,8 @@ Get General interrupt Status
 
 
 
+## unsigned char ch395_get_ic_ver();
+
 ***Description***
 
 Get ch395 firmware version
@@ -41,6 +49,10 @@ Get ch395 firmware version
 
 
 ## unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
+
+***Description***
+
+Check interrupt socket status
 
 
 
@@ -64,11 +76,19 @@ Get the length received from socket
 
 
 
+## void ch395_init();
+
+***Description***
+
+Initialize ch395
+
 
 
 ## void ch395_open_socket_sn(unsigned char ID_SOCKET)
 
 
+
+## void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
 
 
 

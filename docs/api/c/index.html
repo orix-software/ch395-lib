@@ -433,8 +433,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#unsigned-char-ch395_get_dhcp_status" class="md-nav__link">
+    unsigned char ch395_get_dhcp_status();
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unsigned-int-ch395_get_glob_int_status" class="md-nav__link">
     unsigned int ch395_get_glob_int_status();
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#unsigned-char-ch395_get_ic_ver" class="md-nav__link">
+    unsigned char ch395_get_ic_ver();
   </a>
   
 </li>
@@ -461,8 +475,22 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#void-ch395_init" class="md-nav__link">
+    void ch395_init();
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#void-ch395_open_socket_snunsigned-char-id_socket" class="md-nav__link">
     void ch395_open_socket_sn(unsigned char ID_SOCKET)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#void-ch395_read_recv_buf_snunsigned-char-buffer-unsigned-int-lengthunsigned-char-id_socket" class="md-nav__link">
+    void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
   </a>
   
 </li>
@@ -525,17 +553,27 @@
 <h2 id="oid-ch395_close_socket_snunsigned-char-id_socket">oid ch395_close_socket_sn(unsigned char ID_SOCKET)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Close socket</p>
+<h2 id="unsigned-char-ch395_get_dhcp_status">unsigned char ch395_get_dhcp_status();</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get dhcp status</p>
 <h2 id="unsigned-int-ch395_get_glob_int_status">unsigned int ch395_get_glob_int_status();</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get General interrupt Status</p>
+<h2 id="unsigned-char-ch395_get_ic_ver">unsigned char ch395_get_ic_ver();</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get ch395 firmware version</p>
 <h2 id="unsigned-char-ch395_get_int_status_snunsigned-char-id_socket">unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Check interrupt socket status</p>
 <h2 id="void-ch395_get_recv_len_snunsigned-char-id_socket">void ch395_get_recv_len_sn(unsigned char ID_SOCKET)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get the length received from socket</p>
 <h2 id="unsigned-int-ch395_get_socket_status_snunsigned-char-id_socket">unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);</h2>
+<h2 id="void-ch395_init">void ch395_init();</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Initialize ch395</p>
 <h2 id="void-ch395_open_socket_snunsigned-char-id_socket">void ch395_open_socket_sn(unsigned char ID_SOCKET)</h2>
+<h2 id="void-ch395_read_recv_buf_snunsigned-char-buffer-unsigned-int-lengthunsigned-char-id_socket">void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);</h2>
 <h2 id="void-ch395_reset_all">void ch395_reset_all()</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Reset ch395</p>
@@ -553,7 +591,7 @@
   <small>
     
       Last update:
-      2024-02-03
+      2024-02-04
     
   </small>
 </div>

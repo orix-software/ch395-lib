@@ -13,7 +13,11 @@
 
 .proc ch395_close_socket_sn
     ;;@brief Close socket
-    ;;@inputA The id of the socket
+    ;;@```ca65
+    ;;@`  lda #$01 ; Socket ID
+    ;;@`  jsr ch395_close_socket_sn
+    ;;@```
+    ;;@inputA The id of the socket to close
     ;;@modifyY
     ldy     #CH395_CLOSE_SOCKET_SN
     sty     CH395_COMMAND_PORT

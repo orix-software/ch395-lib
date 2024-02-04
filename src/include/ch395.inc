@@ -5,6 +5,8 @@
 ; 4KEEPROM
 ; 8 GPIO
 
+CH395_DETECTED                = $AA
+
 CH395_COMMAND_PORT            := $381
 CH395_DATA_PORT               := $380
 

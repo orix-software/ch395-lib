@@ -5,12 +5,16 @@
     .include "telestrat.inc"
 
 .export _ch395_get_ip_inf
+.export ch395_get_ip_inf
 
 .ifndef ptr1
     .importzp ptr1
 .endif
 
 .proc _ch395_get_ip_inf
+.endproc
+
+.proc ch395_get_ip_inf
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY

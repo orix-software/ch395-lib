@@ -14,7 +14,11 @@
     ;;@`  lda       #$FF
     ;;@`  ldx       #$FF
     ;;@`  jsr       ch395_retran_period
+    ;;@`  rts
     ;;@```
+    ;;@inputA Period
+    ;;@inputX Period
+    ;;@modifyY
     ldy     #CH395_SET_RETRAN_PERIOD
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT

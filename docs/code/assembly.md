@@ -11,7 +11,7 @@ Checks if ch395 exists
 
 ```ca65
  jsr ch395_get_glob_int_status
- cmp #$AA
+ cmp #CH395_DETECTED
  beq ch395_connected
  rts
 ch395_connected:
@@ -35,6 +35,14 @@ ch395_connected:
 Clear receive buffer
 
 
+***Example***
+
+```ca65
+ lda #$01 ; Socket ID
+ jsr ch395_clear_recv_buf_sn
+```
+
+
 ***Modify***
 
 * Accumulator 
@@ -47,9 +55,17 @@ Clear receive buffer
 
 Close socket
 
+
+***Example***
+
+```ca65
+ lda #$01 ; Socket ID
+ jsr ch395_close_socket_sn
+```
+
 ***Input***
 
-* Accumulator : The id of the socket
+* Accumulator : The id of the socket to close
 
 ***Modify***
 
@@ -78,12 +94,34 @@ Enable or not dhcp
 Get cmd status
 
 
+***Example***
+
+```ca65
+ jsr ch395_get_cmd_status
+ ; Check A for STATUS
+ rts
+```
+
+
 ***Modify***
 
 * Accumulator 
 
 
 ## ch395_get_dhcp_status
+
+***Description***
+
+Get dhcp status
+
+
+***Example***
+
+```ca65
+ jsr ch395_get_dhcp_status
+ ; Check A for dhcp status
+ rts
+```
 
 
 ***Modify***
@@ -118,6 +156,15 @@ Get General interrupt Status
 Get ch395 firmware version
 
 
+***Example***
+
+```ca65
+ jsr ch395_get_ic_ver
+ ; Check A for version
+ rts
+```
+
+
 ***Modify***
 
 * Accumulator 
@@ -125,11 +172,40 @@ Get ch395 firmware version
 
 ## ch395_get_int_status_sn
 
+***Description***
+
+Check interrupt socket status
+
+
+***Example***
+
+```ca65
+ lda #CH395_SOCKET1 ; Check socket 1
+ jsr ch395_get_int_status_sn
+ ; Check interrupt type
+ rts
+```
+
 
 ***Modify***
 
 * Accumulator 
 * X Register 
+
+***Returns***
+
+* Accumulator : Status of selected socket
+
+
+
+## ch395_get_ip_inf
+
+
+***Modify***
+
+* Accumulator 
+* X Register 
+* Y Register 
 
 
 ## ch395_get_mac_adress
@@ -205,6 +281,10 @@ Returns in A socket status (close/open)
 
 ## ch395_init
 
+***Description***
+
+Initialize ch395
+
 
 ***Modify***
 
@@ -213,6 +293,17 @@ Returns in A socket status (close/open)
 
 ## ch395_open_socket_sn
 
+***Description***
+
+Open socket from arg
+
+***Input***
+
+* Accumulator : Socket id
+
+***Modify***
+
+* Y Register 
 
 
 ## ch395_read_recv_buf_sn
@@ -248,8 +339,17 @@ Retran period
  lda #$FF
  ldx #$FF
  jsr ch395_retran_period
+ rts
 ```
 
+***Input***
+
+* Accumulator : Period 
+* X Register : Period 
+
+***Modify***
+
+* Y Register 
 
 
 ## ch395_set_des_port_sn

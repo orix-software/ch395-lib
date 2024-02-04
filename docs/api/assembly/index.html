@@ -475,6 +475,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_get_ip_inf" class="md-nav__link">
+    ch395_get_ip_inf
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_get_mac_adress" class="md-nav__link">
     ch395_get_mac_adress
   </a>
@@ -663,7 +670,7 @@
 <p>Checks if ch395 exists</p>
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_glob_int_status</span>
-<span class="w"> </span><span class="k">cmp</span><span class="w"> </span><span class="p">#</span><span class="mh">$AA</span>
+<span class="w"> </span><span class="k">cmp</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_DETECTED</span>
 <span class="w"> </span><span class="k">beq</span><span class="w"> </span><span class="n">ch395_connected</span>
 <span class="w"> </span><span class="k">rts</span>
 <span class="nl">ch395_connected:</span>
@@ -679,6 +686,10 @@
 <h2 id="ch395_clear_recv_buf_sn">ch395_clear_recv_buf_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Clear receive buffer</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span><span class="w"> </span><span class="c1">; Socket ID</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_clear_recv_buf_sn</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -687,9 +698,13 @@
 <h2 id="ch395_close_socket_sn">ch395_close_socket_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Close socket</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span><span class="w"> </span><span class="c1">; Socket ID</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_close_socket_sn</span>
+</code></pre></div>
 <p><strong><em>Input</em></strong></p>
 <ul>
-<li>Accumulator : The id of the socket</li>
+<li>Accumulator : The id of the socket to close</li>
 </ul>
 <p><strong><em>Modify</em></strong></p>
 <ul>
@@ -709,11 +724,23 @@
 <h2 id="ch395_get_cmd_status">ch395_get_cmd_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get cmd status</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_cmd_status</span>
+<span class="w"> </span><span class="c1">; Check A for STATUS</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_get_dhcp_status">ch395_get_dhcp_status</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Get dhcp status</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_dhcp_status</span>
+<span class="w"> </span><span class="c1">; Check A for dhcp status</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -732,15 +759,39 @@
 <h2 id="ch395_get_ic_ver">ch395_get_ic_ver</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get ch395 firmware version</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_ic_ver</span>
+<span class="w"> </span><span class="c1">; Check A for version</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_get_int_status_sn">ch395_get_int_status_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Check interrupt socket status</p>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_SOCKET1</span><span class="w"> </span><span class="c1">; Check socket 1</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_int_status_sn</span>
+<span class="w"> </span><span class="c1">; Check interrupt type</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 <li>X Register </li>
+</ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>Accumulator : Status of selected socket</li>
+</ul>
+<h2 id="ch395_get_ip_inf">ch395_get_ip_inf</h2>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Accumulator </li>
+<li>X Register </li>
+<li>Y Register </li>
 </ul>
 <h2 id="ch395_get_mac_adress">ch395_get_mac_adress</h2>
 <p><strong><em>Modify</em></strong></p>
@@ -793,11 +844,23 @@
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_init">ch395_init</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Initialize ch395</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
 </ul>
 <h2 id="ch395_open_socket_sn">ch395_open_socket_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Open socket from arg</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : Socket id</li>
+</ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Y Register </li>
+</ul>
 <h2 id="ch395_read_recv_buf_sn">ch395_read_recv_buf_sn</h2>
 <h2 id="ch395_reset_all">ch395_reset_all</h2>
 <p><strong><em>Description</em></strong></p>
@@ -813,7 +876,17 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
 <span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
+<span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : Period </li>
+<li>X Register : Period </li>
+</ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Y Register </li>
+</ul>
 <h2 id="ch395_set_des_port_sn">ch395_set_des_port_sn</h2>
 <h2 id="ch395_set_fun_para">ch395_set_fun_para</h2>
 <p><strong><em>Input</em></strong></p>
@@ -851,7 +924,7 @@
   <small>
     
       Last update:
-      2024-02-03
+      2024-02-04
     
   </small>
 </div>

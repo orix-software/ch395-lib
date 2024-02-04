@@ -37,6 +37,7 @@ void          ch395_clear_recv_buf_sn(unsigned char socket);
 void          ch395_set_fun_para(unsigned char flag);
 void          ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 
+#define CH395_DETECTED                 0xaa
 
 //void ch395_set_gwip_addr(ch395ipaddress gatewayipadress);
 

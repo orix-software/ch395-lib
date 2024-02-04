@@ -8,11 +8,18 @@
 .proc _ch395_clear_recv_buf_sn
     ;;@proto void ch395_clear_recv_buf_sn(unsigned char ID_SOCKET)
     ;;@brief Clear receive buffer
+    ;;@```c
+    ;;@`  ch395_clear_recv_buf_sn(1);
+    ;;@```
 .endproc
 
 
 .proc ch395_clear_recv_buf_sn
     ;;@brief Clear receive buffer
+    ;;@```ca65
+    ;;@`  lda #$01 ; Socket ID
+    ;;@`  jsr ch395_clear_recv_buf_sn
+    ;;@```
     ;;@modifyA
     ;;@modifyY
     ldy     #CH395_CLEAR_RECV_BUF_SN

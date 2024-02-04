@@ -9,7 +9,7 @@
     ;;@proto unsigned char ch395_check_exist();
     ;;@```c
     ;;@`  val = ch395_get_glob_int_status();
-    ;;@`  if (val == 0xAA) printf("Ch395 is here");
+    ;;@`  if (val == CH395_DETECTED) printf("Ch395 is here");
     ;;@```
 .endproc
 
@@ -17,7 +17,7 @@
     ;;@brief Checks if ch395 exists
     ;;@```ca65
     ;;@`  jsr ch395_get_glob_int_status
-    ;;@`  cmp       #$AA
+    ;;@`  cmp       #CH395_DETECTED
     ;;@`  beq ch395_connected
     ;;@`  rts
     ;;@`ch395_connected:
