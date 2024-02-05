@@ -6,19 +6,23 @@
 .export ch395_close_socket_sn
 
 .proc _ch395_close_socket_sn
-    ;;@proto oid ch395_close_socket_sn(unsigned char ID_SOCKET)
+    ;;@proto oid ch395_close_socket_sn(unsigned char socketid)
     ;;@brief Close socket
+    ;;@inputPARAM_socketid The socketid
+    ;;@```c
+    ;;@`  ch395_close_socket_sn(CH395_SOCKET1);
+    ;;@```
 .endproc
 
 
 .proc ch395_close_socket_sn
     ;;@brief Close socket
+    ;;@inputA The id of the socket to close
+    ;;@modifyY
     ;;@```ca65
     ;;@`  lda #$01 ; Socket ID
     ;;@`  jsr ch395_close_socket_sn
     ;;@```
-    ;;@inputA The id of the socket to close
-    ;;@modifyY
     ldy     #CH395_CLOSE_SOCKET_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id

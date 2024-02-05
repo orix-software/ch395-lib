@@ -7,6 +7,7 @@
 
 .proc _ch395_open_socket_sn
     ;;@proto void ch395_open_socket_sn(unsigned char ID_SOCKET)
+    ;;@inputPARAM_socketid The socketid
 .endproc
 
 .proc ch395_open_socket_sn

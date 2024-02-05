@@ -13,6 +13,7 @@
 
 .proc _ch395_read_recv_buf_sn
     ;;@proto void          ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+    ;;@inputPARAM_socketid The socketid
 .endproc
 
 .proc ch395_read_recv_buf_sn

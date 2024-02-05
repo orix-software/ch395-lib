@@ -2,6 +2,10 @@
 
 ## unsigned char ch395_check_exist();
 
+***Description***
+
+Checks if ch395 exists
+
 
 
 ## void ch395_clear_recv_buf_sn(unsigned char ID_SOCKET)
@@ -12,11 +16,14 @@ Clear receive buffer
 
 
 
-## oid ch395_close_socket_sn(unsigned char ID_SOCKET)
+## oid ch395_close_socket_sn(unsigned char socketid)
 
 ***Description***
 
 Close socket
+
+***Input***
+
 
 
 
@@ -54,6 +61,9 @@ Get ch395 firmware version
 
 Check interrupt socket status
 
+***Input***
+
+
 
 
 ## void ch395_get_ip_inf(unsigned char ip_infos[]);
@@ -86,6 +96,9 @@ Get physical status
 
 Get the length received from socket
 
+***Input***
+
+
 
 
 ## void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
@@ -94,6 +107,9 @@ Get the length received from socket
 
 Get remote ip connected to the socket
 
+***Input***
+
+
 
 
 ## unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
@@ -101,6 +117,9 @@ Get remote ip connected to the socket
 ***Description***
 
 Returns in A socket status (close/open ... )
+
+***Input***
+
 
 
 
@@ -114,9 +133,15 @@ Initialize ch395
 
 ## void ch395_open_socket_sn(unsigned char ID_SOCKET)
 
+***Input***
+
+
 
 
 ## void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+
+***Input***
+
 
 
 
@@ -137,6 +162,9 @@ Retran period
 
 
 ## void ch395_set_des_port_sn(unsigned int port, unsigned char ID_SOCKET);
+
+***Input***
+
 
 
 
@@ -170,6 +198,9 @@ Set ip addr
 
 Set ipraw protocol on socket
 
+***Input***
+
+
 
 
 ## void ch395_set_mac_adress(unsigned char macaddress[]);
@@ -177,6 +208,9 @@ Set ipraw protocol on socket
 
 
 ## void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET)
+
+***Input***
+
 
 
 
@@ -190,13 +224,26 @@ Set retran period
 
 ## void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET)
 
+***Description***
+
+Set source socket
+
+***Input***
+
+
 
 
 ## void ch395_tcp_connect_sn(unsigned char ID_SOCKET)
 
+***Input***
+
+
 
 
 ## void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)
+
+***Input***
+
 
 
 
@@ -204,7 +251,14 @@ Set retran period
 
 
 
-## 
+## void ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+
+***Description***
+
+Send data to socketid
+
+***Input***
+
 
 
 

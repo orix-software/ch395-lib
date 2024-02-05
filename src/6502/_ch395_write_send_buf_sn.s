@@ -10,7 +10,9 @@
 .export ch395_write_send_buf_sn
 
 .proc _ch395_write_send_buf_sn
-    ;;@proto
+    ;;@proto void          ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+    ;;@brief Send data to socketid
+    ;;@inputPARAM_socketid The socketid
     jsr     popax
     sta     length
     stx     length+1
@@ -21,7 +23,10 @@
 .endproc
 
 .proc ch395_write_send_buf_sn
+    ;;@brief Send data to socketid
     ;;@inputA Socket ID
+    ;;@inputY Low length
+    ;;@inputX High length
     sty     ptr2 ; Length
     stx     ptr2+1
 

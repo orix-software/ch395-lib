@@ -8,6 +8,7 @@
 .proc _ch395_get_int_status_sn
     ;;@proto unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
     ;;@brief Check interrupt socket status
+    ;;@inputPARAM_socketid The socketid
     ;;@```c
     ;;@`#include "ch395.h"
     ;;@`...

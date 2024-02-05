@@ -9,6 +9,7 @@
 .proc _ch395_get_socket_status_sn
     ;;@proto unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);
     ;;@brief Returns in A socket status (close/open ... )
+    ;;@inputPARAM_socketid The socketid
 .endproc
 
 .proc ch395_get_socket_status_sn

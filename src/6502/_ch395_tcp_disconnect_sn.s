@@ -7,6 +7,7 @@
 
 .proc _ch395_tcp_disconnect_sn
     ;;@proto void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)
+    ;;@inputPARAM_socketid The socketid
 .endproc
 
 .proc ch395_tcp_disconnect_sn

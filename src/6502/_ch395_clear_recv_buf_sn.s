@@ -9,7 +9,7 @@
     ;;@proto void ch395_clear_recv_buf_sn(unsigned char ID_SOCKET)
     ;;@brief Clear receive buffer
     ;;@```c
-    ;;@`  ch395_clear_recv_buf_sn(1);
+    ;;@`  ch395_clear_recv_buf_sn(CH395_SOCKET1);
     ;;@```
 .endproc
 
@@ -17,7 +17,7 @@
 .proc ch395_clear_recv_buf_sn
     ;;@brief Clear receive buffer
     ;;@```ca65
-    ;;@`  lda #$01 ; Socket ID
+    ;;@`  lda #CH395_SOCKET1 ; Socket ID
     ;;@`  jsr ch395_clear_recv_buf_sn
     ;;@```
     ;;@modifyA

@@ -9,8 +9,11 @@
 
 .proc _ch395_set_proto_type_sn
     ;;@proto void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET)
+    ;;@inputPARAM_socketid The socketid
+    pha
     jsr     popa
-    sta     CH395_DATA_PORT ; tcp mode
+    tax
+    pla
 .endproc
 
 .proc ch395_set_proto_type_sn

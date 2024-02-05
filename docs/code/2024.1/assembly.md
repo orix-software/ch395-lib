@@ -24,7 +24,7 @@ ch395_connected:
 
 ***Returns***
 
-* Accumulator : Returns #AA if it exists
+* Accumulator : Returns #CH395_DETECTED if it exists
 
 
 
@@ -38,7 +38,7 @@ Clear receive buffer
 ***Example***
 
 ```ca65
- lda #$01 ; Socket ID
+ lda #CH395_SOCKET1 ; Socket ID
  jsr ch395_clear_recv_buf_sn
 ```
 
@@ -55,6 +55,13 @@ Clear receive buffer
 
 Close socket
 
+***Input***
+
+* Accumulator : The id of the socket to close
+
+***Modify***
+
+* Y Register 
 
 ***Example***
 
@@ -63,13 +70,6 @@ Close socket
  jsr ch395_close_socket_sn
 ```
 
-***Input***
-
-* Accumulator : The id of the socket to close
-
-***Modify***
-
-* Y Register 
 
 
 ## ch395_dhcp_enable
@@ -511,8 +511,14 @@ Set retran period
 
 ## ch395_write_send_buf_sn
 
+***Description***
+
+Send data to socketid
+
 ***Input***
 
 * Accumulator : Socket ID
+* Y Register : Low length
+* X Register : High length
 
 

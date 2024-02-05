@@ -426,8 +426,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#oid-ch395_close_socket_snunsigned-char-id_socket" class="md-nav__link">
-    oid ch395_close_socket_sn(unsigned char ID_SOCKET)
+  <a href="#oid-ch395_close_socket_snunsigned-char-socketid" class="md-nav__link">
+    oid ch395_close_socket_sn(unsigned char socketid)
   </a>
   
 </li>
@@ -615,8 +615,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    
+  <a href="#void-ch395_write_send_buf_snunsigned-char-buffer-unsigned-int-lengthunsigned-char-id_socket" class="md-nav__link">
+    void ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
   </a>
   
 </li>
@@ -638,12 +638,15 @@
 
 <div><h1 id="c">C</h1>
 <h2 id="unsigned-char-ch395_check_exist">unsigned char ch395_check_exist();</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Checks if ch395 exists</p>
 <h2 id="void-ch395_clear_recv_buf_snunsigned-char-id_socket">void ch395_clear_recv_buf_sn(unsigned char ID_SOCKET)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Clear receive buffer</p>
-<h2 id="oid-ch395_close_socket_snunsigned-char-id_socket">oid ch395_close_socket_sn(unsigned char ID_SOCKET)</h2>
+<h2 id="oid-ch395_close_socket_snunsigned-char-socketid">oid ch395_close_socket_sn(unsigned char socketid)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Close socket</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="unsigned-char-ch395_get_dhcp_status">unsigned char ch395_get_dhcp_status();</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get dhcp status</p>
@@ -656,6 +659,7 @@
 <h2 id="unsigned-char-ch395_get_int_status_snunsigned-char-id_socket">unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Check interrupt socket status</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_get_ip_infunsigned-char-ip_infos">void ch395_get_ip_inf(unsigned char ip_infos[]);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get ip info</p>
@@ -668,17 +672,22 @@
 <h2 id="void-ch395_get_recv_len_snunsigned-char-id_socket">void ch395_get_recv_len_sn(unsigned char ID_SOCKET)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get the length received from socket</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_get_remot_ipp_snunsigned-char-ptr-unsigned-char-socket">void ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get remote ip connected to the socket</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="unsigned-int-ch395_get_socket_status_snunsigned-char-id_socket">unsigned int ch395_get_socket_status_sn(unsigned char ID_SOCKET);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Returns in A socket status (close/open ... )</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_init">void ch395_init();</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Initialize ch395</p>
 <h2 id="void-ch395_open_socket_snunsigned-char-id_socket">void ch395_open_socket_sn(unsigned char ID_SOCKET)</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_read_recv_buf_snunsigned-char-buffer-unsigned-int-lengthunsigned-char-id_socket">void ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_reset_all">void ch395_reset_all()</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Reset ch395</p>
@@ -686,6 +695,7 @@
 <p><strong><em>Description</em></strong></p>
 <p>Retran period</p>
 <h2 id="void-ch395_set_des_port_snunsigned-int-port-unsigned-char-id_socket">void ch395_set_des_port_sn(unsigned int port, unsigned char ID_SOCKET);</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_set_fun_paraunsigned-char-flag">void ch395_set_fun_para(unsigned char flag)</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set fun para</p>
@@ -697,16 +707,26 @@
 <h2 id="void-ch395_set_ipraw_pro_snunsigned-char-id_socket">void ch395_set_ipraw_pro_sn(unsigned char ID_SOCKET);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set ipraw protocol on socket</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_set_mac_adressunsigned-char-macaddress">void ch395_set_mac_adress(unsigned char macaddress[]);</h2>
 <h2 id="void-ch395_set_proto_type_snunsigned-char-protounsigned-char-id_socket">void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET)</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_set_retran_countunsigned-int-period">void ch395_set_retran_count(unsigned int period);</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set retran period</p>
 <h2 id="void-ch395_set_sour_port_snunsigned-int-portunsigned-char-id_socket">void ch395_set_sour_port_sn(unsigned int port,unsigned char ID_SOCKET)</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Set source socket</p>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_tcp_connect_snunsigned-char-id_socket">void ch395_tcp_connect_sn(unsigned char ID_SOCKET)</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_tcp_disconnect_snunsigned-char-id_socket">void ch395_tcp_disconnect_sn(unsigned char ID_SOCKET)</h2>
+<p><strong><em>Input</em></strong></p>
 <h2 id="void-ch395_tcp_listen_snunsigned-char-id_socket">void ch395_tcp_listen_sn(unsigned char ID_SOCKET)</h2>
-<h2 id="_1"></h2></div>
+<h2 id="void-ch395_write_send_buf_snunsigned-char-buffer-unsigned-int-lengthunsigned-char-id_socket">void ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Send data to socketid</p>
+<p><strong><em>Input</em></strong></p></div>
 
   <hr>
 <div class="md-source-file">

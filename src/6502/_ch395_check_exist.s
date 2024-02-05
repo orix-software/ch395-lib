@@ -7,6 +7,7 @@
 
 .proc _ch395_check_exist
     ;;@proto unsigned char ch395_check_exist();
+    ;;@brief Checks if ch395 exists
     ;;@```c
     ;;@`  val = ch395_get_glob_int_status();
     ;;@`  if (val == CH395_DETECTED) printf("Ch395 is here");
@@ -23,7 +24,7 @@
     ;;@`ch395_connected:
     ;;@```
     ;;@modifyA
-    ;;@returnsA Returns #AA if it exists
+    ;;@returnsA Returns #CH395_DETECTED if it exists
 	lda     #CH395_CHECK_EXIST
     sta     CH395_COMMAND_PORT
     lda     #$55
