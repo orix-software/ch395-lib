@@ -1,9 +1,6 @@
 SOURCES8=$(wildcard src/6502/*.s)
 OBJECTS8=$(SOURCES8:.s=.o)
 
-#SOURCES16=$(wildcard src/65c816/*.s)
-#OBJECTS16=$(SOURCES16:.s=.o)
-
 
 ifeq ($(CC65_HOME),)
         CC = cl65
@@ -16,7 +13,6 @@ else
         LD = $(CC65_HOME)/bin/ld65
         AR = $(CC65_HOME)/bin/ar65
 endif
-
 
 all: $(SOURCES8) $(OBJECTS8) tool
 
