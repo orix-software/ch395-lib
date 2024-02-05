@@ -3,7 +3,7 @@
 .endif
 
 .import popax
-
+.importzp ptr1
 
 .export _ch395_set_sour_port_sn
 .export ch395_set_sour_port_sn

@@ -3,24 +3,13 @@
 .endif
 
 .import popax
-.importzp ptr1,ptr2
+.importzp ptr1, ptr2
 
 
 .export _ch395_write_send_buf_sn
 .export ch395_write_send_buf_sn
 
-.proc _ch395_write_send_buf_sn
-    ;;@proto void          ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
-    ;;@brief Send data to socketid
-    ;;@inputPARAM_socketid The socketid
-    jsr     popax
-    sta     length
-    stx     length+1
-    jsr     popax
-    sta     ptr1
-    stx     ptr1+1
 
-.endproc
 
 .proc ch395_write_send_buf_sn
     ;;@brief Send data to socketid
@@ -30,6 +19,8 @@
     sty     ptr2 ; Length
     stx     ptr2+1
 
+
+entry_point_c:
     ldy     #CH395_WRITE_SEND_BUF_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT
@@ -43,7 +34,7 @@
 @restart:
     ldy     #$00
 
-loop:
+@loop:
     lda     (ptr1),y
     sta     CH395_DATA_PORT
     iny
@@ -57,4 +48,17 @@ loop:
     dec     ptr2+1
     jmp     @exit
     rts
+.endproc
+
+.proc _ch395_write_send_buf_sn
+    ;;@proto void          ch395_write_send_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
+    ;;@brief Send data to socketid
+    ;;@inputPARAM_socketid The socketid
+    jsr     popax
+    sta     ptr2
+    stx     ptr2+1
+    jsr     popax
+    sta     ptr1
+    stx     ptr1+1
+    jmp     ch395_write_send_buf_sn::entry_point_c
 .endproc
