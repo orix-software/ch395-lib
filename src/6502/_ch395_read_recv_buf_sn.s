@@ -14,29 +14,28 @@
 .proc _ch395_read_recv_buf_sn
     ;;@proto void          ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,unsigned char ID_SOCKET);
     ;;@inputPARAM_socketid The socketid
+
+
+    jsr     popax
+    sta     length
+    stx     length+1
+
 .endproc
 
 .proc ch395_read_recv_buf_sn
-
-.ifdef      FROM_ASSEMBLY
+    ;;@inputA Socket id
     sty     length
     stx     length+1
-.endif
 
     ldy     #CH395_READ_RECV_BUF_SN
     sty     CH395_COMMAND_PORT
 
     sta     CH395_DATA_PORT
 
-.ifdef      FROM_ASSEMBLY
+
     lda     length
     ldx     length+1
 
-.else
-    jsr     popax
-    sta     length
-    stx     length+1
-.endif
 
 
     sta     CH395_DATA_PORT ; set length

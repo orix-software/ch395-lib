@@ -14,6 +14,7 @@
 
 .proc ch395_get_socket_status_sn
     ;;@brief Returns in A socket status (close/open ...)
+    ;;@inputA Socket id
     ;;@modifyX
     ;;@modifyA
     ;;@returnsA The status

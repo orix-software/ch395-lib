@@ -21,6 +21,7 @@
 
 .proc ch395_get_int_status_sn
     ;;@brief Check interrupt socket status
+    ;;@inputA Socket id
     ;;@modifyA
     ;;@modifyX
     ;;@returnsA Status of selected socket

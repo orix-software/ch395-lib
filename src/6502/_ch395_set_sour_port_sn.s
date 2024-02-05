@@ -24,6 +24,7 @@
 .endproc
 
 .proc ch395_set_sour_port_sn
+    ;;@inputA Socket id
     sty     ptr1
     ; keep X for next call
     ldy     #CH395_SET_SOUR_PORT_SN

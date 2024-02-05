@@ -13,6 +13,7 @@
 
 .proc ch395_set_ipraw_pro_sn
     ;;@brief Set ipraw protocol on socket
+    ;;@inputA Socket id
     ; A the socket
     ; X the mode proto
 

@@ -15,7 +15,7 @@
 
 .proc ch395_set_ip_addr_sn
     ;;@brief Set Socket Ip address to connect with
-
+    ;;@inputA Socket id
 
     sty     ptr1
     stx     ptr1+1

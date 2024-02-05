@@ -34,6 +34,14 @@ ch395_connected:
 
 Clear receive buffer
 
+***Input***
+
+* Accumulator : Socket id
+
+***Modify***
+
+* Accumulator 
+* Y Register 
 
 ***Example***
 
@@ -42,11 +50,6 @@ Clear receive buffer
  jsr ch395_clear_recv_buf_sn
 ```
 
-
-***Modify***
-
-* Accumulator 
-* Y Register 
 
 
 ## ch395_close_socket_sn
@@ -176,6 +179,9 @@ Get ch395 firmware version
 
 Check interrupt socket status
 
+***Input***
+
+* Accumulator : Socket id
 
 ***Modify***
 
@@ -273,6 +279,9 @@ Get physical status
 
 Get the length received from socket
 
+***Input***
+
+* Accumulator : Socket id
 
 ***Example***
 
@@ -322,6 +331,9 @@ Get remote ip connected to the socket
 
 Returns in A socket status (close/open ...)
 
+***Input***
+
+* Accumulator : Socket id
 
 ***Modify***
 
@@ -355,6 +367,18 @@ Initialize ch395
 ***Modify***
 
 * Accumulator 
+***Description***
+
+Reset ch395
+
+
+***Example***
+
+```ca65
+ jsr ch395_init
+ ; Wait a bit
+```
+
 
 
 ## ch395_open_socket_sn
@@ -374,6 +398,9 @@ Open socket from arg
 
 ## ch395_read_recv_buf_sn
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_reset_all
@@ -420,6 +447,26 @@ Retran period
 
 ## ch395_set_des_port_sn
 
+***Description***
+
+Set dest port socket
+
+***Input***
+
+* Accumulator : Socketid 
+* Y Register : Low int
+* X Register : high int
+
+***Example***
+
+```ca65
+ lda #$01
+ ldx #80
+ ldx #$00
+ jsr ch395_set_des_port_sn
+ rts
+```
+
 
 
 ## ch395_set_fun_para
@@ -460,6 +507,9 @@ Set ip row
 
 Set Socket Ip address to connect with
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_set_ipraw_pro_sn
@@ -468,6 +518,9 @@ Set Socket Ip address to connect with
 
 Set ipraw protocol on socket
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_set_mac_adress
@@ -480,6 +533,9 @@ Set mac address
 
 ## ch395_set_proto_type_sn
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_set_retran_count
@@ -495,17 +551,30 @@ Set retran period
 
 ## ch395_set_sour_port_sn
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_tcp_connect_sn
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_tcp_disconnect_sn
 
+***Input***
+
+* Accumulator : Socket id
 
 
 ## ch395_tcp_listen_sn
+
+***Description***
+
+TCP listen socket
 
 
 

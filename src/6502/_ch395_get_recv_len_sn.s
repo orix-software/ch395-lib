@@ -16,6 +16,7 @@
 
 .proc ch395_get_recv_len_sn
     ;;@brief Get the length received from socket
+    ;;@inputA Socket id
     ;;@```ca65
     ;;@`  lda #$01 ; Socket 1
     ;;@`  jsr ch395_get_recv_len_sn

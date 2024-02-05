@@ -16,12 +16,13 @@
 
 .proc ch395_clear_recv_buf_sn
     ;;@brief Clear receive buffer
+    ;;@inputA Socket id
+    ;;@modifyA
+    ;;@modifyY
     ;;@```ca65
     ;;@`  lda #CH395_SOCKET1 ; Socket ID
     ;;@`  jsr ch395_clear_recv_buf_sn
     ;;@```
-    ;;@modifyA
-    ;;@modifyY
     ldy     #CH395_CLEAR_RECV_BUF_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id
