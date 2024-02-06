@@ -55,14 +55,14 @@
     beq     @exit
     dec     ptr2+1
     jmp     @read_256_bytes
+
 @exit:
     lda     ptr2
     beq     @go_rts
     jsr     @read_only_ptr2
+
 @go_rts:
     rts
-
-
 
 @read_only_ptr2:
     ldy     #$00
@@ -74,7 +74,4 @@
     bne     @loop
     rts
 
-
-ptr2:
-    .res 2
 .endproc
