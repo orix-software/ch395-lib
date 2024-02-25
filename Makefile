@@ -21,6 +21,10 @@ $(OBJECTS8): $(SOURCES8)
 	@$(AS) -ttelestrat $(@:.o=.s) -o $@ --include-dir src/include
 	@$(AR) r ch395-8.lib $@
 	@mkdir -p build/lib8
+	@mkdir -p build/usr/include/
+	@mkdir -p build/usr/include/asm
+	@cp src/include/ch395.h build/usr/include/
+	@cp src/include/ch395.inc build/usr/include/asm/
 	@cp ch395-8.lib build/lib8/
 	@cp ch395-8.lib target/telestrat/lib/
 
