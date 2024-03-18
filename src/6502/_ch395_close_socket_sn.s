@@ -1,6 +1,4 @@
-.ifndef CH395_COMMAND_PORT
-    .include "ch395.inc"
-.endif
+.include "ch395.inc"
 
 .export _ch395_close_socket_sn
 .export ch395_close_socket_sn

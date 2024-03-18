@@ -1,6 +1,4 @@
-.ifndef CH395_COMMAND_PORT
-    .include "ch395.inc"
-.endif
+.include "ch395.inc"
 
 .export _ch395_check_exist
 .export ch395_check_exist
