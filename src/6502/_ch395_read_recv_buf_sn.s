@@ -1,6 +1,5 @@
-.ifndef CH395_COMMAND_PORT
+
     .include "ch395.inc"
-.endif
 
 .import popax
 .importzp ptr1, ptr2

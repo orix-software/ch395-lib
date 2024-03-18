@@ -1,8 +1,6 @@
-.ifndef CH395_COMMAND_PORT
-    .include "../include/ch395.inc"
-.endif
+.include "ch395.inc"
 
-    .include "telestrat.inc"
+.include "telestrat.inc"
 
 .export _ch395_get_ip_inf
 .export ch395_get_ip_inf

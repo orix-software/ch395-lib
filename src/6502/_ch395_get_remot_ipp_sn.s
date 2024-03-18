@@ -1,15 +1,10 @@
-.ifndef CH395_COMMAND_PORT
-    .include "ch395.inc"
-.endif
+.include "ch395.inc"
 
-
-    .importzp ptr1
-    .import popax
-
+.importzp ptr1
+.import popax
 
 .export _ch395_get_remot_ipp_sn
 .export ch395_get_remot_ipp_sn
-
 
 .proc ch395_get_remot_ipp_sn
     ;;@brief Get remote ip connected to the socket
@@ -19,6 +14,15 @@
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY
+    ;;@```ca65
+    ;;@`  lda     #$01 ; Socket 1
+    ;;@`  ldx     #<ip_dest
+    ;;@`  ldy     #>ip_dest
+    ;;@`  jsr     ch395_get_remot_ipp_sn
+    ;;@`  rts
+    ;;@`ipdest:
+    ;;@`  .byte 192,168,0,1
+    ;;@```
 
     sty     ptr1
     stx     ptr1+1

@@ -1,15 +1,10 @@
-.ifndef CH395_COMMAND_PORT
-    .include "ch395.inc"
-.endif
+.include "ch395.inc"
 
 .import popax
 .importzp ptr1, ptr2
 
-
 .export _ch395_write_send_buf_sn
 .export ch395_write_send_buf_sn
-
-
 
 .proc ch395_write_send_buf_sn
     ;;@brief Send data to socketid

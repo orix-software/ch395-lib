@@ -97,59 +97,57 @@ CH395_DHCP_STATUS_DISABLED    = $01
 
 CH395_NUMBER_MAX_SOCKET       = $08
 
-CH395_SOCKET0 = 0
-CH395_SOCKET1 = 1
-CH395_SOCKET2 = 2
-CH395_SOCKET3 = 3
-CH395_SOCKET4 = 4
-CH395_SOCKET5 = 5
-CH395_SOCKET6 = 6
-CH395_SOCKET7 = 7
+CH395_SOCKET0                 = 0
+CH395_SOCKET1                 = 1
+CH395_SOCKET2                 = 2
+CH395_SOCKET3                 = 3
+CH395_SOCKET4                 = 4
+CH395_SOCKET5                 = 5
+CH395_SOCKET6                 = 6
+CH395_SOCKET7                 = 7
 
-CH395_PROTO_TYPE_TCP     = $03
-CH395_PROTO_TYPE_UDP     = $02
-CH395_PROTO_TYPE_MAC_RAW = $01
-CH395_PROTO_TYPE_IP_RAW  = $00
+CH395_PROTO_TYPE_TCP          = $03
+CH395_PROTO_TYPE_UDP          = $02
+CH395_PROTO_TYPE_MAC_RAW      = $01
+CH395_PROTO_TYPE_IP_RAW       = $00
 
-CH395_SINT_STAT_TIM_OUT     = $40
-CH395_SINT_STAT_DISCONNECT  = $10
-CH395_SINT_STAT_CONNECT     = $08
-CH395_SINT_STAT_RECV        = $04
-CH395_SINT_STAT_SEND_OK     = $02
-CH395_SINT_STAT_SENBUF_FREE = $01
+CH395_SINT_STAT_TIM_OUT       = $40
+CH395_SINT_STAT_DISCONNECT    = $10
+CH395_SINT_STAT_CONNECT       = $08
+CH395_SINT_STAT_RECV          = $04
+CH395_SINT_STAT_SEND_OK       = $02
+CH395_SINT_STAT_SENBUF_FREE   = $01
 
-CH395_PHY_DISCONN                               = $01
-CH395_PHY_10M_FLL                               = $02
-CH395_PHY_10M_HALF                              = $04
-CH395_PHY_100M_FLL                              = $08
-CH395_PHY_100M_HALF                             = $10
+CH395_PHY_DISCONN             = $01
+CH395_PHY_10M_FLL             = $02
+CH395_PHY_10M_HALF            = $04
+CH395_PHY_100M_FLL            = $08
+CH395_PHY_100M_HALF           = $10
 
-CH395_SOCKET_CLOSED                             = $00
-CH395_SOCKET_OPEN                               = $05
+CH395_SOCKET_CLOSED           = $00
+CH395_SOCKET_OPEN             = $05
 
-CH395_TCP_CLOSED                                = $00
-CH395_TCP_LISTEN                                = $01
-CH395_TCP_SYN_SENT                              = $02
-CH395_TCP_SYN_REVD                              = $03
-CH395_TCP_ESTABLISHED                           = $04
-CH395_TCP_FIN_WAIT_1                            = $05
-CH395_TCP_FIN_WAIT_2                            = $06
-CH395_TCP_CLOSE_WAIT                            = $07
-CH395_TCP_CLOSING                               = $08
-CH395_TCP_LAST_ACK                              = $09
-CH395_TCP_TIME_WAIT                             = $0A
+CH395_TCP_CLOSED              = $00
+CH395_TCP_LISTEN              = $01
+CH395_TCP_SYN_SENT            = $02
+CH395_TCP_SYN_REVD            = $03
+CH395_TCP_ESTABLISHED         = $04
+CH395_TCP_FIN_WAIT_1          = $05
+CH395_TCP_FIN_WAIT_2          = $06
+CH395_TCP_CLOSE_WAIT          = $07
+CH395_TCP_CLOSING                   = $08
+CH395_TCP_LAST_ACK                  = $09
+CH395_TCP_TIME_WAIT                 = $0A
 
-GINT_STAT_DHCP                                  = $08 ; Duplicate and should be removed
-CH395_GINT_STAT_DHCP                            = $08
+GINT_STAT_DHCP                      = $08 ; Duplicate and should be removed
+CH395_GINT_STAT_DHCP                = $08
 
+CH395_FUN_PARA_FLAG_TCP_SERVER      = $02
+CH395_FUN_PARA_FLAG_LOW_PWR         = $04
+CH395_FUN_PARA_FLAG_SOCKET_CLOSE    = $08
+CH395_FUN_PARA_FLAG_DISABLE_SEND_OK = $10
 
-CH395_FUN_PARA_FLAG_TCP_SERVER                  = $02
-CH395_FUN_PARA_FLAG_LOW_PWR                     = $04
-CH395_FUN_PARA_FLAG_SOCKET_CLOSE                = $08
-CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             = $10
-
-
-CH395_GINT_STAT_SOCK0                           = 16
-CH395_GINT_STAT_SOCK1                           = 32
-CH395_GINT_STAT_SOCK2                           = 64
-CH395_GINT_STAT_SOCK3                           = 128
+CH395_GINT_STAT_SOCK0               = 16
+CH395_GINT_STAT_SOCK1               = 32
+CH395_GINT_STAT_SOCK2               = 64
+CH395_GINT_STAT_SOCK3               = 128

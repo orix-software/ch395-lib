@@ -1,7 +1,4 @@
-
-.ifndef CH395_COMMAND_PORT
-    .include "../include/ch395.inc"
-.endif
+.include "ch395.inc"
 
 .export _ch395_get_socket_status_sn
 .export ch395_get_socket_status_sn
@@ -23,6 +20,8 @@
     ;;@`  lda #$01 ; Socket 1
     ;;@`  jsr ch395_get_socket_status_sn
     ;;@`  ; check A and X for the state
+    ;;@`  cmp     #CH395_SOCKET_CLOSED
+    ;;@`  beq @soclet is closed
     ;;@```
     ldx     #CH395_GET_SOCKET_STATUS_SN
     stx     CH395_COMMAND_PORT

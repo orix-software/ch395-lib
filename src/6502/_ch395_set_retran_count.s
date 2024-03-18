@@ -1,6 +1,5 @@
-.ifndef CH395_COMMAND_PORT
-    .include "ch395.inc"
-.endif
+.include "ch395.inc"
+
 
 .export _ch395_set_retran_count
 .export ch395_set_retran_count

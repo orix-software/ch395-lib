@@ -41,6 +41,8 @@ unsigned char ch395_get_glob_int_status();
 void          ch395_clear_recv_buf_sn(unsigned char socket);
 void          ch395_set_fun_para(unsigned char flag);
 void          ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
+void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
+
 
 #define CH395_DETECTED                 0xaa
 
@@ -90,29 +92,29 @@ void          ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 #define CH395_SINT_STAT_SEND_OK     0x02
 #define CH395_SINT_STAT_SENBUF_FREE 0x01
 
-#define CH395_PHY_DISCONN                               0x01
-#define CH395_PHY_10M_FLL                               0x02
-#define CH395_PHY_10M_HALF                              0x04
-#define CH395_PHY_100M_FLL                              0x08
-#define CH395_PHY_100M_HALF                             0x10
+#define CH395_PHY_DISCONN                   0x01
+#define CH395_PHY_10M_FLL                   0x02
+#define CH395_PHY_10M_HALF                  0x04
+#define CH395_PHY_100M_FLL                  0x08
+#define CH395_PHY_100M_HALF                 0x10
 
-#define CH395_SOCKET_CLOSED                             0x00
-#define CH395_SOCKET_OPEN                               0x05
+#define CH395_SOCKET_CLOSED                 0x00
+#define CH395_SOCKET_OPEN                   0x05
 
 
-#define CH395_TCP_CLOSED                                0x00 // Shutdown
-#define CH395_TCP_LISTEN                                0x01
-#define CH395_TCP_SYN_SENT                              0x02
-#define CH395_TCP_SYN_REVD                              0x03
-#define CH395_TCP_ESTABLISHED                           0x04
-#define CH395_TCP_FIN_WAIT_1                            0x05
-#define CH395_TCP_FIN_WAIT_2                            0x06
-#define CH395_TCP_CLOSE_WAIT                            0x07
-#define CH395_TCP_CLOSING                               0x08
-#define CH395_TCP_LAST_ACK                              0x09
-#define CH395_TCP_TIME_WAIT                             0x0A
+#define CH395_TCP_CLOSED                    0x00 // Shutdown
+#define CH395_TCP_LISTEN                    0x01
+#define CH395_TCP_SYN_SENT                  0x02
+#define CH395_TCP_SYN_REVD                  0x03
+#define CH395_TCP_ESTABLISHED               0x04
+#define CH395_TCP_FIN_WAIT_1                0x05
+#define CH395_TCP_FIN_WAIT_2                0x06
+#define CH395_TCP_CLOSE_WAIT                0x07
+#define CH395_TCP_CLOSING                   0x08
+#define CH395_TCP_LAST_ACK                  0x09
+#define CH395_TCP_TIME_WAIT                 0x0A
 
-#define CH395_FUN_PARA_FLAG_TCP_SERVER                  0x02
-#define CH395_FUN_PARA_FLAG_LOW_PWR                     0x04
-#define CH395_FUN_PARA_FLAG_SOCKET_CLOSE                0x08
-#define CH395_FUN_PARA_FLAG_DISABLE_SEND_OK             0x10
+#define CH395_FUN_PARA_FLAG_TCP_SERVER      0x02
+#define CH395_FUN_PARA_FLAG_LOW_PWR         0x04
+#define CH395_FUN_PARA_FLAG_SOCKET_CLOSE    0x08
+#define CH395_FUN_PARA_FLAG_DISABLE_SEND_OK 0x10

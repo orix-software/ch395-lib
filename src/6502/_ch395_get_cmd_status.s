@@ -1,7 +1,4 @@
-
-.ifndef CH395_COMMAND_PORT
-    .include "../include/ch395.inc"
-.endif
+.include "../include/ch395.inc"
 
 .export _ch395_get_cmd_status
 .export ch395_get_cmd_status
