@@ -1,8 +1,5 @@
 .include "ch395.inc"
-
-.ifndef ptr1
-    .importzp ptr1
-.endif
+.include "telestrat.inc"
 
 .export _ch395_get_mac_adress
 .export ch395_get_mac_adress
@@ -19,10 +16,11 @@
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY
+    ;;@modifyMEM_RES Tmp value
     ;;@returnsA the content of ptr modified
     ;;@returnsX the content of ptr modified
-    sta     ptr1
-    stx     ptr1+1
+    sta     RES
+    stx     RES+1
 	lda     #CH395_GET_MAC_ADDR
     sta     CH395_COMMAND_PORT
 
@@ -30,7 +28,7 @@
 
 @loop:
     lda     CH395_DATA_PORT
-    sta     (ptr1),y
+    sta     (RES),y
 
     iny
     cpy     #$06
