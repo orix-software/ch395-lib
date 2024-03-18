@@ -24,9 +24,12 @@
     ;;@modifyX
     ;;@returnsA Status of selected socket
     ;;@```ca65
-    ;;@`  lda #CH395_SOCKET1 ; Check socket 1
-    ;;@`  jsr ch395_get_int_status_sn
+    ;;@`  lda     #CH395_SOCKET1 ; Check socket 1
+    ;;@`  jsr     ch395_get_int_status_sn
     ;;@`  ; Check interrupt type
+    ;;@`  and     #CH395_SINT_STAT_SEND_OK
+    ;;@`  cmp     #CH395_SINT_STAT_SEND_OK
+    ;;@`  beq     @send_ok
     ;;@`  rts
     ;;@```
 	ldx     #CH395_GET_INT_STATUS_SN
