@@ -19,6 +19,7 @@ all: $(SOURCES8) $(OBJECTS8) tool
 $(OBJECTS8): $(SOURCES8)
 	@mkdir target/telestrat/lib/ -p
 	@$(AS) -ttelestrat $(@:.o=.s) -o $@ --include-dir src/include
+	@echo Generating $@
 	@$(AR) r ch395-8.lib $@
 	@mkdir -p build/lib8
 	@mkdir -p build/usr/include/

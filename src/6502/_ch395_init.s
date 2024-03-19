@@ -1,22 +1,11 @@
 .include "ch395.inc"
 
 .export _ch395_init
-.export ch395_init
+.import ch395_init
 
 .proc _ch395_init
     ;;@proto void          ch395_init();
     ;;@brief Initialize ch395
+    jmp     ch395_init
 .endproc
 
-.proc ch395_init
-    ;;@brief Initialize ch395
-    ;;@modifyA
-    ;;@brief Reset ch395
-    ;;@```ca65
-    ;;@`  jsr       ch395_init
-    ;;@`  ; Wait a bit
-    ;;@```
-	lda     #CH395_INIT
-    sta     CH395_COMMAND_PORT
-    rts
-.endproc
