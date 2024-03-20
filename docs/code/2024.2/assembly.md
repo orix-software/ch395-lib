@@ -1,10 +1,20 @@
 # Assembly
 
+---
 ## ch395_check_exist
 
 ***Description***
 
-Checks if ch395 exists
+This command is used to test the communication interface and working state to check whether CH395 is working properly. This command needs to input 1 byte of data, which can be any data. If CH395 is working properly, the output data of CH395 will be the bitwise reverse of the input data. For example, if the input data is 57H, the output data will be A8H.
+
+
+***Modify***
+
+* Accumulator 
+
+***Returns***
+
+* Accumulator : Returns '#CH395_DETECTED' if it exists
 
 
 ***Example***
@@ -18,16 +28,8 @@ ch395_connected:
 ```
 
 
-***Modify***
 
-* Accumulator 
-
-***Returns***
-
-* Accumulator : Returns #CH395_DETECTED if it exists
-
-
-
+---
 ## ch395_clear_recv_buf_sn
 
 ***Description***
@@ -52,6 +54,7 @@ This command is used to clear the Socket receive buffer. It is necessary to inpu
 
 
 
+---
 ## ch395_close_socket_sn
 
 ***Description***
@@ -75,6 +78,7 @@ This command is used to close Socket. It is necessary to input a 1 byte of Socke
 
 
 
+---
 ## ch395_dhcp_enable
 
 ***Description***
@@ -90,6 +94,17 @@ This command is used to start or stop DHCP. It is necessary to input a 1-byte fl
 * X Register 
 
 
+---
+## ch395_enter_sleep
+
+***Description***
+
+This command enables CH395 chip in a low-power sleep suspended state. When MCU writes a new command to CH395 (no data input command, such as CMD_GET_IC_VER), it will exit the low-power state. For the parallel port and SPI interface communication modes, active SCS chip selection will also cause CH395 to exit the low-power state, so MCU shall immediately disable the SCS chip selection after sending the command CMD_ENTER_SLEEP. In sleep state, MAC and PHY of CH395 will be in power off mode and disconnect Ethernet. Typically, it takes several milliseconds for CH395 to exit the low-power state.
+
+!!! failure "Does not work"
+
+
+---
 ## ch395_get_cmd_status
 
 ***Description***
@@ -111,6 +126,7 @@ Get cmd status
 * Accumulator 
 
 
+---
 ## ch395_get_dhcp_status
 
 ***Description***
@@ -132,6 +148,7 @@ Get dhcp status
 * Accumulator 
 
 
+---
 ## ch395_get_glob_int_status
 
 ***Description***
@@ -157,11 +174,12 @@ Get General interrupt Status
 
 
 
+---
 ## ch395_get_ic_ver
 
 ***Description***
 
-Get ch395 firmware version
+This command is used to get the chip and firmware versions. 1 byte of data returned is the version number, the bit 7 is 0, the bit 6 is 1, and the bits 5-0 are the version number. If the returned value is 41H, remove bits 7 and 6, and the version number will be 01H. It is called chip version in this text
 
 
 ***Modify***
@@ -183,6 +201,7 @@ Get ch395 firmware version
 
 
 
+---
 ## ch395_get_int_status_sn
 
 ***Description***
@@ -217,6 +236,7 @@ Check interrupt socket status
 
 
 
+---
 ## ch395_get_ip_inf
 
 ***Description***
@@ -236,6 +256,7 @@ Get ip info
 * RESTmp value
 
 
+---
 ## ch395_get_mac_adress
 
 ***Description***
@@ -262,6 +283,7 @@ Get mac address
 
 
 
+---
 ## ch395_get_phy_status
 
 ***Description***
@@ -288,6 +310,7 @@ Get physical status
 
 
 
+---
 ## ch395_get_recv_len_sn
 
 ***Description***
@@ -321,6 +344,7 @@ ch395_connected:
 
 
 
+---
 ## ch395_get_remot_ipp_sn
 
 ***Description***
@@ -354,6 +378,7 @@ ipdest:
 
 
 
+---
 ## ch395_get_socket_status_sn
 
 ***Description***
@@ -388,6 +413,7 @@ Returns in A socket status (close/open ...)
 
 
 
+---
 ## ch395_init
 
 ***Description***
@@ -412,6 +438,7 @@ Reset ch395
 
 
 
+---
 ## ch395_open_socket_sn
 
 ***Description***
@@ -427,6 +454,7 @@ Open socket from arg
 * Y Register 
 
 
+---
 ## ch395_read_recv_buf_sn
 
 ***Description***
@@ -445,6 +473,7 @@ Get buffer from socket
 * RESBtmp value
 
 
+---
 ## ch395_reset_all
 
 ***Description***
@@ -461,6 +490,7 @@ Reset ch395
 
 
 
+---
 ## ch395_retran_period
 
 ***Description***
@@ -487,6 +517,16 @@ Retran period
 
 
 
+---
+## ch395_set_baudrate
+
+***Description***
+
+This command is used to set the baud rate of CH395 for serial communication. When CH395 works in serial communication mode, the default communication baud rate is set by the level combination of SDO, SDI and SCK pins (refer to Section 6.4 of this datasheet) after reset. When these pins are suspended, the baud rate is 9600bps by default. If MCU supports high communication speed, the serial communication baud rate can be dynamically regulated through this command. This command requires the input of three data, namely, baudrate coefficient 0, baud rate coefficient 1 and baud rate coefficient 2. The following table shows the corresponding relationship with baud rates.
+
+
+
+---
 ## ch395_set_des_port_sn
 
 ***Description***
@@ -515,6 +555,7 @@ Set dest port socket
 
 
 
+---
 ## ch395_set_fun_para
 
 ***Description***
@@ -531,6 +572,7 @@ Set fun para
 * Accumulator 
 
 
+---
 ## ch395_set_gwip_addr
 
 ***Description***
@@ -539,6 +581,7 @@ Set gateway ip addr
 
 
 
+---
 ## ch395_set_ip_addr
 
 ***Description***
@@ -547,6 +590,7 @@ Set ip row
 
 
 
+---
 ## ch395_set_ip_addr_sn
 
 ***Description***
@@ -558,6 +602,7 @@ Set Socket Ip address to connect with
 * Accumulator : Socket id
 
 
+---
 ## ch395_set_ipraw_pro_sn
 
 ***Description***
@@ -574,6 +619,7 @@ Set ipraw protocol on socket
 * Y Register 
 
 
+---
 ## ch395_set_mac_adress
 
 ***Description***
@@ -592,6 +638,7 @@ Set mac address
 * RES
 
 
+---
 ## ch395_set_proto_type_sn
 
 ***Input***
@@ -599,6 +646,7 @@ Set mac address
 * Accumulator : Socket id
 
 
+---
 ## ch395_set_retran_count
 
 ***Description***
@@ -610,6 +658,7 @@ Set retran period
 * Accumulator : Retran period
 
 
+---
 ## ch395_set_sour_port_sn
 
 ***Description***
@@ -627,6 +676,7 @@ Set source port
 * RES
 
 
+---
 ## ch395_set_ttl
 
 ***Description***
@@ -639,6 +689,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 * X Register : TTL value
 
 
+---
 ## ch395_tcp_connect_sn
 
 ***Input***
@@ -646,6 +697,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 * Accumulator : Socket id
 
 
+---
 ## ch395_tcp_disconnect_sn
 
 ***Input***
@@ -653,6 +705,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 * Accumulator : Socket id
 
 
+---
 ## ch395_tcp_listen_sn
 
 ***Description***
@@ -661,6 +714,7 @@ TCP listen socket
 
 
 
+---
 ## ch395_write_send_buf_sn
 
 ***Description***

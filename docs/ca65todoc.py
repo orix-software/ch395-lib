@@ -104,6 +104,9 @@ for line in fileinput.input():
             elif inst[0] == ';;@note':
                 line_out = '!!! note "' + ' '.join(inst[1:]) + '"'
 
+            elif inst[0] == ';;@failure':
+                line_out = '!!! failure "' + ' '.join(inst[1:]) + '"'
+
             elif ';;@```' in inst[0]:
                 if inst[0] == ';;@```':
                     line_out = '```'

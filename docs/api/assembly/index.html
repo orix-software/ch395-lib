@@ -522,6 +522,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_enter_sleep" class="md-nav__link">
+    ch395_enter_sleep
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_get_cmd_status" class="md-nav__link">
     ch395_get_cmd_status
   </a>
@@ -629,6 +636,13 @@
         <li class="md-nav__item">
   <a href="#ch395_retran_period" class="md-nav__link">
     ch395_retran_period
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ch395_set_baudrate" class="md-nav__link">
+    ch395_set_baudrate
   </a>
   
 </li>
@@ -754,9 +768,18 @@
 
 
 <div><h1 id="assembly">Assembly</h1>
+<hr>
 <h2 id="ch395_check_exist">ch395_check_exist</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Checks if ch395 exists</p>
+<p>This command is used to test the communication interface and working state to check whether CH395 is working properly. This command needs to input 1 byte of data, which can be any data. If CH395 is working properly, the output data of CH395 will be the bitwise reverse of the input data. For example, if the input data is 57H, the output data will be A8H.</p>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Accumulator </li>
+</ul>
+<p><strong><em>Returns</em></strong></p>
+<ul>
+<li>Accumulator : Returns '#CH395_DETECTED' if it exists</li>
+</ul>
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_check_exist</span>
 <span class="w"> </span><span class="k">cmp</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_DETECTED</span>
@@ -764,14 +787,7 @@
 <span class="w"> </span><span class="k">rts</span>
 <span class="nl">ch395_connected:</span>
 </code></pre></div>
-<p><strong><em>Modify</em></strong></p>
-<ul>
-<li>Accumulator </li>
-</ul>
-<p><strong><em>Returns</em></strong></p>
-<ul>
-<li>Accumulator : Returns #CH395_DETECTED if it exists</li>
-</ul>
+<hr>
 <h2 id="ch395_clear_recv_buf_sn">ch395_clear_recv_buf_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to clear the Socket receive buffer. It is necessary to input 1 byte of Socket index value. Upon receiving this command, CH395 will reset the receiving length of this Socket, and the receiving pointer will point to the buffer head.</p>
@@ -788,6 +804,7 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_SOCKET1</span><span class="w"> </span><span class="c1">; Socket ID</span>
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_clear_recv_buf_sn</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_close_socket_sn">ch395_close_socket_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to close Socket. It is necessary to input a 1 byte of Socket index value. After Socket is closed, the receive buffer and transmit buffer of Socket are emptied, but the configuration information is still reserved, and you just need to open the Socket again when using the Socket the next time. In TCP mode, CH395 will automatically disconnect TCP before turning off Socket.</p>
@@ -803,6 +820,7 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span><span class="w"> </span><span class="c1">; Socket ID</span>
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_close_socket_sn</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_dhcp_enable">ch395_dhcp_enable</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to start or stop DHCP. It is necessary to input a 1-byte flag. If the flag is 1, it will indicate that DHCP is on; if the flag is 0, it will indicate that DHCP is off. CH395 must be initialized before DHCP is started. After DHCP is started, CH395 will broadcast DHCPDISCOVER message to the network to discover DHCP Server, request the address and other configuration parameters after finding DHCP Server, and then generate GINT_STAT_DHCP interrupt. MCU can send GET_DHCP_STATUS command to get DHCP status. If the status code is 0, it will indicate success, and MCU can send the command GET_IP_INF to get IP, MASK and other information. If the status code is 1, it will indicate error, which is generally caused by timeout, for example, no DHCP Server is found. DHCP is always in a working state after startup unless it receives a DHCP shutdown command from MCU. During this process, if DHCP Server reassigns a configuration to CH395 and the configuration is different from the original configuration, CH395 will still generate an interrupt. After timeout interrupt is generated, if DHCP Server is not found, CH395 will continue to send DHCPDISCOVER message at an interval of about 16 seconds. It takes about 20MS to execute this command. MCU can send GET_CMD_STATUS to query whether the execution has finished and the execution status</p>
@@ -814,6 +832,14 @@
 <ul>
 <li>X Register </li>
 </ul>
+<hr>
+<h2 id="ch395_enter_sleep">ch395_enter_sleep</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command enables CH395 chip in a low-power sleep suspended state. When MCU writes a new command to CH395 (no data input command, such as CMD_GET_IC_VER), it will exit the low-power state. For the parallel port and SPI interface communication modes, active SCS chip selection will also cause CH395 to exit the low-power state, so MCU shall immediately disable the SCS chip selection after sending the command CMD_ENTER_SLEEP. In sleep state, MAC and PHY of CH395 will be in power off mode and disconnect Ethernet. Typically, it takes several milliseconds for CH395 to exit the low-power state.</p>
+<div class="admonition failure">
+<p class="admonition-title">Does not work</p>
+</div>
+<hr>
 <h2 id="ch395_get_cmd_status">ch395_get_cmd_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get cmd status</p>
@@ -826,6 +852,7 @@
 <ul>
 <li>Accumulator </li>
 </ul>
+<hr>
 <h2 id="ch395_get_dhcp_status">ch395_get_dhcp_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get dhcp status</p>
@@ -838,6 +865,7 @@
 <ul>
 <li>Accumulator </li>
 </ul>
+<hr>
 <h2 id="ch395_get_glob_int_status">ch395_get_glob_int_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get General interrupt Status</p>
@@ -853,9 +881,10 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_glob_int_status</span>
 <span class="w"> </span><span class="c1">; check accumulator to get interrupts states</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_get_ic_ver">ch395_get_ic_ver</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Get ch395 firmware version</p>
+<p>This command is used to get the chip and firmware versions. 1 byte of data returned is the version number, the bit 7 is 0, the bit 6 is 1, and the bits 5-0 are the version number. If the returned value is 41H, remove bits 7 and 6, and the version number will be 01H. It is called chip version in this text</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -869,6 +898,7 @@
 <span class="w"> </span><span class="c1">; Check A for version</span>
 <span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_get_int_status_sn">ch395_get_int_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Check interrupt socket status</p>
@@ -894,6 +924,7 @@
 <span class="w"> </span><span class="k">beq</span><span class="w"> </span><span class="n">@send_ok</span>
 <span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_get_ip_inf">ch395_get_ip_inf</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get ip info</p>
@@ -909,6 +940,7 @@
 <li>Y Register </li>
 <li>RESTmp value</li>
 </ul>
+<hr>
 <h2 id="ch395_get_mac_adress">ch395_get_mac_adress</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get mac address</p>
@@ -933,6 +965,7 @@
 <p>X Register : the content of ptr modified</p>
 </li>
 </ul>
+<hr>
 <h2 id="ch395_get_phy_status">ch395_get_phy_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get physical status</p>
@@ -949,6 +982,7 @@
 <span class="w"> </span><span class="c1">; Check A physical status</span>
 <span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_get_recv_len_sn">ch395_get_recv_len_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get the length received from socket</p>
@@ -976,6 +1010,7 @@
 <p>X Register : The length</p>
 </li>
 </ul>
+<hr>
 <h2 id="ch395_get_remot_ipp_sn">ch395_get_remot_ipp_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get remote ip connected to the socket</p>
@@ -1001,6 +1036,7 @@
 <span class="nl">ipdest:</span>
 <span class="w"> </span><span class="kp">.byte</span><span class="w"> </span><span class="mi">192</span><span class="p">,</span><span class="mi">168</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_get_socket_status_sn">ch395_get_socket_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Returns in A socket status (close/open ...)</p>
@@ -1029,6 +1065,7 @@
 <span class="w"> </span><span class="k">cmp</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_SOCKET_CLOSED</span>
 <span class="w"> </span><span class="k">beq</span><span class="w"> </span><span class="n">@soclet</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">closed</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_init">ch395_init</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Initialize ch395</p>
@@ -1042,6 +1079,7 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_init</span>
 <span class="w"> </span><span class="c1">; Wait a bit</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_open_socket_sn">ch395_open_socket_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Open socket from arg</p>
@@ -1053,6 +1091,7 @@
 <ul>
 <li>Y Register </li>
 </ul>
+<hr>
 <h2 id="ch395_read_recv_buf_sn">ch395_read_recv_buf_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Get buffer from socket</p>
@@ -1067,6 +1106,7 @@
 <li>REStmp value</li>
 <li>RESBtmp value</li>
 </ul>
+<hr>
 <h2 id="ch395_reset_all">ch395_reset_all</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Reset ch395</p>
@@ -1074,6 +1114,7 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_reset_all</span>
 <span class="w"> </span><span class="c1">; Wait a bit</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_retran_period">ch395_retran_period</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Retran period</p>
@@ -1092,6 +1133,11 @@
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
 <span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<hr>
+<h2 id="ch395_set_baudrate">ch395_set_baudrate</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command is used to set the baud rate of CH395 for serial communication. When CH395 works in serial communication mode, the default communication baud rate is set by the level combination of SDO, SDI and SCK pins (refer to Section 6.4 of this datasheet) after reset. When these pins are suspended, the baud rate is 9600bps by default. If MCU supports high communication speed, the serial communication baud rate can be dynamically regulated through this command. This command requires the input of three data, namely, baudrate coefficient 0, baud rate coefficient 1 and baud rate coefficient 2. The following table shows the corresponding relationship with baud rates.</p>
+<hr>
 <h2 id="ch395_set_des_port_sn">ch395_set_des_port_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set dest port socket</p>
@@ -1112,6 +1158,7 @@
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_set_des_port_sn</span>
 <span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
+<hr>
 <h2 id="ch395_set_fun_para">ch395_set_fun_para</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set fun para</p>
@@ -1124,12 +1171,15 @@
 <li>Y Register </li>
 <li>Accumulator </li>
 </ul>
+<hr>
 <h2 id="ch395_set_gwip_addr">ch395_set_gwip_addr</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set gateway ip addr</p>
+<hr>
 <h2 id="ch395_set_ip_addr">ch395_set_ip_addr</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set ip row</p>
+<hr>
 <h2 id="ch395_set_ip_addr_sn">ch395_set_ip_addr_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set Socket Ip address to connect with</p>
@@ -1137,6 +1187,7 @@
 <ul>
 <li>Accumulator : Socket id</li>
 </ul>
+<hr>
 <h2 id="ch395_set_ipraw_pro_sn">ch395_set_ipraw_pro_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set ipraw protocol on socket</p>
@@ -1149,6 +1200,7 @@
 <ul>
 <li>Y Register </li>
 </ul>
+<hr>
 <h2 id="ch395_set_mac_adress">ch395_set_mac_adress</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set mac address</p>
@@ -1163,11 +1215,13 @@
 <li>Y Register </li>
 <li>RES</li>
 </ul>
+<hr>
 <h2 id="ch395_set_proto_type_sn">ch395_set_proto_type_sn</h2>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
 </ul>
+<hr>
 <h2 id="ch395_set_retran_count">ch395_set_retran_count</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set retran period</p>
@@ -1175,6 +1229,7 @@
 <ul>
 <li>Accumulator : Retran period</li>
 </ul>
+<hr>
 <h2 id="ch395_set_sour_port_sn">ch395_set_sour_port_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Set source port</p>
@@ -1188,6 +1243,7 @@
 <ul>
 <li>RES</li>
 </ul>
+<hr>
 <h2 id="ch395_set_ttl">ch395_set_ttl</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to set Socket TTL. It is necessary to input 1 byte of Socket index value and 1 byte of TTL value. It shall be set after the Socket is opened, and the maximum value is 128</p>
@@ -1196,19 +1252,23 @@
 <li>Accumulator : Socket ID</li>
 <li>X Register : TTL value</li>
 </ul>
+<hr>
 <h2 id="ch395_tcp_connect_sn">ch395_tcp_connect_sn</h2>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
 </ul>
+<hr>
 <h2 id="ch395_tcp_disconnect_sn">ch395_tcp_disconnect_sn</h2>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
 </ul>
+<hr>
 <h2 id="ch395_tcp_listen_sn">ch395_tcp_listen_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>TCP listen socket</p>
+<hr>
 <h2 id="ch395_write_send_buf_sn">ch395_write_send_buf_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>Send data to socketid</p>
