@@ -877,7 +877,7 @@
 <hr>
 <h2 id="ch395_get_cmd_status">ch395_get_cmd_status</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Get cmd status</p>
+<p>This command is used to get the command execution status. CH395 will output 1 byte of data, which is the command execution state. The command execution status is as follows:</p>
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_get_cmd_status</span>
 <span class="w"> </span><span class="c1">; Check A for STATUS</span>
@@ -1055,7 +1055,7 @@
 <hr>
 <h2 id="ch395_get_remot_ipp_sn">ch395_get_remot_ipp_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Get remote ip connected to the socket</p>
+<p>This command is used to get the remote IP address and port number. It is necessary to input 1 byte of Socket index value. CH395 will output 4 bytes of IP address and 2 bytes of port number (low bytes in front). After Socket works in TCP Server mode and the connection is established, MCU can get the remote IP address and port number through this command</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : The Socket for the ip to get</li>

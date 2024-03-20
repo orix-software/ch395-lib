@@ -115,7 +115,7 @@ This command enables CH395 chip in a low-power sleep suspended state. When MCU w
 
 ***Description***
 
-Get cmd status
+This command is used to get the command execution status. CH395 will output 1 byte of data, which is the command execution state. The command execution status is as follows:
 
 
 ***Example***
@@ -375,7 +375,7 @@ ch395_connected:
 
 ***Description***
 
-Get remote ip connected to the socket
+This command is used to get the remote IP address and port number. It is necessary to input 1 byte of Socket index value. CH395 will output 4 bytes of IP address and 2 bytes of port number (low bytes in front). After Socket works in TCP Server mode and the connection is established, MCU can get the remote IP address and port number through this command
 
 ***Input***
 

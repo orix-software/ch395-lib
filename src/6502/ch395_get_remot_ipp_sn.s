@@ -4,7 +4,7 @@
 .export ch395_get_remot_ipp_sn
 
 .proc ch395_get_remot_ipp_sn
-    ;;@brief Get remote ip connected to the socket
+    ;;@brief This command is used to get the remote IP address and port number. It is necessary to input 1 byte of Socket index value. CH395 will output 4 bytes of IP address and 2 bytes of port number (low bytes in front). After Socket works in TCP Server mode and the connection is established, MCU can get the remote IP address and port number through this command
     ;;@inputA The Socket for the ip to get
     ;;@inputX The ptr (high) to store the ip
     ;;@inputY The ptr (low) to store the ip
