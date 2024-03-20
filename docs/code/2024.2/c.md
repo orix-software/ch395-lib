@@ -165,14 +165,6 @@ Reset ch395
 
 
 
-## void ch395_retran_period(unsigned int period);
-
-***Description***
-
-Retran period
-
-
-
 ## void ch395_set_des_port_sn(unsigned int port, unsigned char ID_SOCKET);
 
 ***Description***
@@ -235,6 +227,14 @@ Set ipraw protocol on socket
 ***Description***
 
 Set retran period
+
+
+
+## void ch395_retran_period(unsigned int period);
+
+***Description***
+
+Retran period
 
 
 

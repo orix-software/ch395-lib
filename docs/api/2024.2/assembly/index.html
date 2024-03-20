@@ -443,6 +443,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_get_glob_int_status_all" class="md-nav__link">
+    ch395_get_glob_int_status_all
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_get_glob_int_status" class="md-nav__link">
     ch395_get_glob_int_status
   </a>
@@ -506,6 +513,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_get_unreach_ipport" class="md-nav__link">
+    ch395_get_unreach_ipport
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_init" class="md-nav__link">
     ch395_init
   </a>
@@ -529,13 +543,6 @@
         <li class="md-nav__item">
   <a href="#ch395_reset_all" class="md-nav__link">
     ch395_reset_all
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ch395_retran_period" class="md-nav__link">
-    ch395_retran_period
   </a>
   
 </li>
@@ -597,6 +604,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_set_mac_filt" class="md-nav__link">
+    ch395_set_mac_filt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_set_mask_addr" class="md-nav__link">
     ch395_set_mask_addr
   </a>
@@ -620,6 +634,13 @@
         <li class="md-nav__item">
   <a href="#ch395_set_retran_count" class="md-nav__link">
     ch395_set_retran_count
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ch395_set_retran_period" class="md-nav__link">
+    ch395_set_retran_period
   </a>
   
 </li>
@@ -868,6 +889,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_get_glob_int_status_all" class="md-nav__link">
+    ch395_get_glob_int_status_all
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_get_glob_int_status" class="md-nav__link">
     ch395_get_glob_int_status
   </a>
@@ -931,6 +959,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_get_unreach_ipport" class="md-nav__link">
+    ch395_get_unreach_ipport
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_init" class="md-nav__link">
     ch395_init
   </a>
@@ -954,13 +989,6 @@
         <li class="md-nav__item">
   <a href="#ch395_reset_all" class="md-nav__link">
     ch395_reset_all
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ch395_retran_period" class="md-nav__link">
-    ch395_retran_period
   </a>
   
 </li>
@@ -1022,6 +1050,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#ch395_set_mac_filt" class="md-nav__link">
+    ch395_set_mac_filt
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#ch395_set_mask_addr" class="md-nav__link">
     ch395_set_mask_addr
   </a>
@@ -1045,6 +1080,13 @@
         <li class="md-nav__item">
   <a href="#ch395_set_retran_count" class="md-nav__link">
     ch395_set_retran_count
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ch395_set_retran_period" class="md-nav__link">
+    ch395_set_retran_period
   </a>
   
 </li>
@@ -1205,9 +1247,16 @@
 <li>Accumulator </li>
 </ul>
 <hr>
+<h2 id="ch395_get_glob_int_status_all">ch395_get_glob_int_status_all</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command is used to get the global interrupt status. CH395 will output 2 bytes of global interrupt status after receiving this command. Global interrupt status is defined as follows:</p>
+<div class="admonition failure">
+<p class="admonition-title">Does not work</p>
+</div>
+<hr>
 <h2 id="ch395_get_glob_int_status">ch395_get_glob_int_status</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Get General interrupt Status</p>
+<p>This command is used to get the global interrupt status. CH395 will output 1 byte of global interrupt status after receiving this command. Global interrupt status is defined as follows:</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -1307,7 +1356,7 @@
 <hr>
 <h2 id="ch395_get_phy_status">ch395_get_phy_status</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Get physical status</p>
+<p>This command is used to get PHY connection status. After receiving this command, CH395 will query the current PHY connection status and output 1-byte PHY connection status code: PHY is disconnected when the connection status code is 01H; PHY connection is 10M full duplex when the connection status code is 02H; PHY connection is 10M half duplex when the connection status code is 04H. PHY connection is 100M full duplex when the connection status code is 08H; PHY connection is 100M half duplex when the connection status code is 10H</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -1405,9 +1454,16 @@
 <span class="w"> </span><span class="k">beq</span><span class="w"> </span><span class="n">@soclet</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">closed</span>
 </code></pre></div>
 <hr>
+<h2 id="ch395_get_unreach_ipport">ch395_get_unreach_ipport</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command is used to get an inaccessible IP, ports and protocol type. CH395 will generate an inaccessible interrupt when an inaccessible message is received. MCU can use this command to get inaccessible information. After receiving this command, CH395 will output 1 byte of inaccessible code, 1 byte of protocol type, 2 bytes of port number (low bytes in front), and 4 bytes of IP in turn. MCU can judge whether the protocol, port or IP is inaccessible according to the inaccessible codes. For inaccessible codes, refer to RFC792 (CH395INC.H defines four common inaccessible codes).</p>
+<div class="admonition failure">
+<p class="admonition-title">Does not work</p>
+</div>
+<hr>
 <h2 id="ch395_init">ch395_init</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Initialize ch395</p>
+<p>This command is used to initialize CH395, including initializing MAC, PHY and TCP/IP stack of CH395. Generally, it takes 350mS to execute the command. MCU can send GET_CMD_STATUS to query whether the execution has finished and the execution status.</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator 
@@ -1452,25 +1508,6 @@
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_reset_all</span>
 <span class="w"> </span><span class="c1">; Wait a bit</span>
-</code></pre></div>
-<hr>
-<h2 id="ch395_retran_period">ch395_retran_period</h2>
-<p><strong><em>Description</em></strong></p>
-<p>Retran period</p>
-<p><strong><em>Input</em></strong></p>
-<ul>
-<li>Accumulator : Period </li>
-<li>X Register : Period </li>
-</ul>
-<p><strong><em>Modify</em></strong></p>
-<ul>
-<li>Y Register </li>
-</ul>
-<p><strong><em>Example</em></strong></p>
-<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
-<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
-<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
-<span class="w"> </span><span class="k">rts</span>
 </code></pre></div>
 <hr>
 <h2 id="ch395_set_baudrate">ch395_set_baudrate</h2>
@@ -1520,7 +1557,7 @@
 <hr>
 <h2 id="ch395_set_ip_addr">ch395_set_ip_addr</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set ip row</p>
+<p>This command is used to set IP address for CH395. It is necessary to input 4 bytes of IP address, with low bytes of IP in front. For all commands including IP input or output in this datasheet, IP low bytes are in front. This will not be explained below</p>
 <div class="admonition failure">
 <p class="admonition-title">Does not work</p>
 </div>
@@ -1561,6 +1598,11 @@
 <li>RESTmp</li>
 </ul>
 <hr>
+<h2 id="ch395_set_mac_filt">ch395_set_mac_filt</h2>
+<div class="admonition failure">
+<p class="admonition-title">Does not work</p>
+</div>
+<hr>
 <h2 id="ch395_set_mask_addr">ch395_set_mask_addr</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to set the subnet mask for CH395. It is necessary to input 4 bytes of mask for this command. It is 255.255.255.0 by default and may not be set</p>
@@ -1583,11 +1625,30 @@
 <hr>
 <h2 id="ch395_set_retran_count">ch395_set_retran_count</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set retran period</p>
+<p>This command is used to set the number of retries. It is necessary to input 1 byte of number of retries. The allowable maximum value is 20. If the input data is more than 20, it will be processed as 20. The default number of retries is 12, and retries are only valid in TCP mode.</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Retran period</li>
 </ul>
+<hr>
+<h2 id="ch395_set_retran_period">ch395_set_retran_period</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command is used to set the retry cycle. It is necessary to input 2 bytes of number of cycles of (with low bytes in front) in milliseconds. The allowable maximum value is 1000. The total retry time is N * M, N is the number of retries, and M is the retry cycle. The default retry cycle is 500MS and retries are only valid in TCP mode.</p>
+<p><strong><em>Input</em></strong></p>
+<ul>
+<li>Accumulator : Period </li>
+<li>X Register : Period </li>
+</ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Y Register </li>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
+<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$FF</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_retran_period</span>
+<span class="w"> </span><span class="k">rts</span>
+</code></pre></div>
 <hr>
 <h2 id="ch395_set_sour_port_sn">ch395_set_sour_port_sn</h2>
 <p><strong><em>Description</em></strong></p>

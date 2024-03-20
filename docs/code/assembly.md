@@ -157,11 +157,22 @@ Get dhcp status
 
 ---
 
+## ch395_get_glob_int_status_all
+
+***Description***
+
+This command is used to get the global interrupt status. CH395 will output 2 bytes of global interrupt status after receiving this command. Global interrupt status is defined as follows:
+
+!!! failure "Does not work"
+
+
+---
+
 ## ch395_get_glob_int_status
 
 ***Description***
 
-Get General interrupt Status
+This command is used to get the global interrupt status. CH395 will output 1 byte of global interrupt status after receiving this command. Global interrupt status is defined as follows:
 
 
 ***Modify***
@@ -301,7 +312,7 @@ Get mac address
 
 ***Description***
 
-Get physical status
+This command is used to get PHY connection status. After receiving this command, CH395 will query the current PHY connection status and output 1-byte PHY connection status code: PHY is disconnected when the connection status code is 01H; PHY connection is 10M full duplex when the connection status code is 02H; PHY connection is 10M half duplex when the connection status code is 04H. PHY connection is 100M full duplex when the connection status code is 08H; PHY connection is 100M half duplex when the connection status code is 10H
 
 
 ***Modify***
@@ -431,11 +442,22 @@ Returns in A socket status (close/open ...)
 
 ---
 
+## ch395_get_unreach_ipport
+
+***Description***
+
+This command is used to get an inaccessible IP, ports and protocol type. CH395 will generate an inaccessible interrupt when an inaccessible message is received. MCU can use this command to get inaccessible information. After receiving this command, CH395 will output 1 byte of inaccessible code, 1 byte of protocol type, 2 bytes of port number (low bytes in front), and 4 bytes of IP in turn. MCU can judge whether the protocol, port or IP is inaccessible according to the inaccessible codes. For inaccessible codes, refer to RFC792 (CH395INC.H defines four common inaccessible codes).
+
+!!! failure "Does not work"
+
+
+---
+
 ## ch395_init
 
 ***Description***
 
-Initialize ch395
+This command is used to initialize CH395, including initializing MAC, PHY and TCP/IP stack of CH395. Generally, it takes 350mS to execute the command. MCU can send GET_CMD_STATUS to query whether the execution has finished and the execution status.
 
 
 ***Modify***
@@ -506,34 +528,6 @@ This command enables CH395 to perform a hardware reset. Typically, hardware rese
 ```ca65
  jsr ch395_reset_all
  ; Wait a bit
-```
-
-
-
----
-
-## ch395_retran_period
-
-***Description***
-
-Retran period
-
-***Input***
-
-* Accumulator : Period 
-* X Register : Period 
-
-***Modify***
-
-* Y Register 
-
-***Example***
-
-```ca65
- lda #$FF
- ldx #$FF
- jsr ch395_retran_period
- rts
 ```
 
 
@@ -613,7 +607,7 @@ This command is used to set the gateway address for CH395. It is necessary to in
 
 ***Description***
 
-Set ip row
+This command is used to set IP address for CH395. It is necessary to input 4 bytes of IP address, with low bytes of IP in front. For all commands including IP input or output in this datasheet, IP low bytes are in front. This will not be explained below
 
 !!! failure "Does not work"
 
@@ -671,6 +665,13 @@ This command is used to set MAC address for CH395. It is necessary to input 6 by
 
 ---
 
+## ch395_set_mac_filt
+
+!!! failure "Does not work"
+
+
+---
+
 ## ch395_set_mask_addr
 
 ***Description***
@@ -706,11 +707,39 @@ This command is used to set Ethernet PHY connection mode of CH395. The connectio
 
 ***Description***
 
-Set retran period
+This command is used to set the number of retries. It is necessary to input 1 byte of number of retries. The allowable maximum value is 20. If the input data is more than 20, it will be processed as 20. The default number of retries is 12, and retries are only valid in TCP mode.
 
 ***Input***
 
 * Accumulator : Retran period
+
+
+---
+
+## ch395_set_retran_period
+
+***Description***
+
+This command is used to set the retry cycle. It is necessary to input 2 bytes of number of cycles of (with low bytes in front) in milliseconds. The allowable maximum value is 1000. The total retry time is N * M, N is the number of retries, and M is the retry cycle. The default retry cycle is 500MS and retries are only valid in TCP mode.
+
+***Input***
+
+* Accumulator : Period 
+* X Register : Period 
+
+***Modify***
+
+* Y Register 
+
+***Example***
+
+```ca65
+ lda #$FF
+ ldx #$FF
+ jsr ch395_retran_period
+ rts
+```
+
 
 
 ---
