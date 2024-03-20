@@ -1257,6 +1257,33 @@
 <h2 id="ch395_get_glob_int_status">ch395_get_glob_int_status</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to get the global interrupt status. CH395 will output 1 byte of global interrupt status after receiving this command. Global interrupt status is defined as follows:</p>
+<p>Bit Name Description</p>
+<p>7 GINT_STAT_SOCK3 Socket3 interrupt</p>
+<p>6 GINT_STAT_SOCK2 Socket2 interrupt</p>
+<p>5 GINT_STAT_SOCK1 Socket1 interrupt</p>
+<p>4 GINT_STAT_SOCK0 Socket0 interrupt</p>
+<p>3 GINT_STAT_DHCP DHCP interrupt</p>
+<p>2 GINT_STAT_PHY_CHANGE PHY status change interrupt</p>
+<p>1 GINT_STAT_IP_CONFLI IP conflict</p>
+<p>0 GINT_STAT_UNREACH Inaccessible interrupt</p>
+<p>① GINT_STAT_UNREACH: Inaccessible interrupt. When CH395 receives ICMP inaccessible interrupt</p>
+<p>message, it saves the IP address, port and protocol type of the inaccessible IP packet in the inaccessible</p>
+<p>information table, and then generates an interrupt. When the MCU receives the interrupt, it can send the</p>
+<p>command GET_UNREACH_IPPORT to get the inaccessible information.</p>
+<p>② GINT_STAT_IP_CONFLI: IP conflict interrupt. This interrupt is generated when CH395 detects that its</p>
+<p>IP address is the same as that of other network devices in the same network segment.</p>
+<p>③ GINT_STAT_PHY_CHANGE: PHY change interrupt. This interrupt is generated when PHY connection</p>
+<p>of CH395 changes, for example, PHY state changes from the connected state to the disconnected state or</p>
+<p>from the disconnected state to the connected state. MCU can send GET_PHY_STATUS command to get</p>
+<p>the current PHY connection status.</p>
+<p>④ GINT_STAT_DHCP: DHCP interrupt. If MCU enables DHCP function of CH395, CH395 will generate</p>
+<p>this interrupt. MCU can send the command CMD_GET_DHCP_STATUS to get the DHCP status. If the</p>
+<p>status is 0, it will indicate success; otherwise, it will indicate timeout failure.</p>
+<p>⑤ GINT_STAT_SOCK0 - GINT_STAT_SOCK3: Socket interrupt. When there is an interrupt event in</p>
+<p>Socket, CH395 will generate this interrupt. MCU needs to send GET_INT_STATUS_SN to get the</p>
+<p>interrupt status of Socket. Please refer to GET_INT_STATUS_SN.</p>
+<p>When this command is completed, CH395 will set INT# pin to high level and clear the global interrupt</p>
+<p>status</p>
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>Accumulator </li>
@@ -1289,7 +1316,7 @@
 <hr>
 <h2 id="ch395_get_int_status_sn">ch395_get_int_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Check interrupt socket status</p>
+<p>This command is used to get the interrupt status of Socket. It is necessary to input 1 byte of Socket index</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1427,7 +1454,7 @@
 <hr>
 <h2 id="ch395_get_socket_status_sn">ch395_get_socket_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Returns in A socket status (close/open ...)</p>
+<p>This command is used to get Socket status. It is necessary to input a 1 byte of Socket index value. CH395 will output a 2-byte status code when receiving this command. The first status code is the status code of Socket. The status code of Socket is defined as follows:</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>

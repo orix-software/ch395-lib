@@ -47,9 +47,13 @@
   text-align: left;
 }
 
-hr {
-  display: flow-root;
-  margin: 1.5em 0;
-  border-bottom: px2rem(1px) solid var(--md-default-fg-color--lightest); 
+.md-typeset hr {
+  display: block;
+  height: 51px;
+  border: 0;
+  border-bottom: 1px solid #ADF;
+  margin: 1em 0;
+  padding: 0;
 }
+
 
