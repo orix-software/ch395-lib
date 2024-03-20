@@ -346,7 +346,7 @@ for line in fileinput.input():
                 if proc_name[0] == '_':
                     def_proc = False
                 else:
-                    line_out = "---\n" + "## " + proc_name + '\n'
+                    line_out = "---\n\n" + "## " + proc_name + '\n'
 
             elif inst[0] == '.struct':
                 def_struct = True

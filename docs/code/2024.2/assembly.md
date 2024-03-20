@@ -1,6 +1,7 @@
 # Assembly
 
 ---
+
 ## ch395_check_exist
 
 ***Description***
@@ -30,6 +31,7 @@ ch395_connected:
 
 
 ---
+
 ## ch395_clear_recv_buf_sn
 
 ***Description***
@@ -55,6 +57,7 @@ This command is used to clear the Socket receive buffer. It is necessary to inpu
 
 
 ---
+
 ## ch395_close_socket_sn
 
 ***Description***
@@ -79,6 +82,7 @@ This command is used to close Socket. It is necessary to input a 1 byte of Socke
 
 
 ---
+
 ## ch395_dhcp_enable
 
 ***Description***
@@ -95,6 +99,7 @@ This command is used to start or stop DHCP. It is necessary to input a 1-byte fl
 
 
 ---
+
 ## ch395_enter_sleep
 
 ***Description***
@@ -105,6 +110,7 @@ This command enables CH395 chip in a low-power sleep suspended state. When MCU w
 
 
 ---
+
 ## ch395_get_cmd_status
 
 ***Description***
@@ -127,6 +133,7 @@ Get cmd status
 
 
 ---
+
 ## ch395_get_dhcp_status
 
 ***Description***
@@ -149,6 +156,7 @@ Get dhcp status
 
 
 ---
+
 ## ch395_get_glob_int_status
 
 ***Description***
@@ -175,6 +183,7 @@ Get General interrupt Status
 
 
 ---
+
 ## ch395_get_ic_ver
 
 ***Description***
@@ -202,6 +211,7 @@ This command is used to get the chip and firmware versions. 1 byte of data retur
 
 
 ---
+
 ## ch395_get_int_status_sn
 
 ***Description***
@@ -237,6 +247,7 @@ Check interrupt socket status
 
 
 ---
+
 ## ch395_get_ip_inf
 
 ***Description***
@@ -257,6 +268,7 @@ Get ip info
 
 
 ---
+
 ## ch395_get_mac_adress
 
 ***Description***
@@ -284,6 +296,7 @@ Get mac address
 
 
 ---
+
 ## ch395_get_phy_status
 
 ***Description***
@@ -311,6 +324,7 @@ Get physical status
 
 
 ---
+
 ## ch395_get_recv_len_sn
 
 ***Description***
@@ -345,6 +359,7 @@ ch395_connected:
 
 
 ---
+
 ## ch395_get_remot_ipp_sn
 
 ***Description***
@@ -379,6 +394,7 @@ ipdest:
 
 
 ---
+
 ## ch395_get_socket_status_sn
 
 ***Description***
@@ -414,6 +430,7 @@ Returns in A socket status (close/open ...)
 
 
 ---
+
 ## ch395_init
 
 ***Description***
@@ -439,6 +456,7 @@ Reset ch395
 
 
 ---
+
 ## ch395_open_socket_sn
 
 ***Description***
@@ -455,6 +473,7 @@ Open socket from arg
 
 
 ---
+
 ## ch395_read_recv_buf_sn
 
 ***Description***
@@ -474,11 +493,12 @@ Get buffer from socket
 
 
 ---
+
 ## ch395_reset_all
 
 ***Description***
 
-Reset ch395
+This command enables CH395 to perform a hardware reset. Typically, hardware reset is completed within 50mS.
 
 
 ***Example***
@@ -491,6 +511,7 @@ Reset ch395
 
 
 ---
+
 ## ch395_retran_period
 
 ***Description***
@@ -518,6 +539,7 @@ Retran period
 
 
 ---
+
 ## ch395_set_baudrate
 
 ***Description***
@@ -527,6 +549,7 @@ This command is used to set the baud rate of CH395 for serial communication. Whe
 
 
 ---
+
 ## ch395_set_des_port_sn
 
 ***Description***
@@ -556,6 +579,7 @@ Set dest port socket
 
 
 ---
+
 ## ch395_set_fun_para
 
 ***Description***
@@ -573,24 +597,29 @@ Set fun para
 
 
 ---
+
 ## ch395_set_gwip_addr
 
 ***Description***
 
-Set gateway ip addr
+This command is used to set the gateway address for CH395. It is necessary to input 4 bytes of IP address
 
+!!! failure "Does not work"
 
 
 ---
+
 ## ch395_set_ip_addr
 
 ***Description***
 
 Set ip row
 
+!!! failure "Does not work"
 
 
 ---
+
 ## ch395_set_ip_addr_sn
 
 ***Description***
@@ -603,6 +632,7 @@ Set Socket Ip address to connect with
 
 
 ---
+
 ## ch395_set_ipraw_pro_sn
 
 ***Description***
@@ -620,11 +650,12 @@ Set ipraw protocol on socket
 
 
 ---
+
 ## ch395_set_mac_adress
 
 ***Description***
 
-Set mac address
+This command is used to set MAC address for CH395. It is necessary to input 6 bytes of MAC, with low bytes of MAC address in front. CH395 chip will store MAC address in the internal EEPROM. It will take 100mS to execute this command.MAC address assigned by IEEE has been burned when CH395 chip is delivered. If it is not necessary, please do not set MAC address
 
 ***Input***
 
@@ -635,10 +666,33 @@ Set mac address
 
 * Accumulator 
 * Y Register 
-* RES
+* RESTmp
 
 
 ---
+
+## ch395_set_mask_addr
+
+***Description***
+
+This command is used to set the subnet mask for CH395. It is necessary to input 4 bytes of mask for this command. It is 255.255.255.0 by default and may not be set
+
+!!! failure "Does not work"
+
+
+---
+
+## ch395_set_phy
+
+***Description***
+
+This command is used to set Ethernet PHY connection mode of CH395. The connection mode is automated negotiation mode by default. This command needs to input 1 byte of data, which is the connection mode code: Disconnect PHY when the connection mode code is 01H; PHY is 10M full duplex when the connection mode code is 02H; PHY is 10M half duplex when the connection mode code is 04H; PHY is 100M full duplex when the connection mode code is 08H; PHY is 100M half duplex when the connection mode code is 10H; PHY is automated negotiation when the connection mode code is 20H. When CH395 receives this command, it will reset MAC and PHY and reconnect according to the newly set connection mode. If Ethernet is already connected, it will be disconnected and reconnected.
+
+!!! failure "Does not work"
+
+
+---
+
 ## ch395_set_proto_type_sn
 
 ***Input***
@@ -647,6 +701,7 @@ Set mac address
 
 
 ---
+
 ## ch395_set_retran_count
 
 ***Description***
@@ -659,6 +714,7 @@ Set retran period
 
 
 ---
+
 ## ch395_set_sour_port_sn
 
 ***Description***
@@ -677,6 +733,7 @@ Set source port
 
 
 ---
+
 ## ch395_set_ttl
 
 ***Description***
@@ -690,6 +747,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 
 
 ---
+
 ## ch395_tcp_connect_sn
 
 ***Input***
@@ -698,6 +756,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 
 
 ---
+
 ## ch395_tcp_disconnect_sn
 
 ***Input***
@@ -706,6 +765,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 
 
 ---
+
 ## ch395_tcp_listen_sn
 
 ***Description***
@@ -715,6 +775,7 @@ TCP listen socket
 
 
 ---
+
 ## ch395_write_send_buf_sn
 
 ***Description***

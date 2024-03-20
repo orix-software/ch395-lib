@@ -3,7 +3,7 @@
 .export ch395_reset_all
 
 .proc ch395_reset_all
-    ;;@brief Reset ch395
+    ;;@brief This command enables CH395 to perform a hardware reset. Typically, hardware reset is completed within 50mS.
     ;;@```ca65
     ;;@`  jsr       ch395_reset_all
     ;;@`  ; Wait a bit
