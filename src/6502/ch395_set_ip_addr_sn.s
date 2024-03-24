@@ -5,8 +5,11 @@
 .export ch395_set_ip_addr_sn
 
 .proc ch395_set_ip_addr_sn
-    ;;@brief Set Socket Ip address to connect with
+    ;;@brief This command is used to set the destination IP address of Socket. It is necessary to input 1 byte of Socket index value and 4 bytes of destination IP address. When Socket works in IPRAW, UDP, or TCP Client mode, 0the destination IP must be set before the command CMD_OPEN_SOCKET_SN is sent
     ;;@inputA Socket id
+    ;;@inputY low ptr ip
+    ;;@inputX high ptr ip
+    ;;@modifyMEM8RES tmp
 
     sty     RES
     stx     RES+1

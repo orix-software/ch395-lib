@@ -1316,7 +1316,7 @@
 <hr>
 <h2 id="ch395_get_int_status_sn">ch395_get_int_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>This command is used to get the interrupt status of Socket. It is necessary to input 1 byte of Socket index</p>
+<p>This command is used to get the interrupt status of Socket. It is necessary to input 1 byte of Socket index value. After receiving this command, CH395 will output 1 byte of Socket interrupt code. The interrupt code bits are defined as follows:</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1504,7 +1504,7 @@
 <hr>
 <h2 id="ch395_open_socket_sn">ch395_open_socket_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Open socket from arg</p>
+<p>This command is used to open Socket and use the necessary steps of Socket. It is necessary to input 1 byte of Socket index value. After sending this command, MCU shall send GET_CMD_STATUS to query the command execution status. After opening Socket in UDP, IPRAW or MACRAW mode and returning successfully, data transmission can be performed. Before this command is sent, necessary settings must be made for destination IP, protocol type, source port, destination port, etc. Please refer to 8.3 Application Reference Steps for detailed steps.</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1543,7 +1543,7 @@
 <hr>
 <h2 id="ch395_set_des_port_sn">ch395_set_des_port_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set dest port socket</p>
+<p>This command is used to set the Socket destination port. It is necessary to input 1 byte of Socket index value and 2 bytes of destination port (the low bytes are in front). When Socket works in UDP or TCP Client mode, this value must be set.</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socketid </li>
@@ -1591,11 +1591,14 @@
 <hr>
 <h2 id="ch395_set_ip_addr_sn">ch395_set_ip_addr_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set Socket Ip address to connect with</p>
+<p>This command is used to set the destination IP address of Socket. It is necessary to input 1 byte of Socket index value and 4 bytes of destination IP address. When Socket works in IPRAW, UDP, or TCP Client mode, 0the destination IP must be set before the command CMD_OPEN_SOCKET_SN is sent</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
+<li>Y Register : low ptr ip</li>
+<li>X Register : high ptr ip</li>
 </ul>
+<p><strong><em>Modify</em></strong></p>
 <hr>
 <h2 id="ch395_set_ipraw_pro_sn">ch395_set_ipraw_pro_sn</h2>
 <p><strong><em>Description</em></strong></p>
@@ -1645,6 +1648,15 @@
 </div>
 <hr>
 <h2 id="ch395_set_proto_type_sn">ch395_set_proto_type_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>This command is used to set the working mode of Socket. It is necessary to input 1 byte of Socket index value and 1 byte of working mode. The working mode is defined as follows:</p>
+<p>Code Name Description</p>
+<p>03H PROTO_TYPE_TCP TCP mode</p>
+<p>02H PROTO_TYPE_UDP UDP mode</p>
+<p>01H PROTO_TYPE_MAC_RAW MAC original message mode</p>
+<p>00H PROTO_TYPE_IP_RAW IP original message mode</p>
+<p>This command must be executed before CMD_OPEN_SOCKET_SN. Refer to 8.3 Application Reference</p>
+<p>Steps for detailed steps.</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1656,6 +1668,10 @@
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Retran period</li>
+</ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>X Register </li>
 </ul>
 <hr>
 <h2 id="ch395_set_retran_period">ch395_set_retran_period</h2>
@@ -1679,7 +1695,7 @@
 <hr>
 <h2 id="ch395_set_sour_port_sn">ch395_set_sour_port_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Set source port</p>
+<p>This command is used to set the source port of Socket. It is necessary to input 1 byte of Socket index value and 2 bytes of source port (low bytes in front). If two or more Sockets are in the same mode, the source port numbers must not be the same. For example, Socket 0 is in UDP mode, the source port number is 600, and Socket 1 is also in UDP mode. The source port number 600 cannot be used again, otherwise it may cause the0 opening failure.</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1699,6 +1715,10 @@
 <li>Accumulator : Socket ID</li>
 <li>X Register : TTL value</li>
 </ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Y Register </li>
+</ul>
 <hr>
 <h2 id="ch395_tcp_connect_sn">ch395_tcp_connect_sn</h2>
 <p><strong><em>Input</em></strong></p>
@@ -1714,11 +1734,11 @@
 <hr>
 <h2 id="ch395_tcp_listen_sn">ch395_tcp_listen_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>TCP listen socket</p>
+<p>This command is only valid in TCP mode, enabling the Socket to be in the monitoring mode, namely, TCP Server mode. It is necessary to input a 1 byte of Socket index value. This command must be executed after OPEN_SOCKET_SN. After sending this command, MCU shall send GET_CMD_STATUS to query the 0command execution status. In TCP Server mode, the Socket will always detect connection events, and the interrupt SINT_STAT_CONNECT will be generated until the connection is successful. Only one connection can be 0established for each Socket. If an eligible connection event is received again, Socket will send TCP RESET to the remote end tried to be connected.</p>
 <hr>
 <h2 id="ch395_write_send_buf_sn">ch395_write_send_buf_sn</h2>
 <p><strong><em>Description</em></strong></p>
-<p>Send data to socketid</p>
+<p>This command is used to write data to Socket transmit buffer. It is necessary to input 1 byte of Socket index value, 2 bytes of length (low bytes in front) and several bytes of data stream. The length of input data must not be larger than the size of transmit buffer. However, in MACRAW mode, the maximum length of input data can only be 1514, and any redundant data will be discarded. After the external MCU writes the data, CH395 will encapsulate the data packet according to the working mode of Socket, and then send it. Before MCU receives SINT_STAT_SENBUF_FREE, it is not allowed to write data into Socket transmit buffer again</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket ID</li>
@@ -1729,7 +1749,10 @@
 <p><strong><em>Modify</em></strong></p>
 <ul>
 <li>RESTmp</li>
-</ul></div>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div></div>
 
   <hr>
 <div class="md-source-file">

@@ -29,6 +29,9 @@ $(OBJECTS8): $(SOURCES8)
 	@cp ch395-8.lib build/lib8/
 	@cp ch395-8.lib target/telestrat/lib/
 
+test:
+	$(CC) -ttelestrat -I src/include test/ch395.c target/telestrat/lib/ch395-8.lib -o ch395
+
 tool:
 	@mkdir -p target/telestrat/ch395cfg/
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/ch395cfg

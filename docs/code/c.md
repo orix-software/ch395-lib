@@ -4,7 +4,7 @@
 
 ***Description***
 
-Checks if ch395 exists
+This command is used to test the communication interface and working state to check whether CH395 is working properly. This command needs to input 1 byte of data, which can be any data. If CH395 is working properly, the output data of CH395 will be the bitwise reverse of the input data. For example, if the input data is 57H, the output data will be A8H.
 
 
 
@@ -63,10 +63,29 @@ Get General interrupt Status
 
 ***Description***
 
-Get ch395 firmware version
+;;@brief This command is used to get the chip and firmware versions. 1 byte of data returned is the version number, the bit 7 is 0, the bit 6 is 1, and the bits 5-0 are the version number. If the returned value is 41H, remove bits 7 and 6, and the version number will be 01H. It is called chip version in this text
 
 
 
+   ;;@inputA Socket id
+   ;;@modifyA
+   ;;@modifyX
+   ;;@returnsA Status of selected socket
+   ;;@```ca65
+   ;;@`  lda     #CH395_SOCKET1 ; Check socket 1
+   ;;@`  jsr     ch395_get_int_status_sn
+   ;;@`  ; Check interrupt type
+   ;;@`  and     #CH395_SINT_STAT_SEND_OK
+   ;;@`  cmp     #CH395_SINT_STAT_SEND_OK
+   ;;@`  beq     @send_ok
+   ;;@`  rts
+   ;;@```
+ldx     #CH395_GET_INT_STATUS_SN
+   stx     CH395_COMMAND_PORT
+   sta     CH395_DATA_PORT
+   lda     CH395_DATA_PORT
+   rts
+endproc
 ## unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
 
 ***Description***
@@ -192,7 +211,7 @@ Set gateway ip addr
 
 ***Description***
 
-Set ip addr
+This command is used to set the destination IP address of Socket. It is necessary to input 1 byte of Socket index value and 4 bytes of destination IP address. When Socket works in IPRAW, UDP, or TCP Client mode, 0the destination IP must be set before the command CMD_OPEN_SOCKET_SN is sent
 
 
 

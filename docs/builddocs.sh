@@ -17,6 +17,8 @@ echo "" >> docs/code/$VERSION/c.md
 
 echo $VERSION
 
+cat  src/include/ch395.inc | python3 docs/ca65todoc.py >> docs/code/$VERSION/assembly.md
+
 for I in `ls src/6502/*.s`; do
 echo $I
 cat  $I | python3 docs/ca65todoc.py >> docs/code/$VERSION/assembly.md

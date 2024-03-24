@@ -4,7 +4,7 @@
 .export ch395_set_des_port_sn
 
 .proc ch395_set_des_port_sn
-    ;;@brief Set dest port socket
+    ;;@brief This command is used to set the Socket destination port. It is necessary to input 1 byte of Socket index value and 2 bytes of destination port (the low bytes are in front). When Socket works in UDP or TCP Client mode, this value must be set.
     ;;@inputA Socketid
     ;;@inputY Low int
     ;;@inputX high int

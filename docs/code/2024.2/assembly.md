@@ -281,7 +281,7 @@ This command is used to get the chip and firmware versions. 1 byte of data retur
 
 ***Description***
 
-This command is used to get the interrupt status of Socket. It is necessary to input 1 byte of Socket index
+This command is used to get the interrupt status of Socket. It is necessary to input 1 byte of Socket index value. After receiving this command, CH395 will output 1 byte of Socket interrupt code. The interrupt code bits are defined as follows:
 
 ***Input***
 
@@ -537,7 +537,7 @@ Reset ch395
 
 ***Description***
 
-Open socket from arg
+This command is used to open Socket and use the necessary steps of Socket. It is necessary to input 1 byte of Socket index value. After sending this command, MCU shall send GET_CMD_STATUS to query the command execution status. After opening Socket in UDP, IPRAW or MACRAW mode and returning successfully, data transmission can be performed. Before this command is sent, necessary settings must be made for destination IP, protocol type, source port, destination port, etc. Please refer to 8.3 Application Reference Steps for detailed steps.
 
 ***Input***
 
@@ -602,7 +602,7 @@ This command is used to set the baud rate of CH395 for serial communication. Whe
 
 ***Description***
 
-Set dest port socket
+This command is used to set the Socket destination port. It is necessary to input 1 byte of Socket index value and 2 bytes of destination port (the low bytes are in front). When Socket works in UDP or TCP Client mode, this value must be set.
 
 ***Input***
 
@@ -672,11 +672,17 @@ This command is used to set IP address for CH395. It is necessary to input 4 byt
 
 ***Description***
 
-Set Socket Ip address to connect with
+This command is used to set the destination IP address of Socket. It is necessary to input 1 byte of Socket index value and 4 bytes of destination IP address. When Socket works in IPRAW, UDP, or TCP Client mode, 0the destination IP must be set before the command CMD_OPEN_SOCKET_SN is sent
 
 ***Input***
 
 * Accumulator : Socket id
+* Y Register : low ptr ip
+* X Register : high ptr ip
+
+***Modify***
+
+
 
 
 ---
@@ -750,6 +756,24 @@ This command is used to set Ethernet PHY connection mode of CH395. The connectio
 
 ## ch395_set_proto_type_sn
 
+***Description***
+
+This command is used to set the working mode of Socket. It is necessary to input 1 byte of Socket index value and 1 byte of working mode. The working mode is defined as follows:
+
+Code Name Description
+
+03H PROTO_TYPE_TCP TCP mode
+
+02H PROTO_TYPE_UDP UDP mode
+
+01H PROTO_TYPE_MAC_RAW MAC original message mode
+
+00H PROTO_TYPE_IP_RAW IP original message mode
+
+This command must be executed before CMD_OPEN_SOCKET_SN. Refer to 8.3 Application Reference
+
+Steps for detailed steps.
+
 ***Input***
 
 * Accumulator : Socket id
@@ -766,6 +790,10 @@ This command is used to set the number of retries. It is necessary to input 1 by
 ***Input***
 
 * Accumulator : Retran period
+
+***Modify***
+
+* X Register 
 
 
 ---
@@ -802,7 +830,7 @@ This command is used to set the retry cycle. It is necessary to input 2 bytes of
 
 ***Description***
 
-Set source port
+This command is used to set the source port of Socket. It is necessary to input 1 byte of Socket index value and 2 bytes of source port (low bytes in front). If two or more Sockets are in the same mode, the source port numbers must not be the same. For example, Socket 0 is in UDP mode, the source port number is 600, and Socket 1 is also in UDP mode. The source port number 600 cannot be used again, otherwise it may cause the0 opening failure.
 
 ***Input***
 
@@ -827,6 +855,10 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 
 * Accumulator : Socket ID
 * X Register : TTL value
+
+***Modify***
+
+* Y Register 
 
 
 ---
@@ -853,7 +885,7 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 
 ***Description***
 
-TCP listen socket
+This command is only valid in TCP mode, enabling the Socket to be in the monitoring mode, namely, TCP Server mode. It is necessary to input a 1 byte of Socket index value. This command must be executed after OPEN_SOCKET_SN. After sending this command, MCU shall send GET_CMD_STATUS to query the 0command execution status. In TCP Server mode, the Socket will always detect connection events, and the interrupt SINT_STAT_CONNECT will be generated until the connection is successful. Only one connection can be 0established for each Socket. If an eligible connection event is received again, Socket will send TCP RESET to the remote end tried to be connected.
 
 
 
@@ -863,7 +895,7 @@ TCP listen socket
 
 ***Description***
 
-Send data to socketid
+This command is used to write data to Socket transmit buffer. It is necessary to input 1 byte of Socket index value, 2 bytes of length (low bytes in front) and several bytes of data stream. The length of input data must not be larger than the size of transmit buffer. However, in MACRAW mode, the maximum length of input data can only be 1514, and any redundant data will be discarded. After the external MCU writes the data, CH395 will encapsulate the data packet according to the working mode of Socket, and then send it. Before MCU receives SINT_STAT_SENBUF_FREE, it is not allowed to write data into Socket transmit buffer again
 
 ***Input***
 
@@ -875,5 +907,11 @@ Send data to socketid
 ***Modify***
 
 * RESTmp
+
+***Example***
+
+```ca65
+```
+
 
 
