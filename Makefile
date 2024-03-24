@@ -35,12 +35,16 @@ test:
 tool:
 	@mkdir -p target/telestrat/ch395cfg/
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/ch395cfg
-	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/telnetd.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/telnetd
+	#$(CC) -ttelestrat -I src/include tools/ch395cfg/src/telnetd.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/telnetd
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/wget.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/wget
+
+docs:
+	docs/builddocs.sh && mkdocs build
 
 clean:
 	rm src/6502/*.o
-	rm tools/ch395cfg/*.o
 	rm ch395-8.lib
+	#rm tools/ch395cfg/*.o
+
 
 

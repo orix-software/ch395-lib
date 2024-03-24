@@ -33,7 +33,7 @@ void          ch395_read_recv_buf_sn(unsigned char *buffer, unsigned int length,
 
 void          ch395_close_socket_sn(unsigned char ID_SOCKET);
 unsigned char ch395_get_int_status_sn(unsigned char ID_SOCKET);
-unsigned char *ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes
+unsigned char ch395_get_socket_status_sn(unsigned char ID_SOCKET); // return 2 bytes
 unsigned char ch395_get_phy_status();
 void          ch395_get_remot_ipp_sn(unsigned char *ptr, unsigned char socket);
 
@@ -42,7 +42,6 @@ void          ch395_clear_recv_buf_sn(unsigned char socket);
 void          ch395_set_fun_para(unsigned char flag);
 void          ch395_tcp_disconnect_sn(unsigned char ID_SOCKET);
 void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
-
 
 #define CH395_DETECTED                 0xaa
 
@@ -65,8 +64,8 @@ void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
 #define CH395_ERR_ISCONN   0x1D /*  Connecté*/
 #define CH395_ERR_OPEN     0x20 /* Ouvert */
 
-#define CH395_DHCP_ENABLE  0x01
-#define CH395_DHCP_DISABLE 0x00
+#define CH395_DHCP_ENABLE_VAL  0x01
+#define CH395_DHCP_DISABLE_VAL 0x00
 
 #define CH395_DHCP_STATUS_ENABLED  0x00
 #define CH395_DHCP_STATUS_DISABLED 0x01
@@ -101,7 +100,6 @@ void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
 #define CH395_SOCKET_CLOSED                 0x00
 #define CH395_SOCKET_OPEN                   0x05
 
-
 #define CH395_TCP_CLOSED                    0x00 // Shutdown
 #define CH395_TCP_LISTEN                    0x01
 #define CH395_TCP_SYN_SENT                  0x02
@@ -118,3 +116,5 @@ void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
 #define CH395_FUN_PARA_FLAG_LOW_PWR         0x04
 #define CH395_FUN_PARA_FLAG_SOCKET_CLOSE    0x08
 #define CH395_FUN_PARA_FLAG_DISABLE_SEND_OK 0x10
+
+#define CH395_GINT_STAT_DHCP                0x08

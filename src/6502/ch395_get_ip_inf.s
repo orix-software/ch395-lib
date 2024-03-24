@@ -5,8 +5,8 @@
 
 .proc ch395_get_ip_inf
     ;;@brief Get ip info
-    ;;@inputA the ptr to modify
-    ;;@inputX the ptr to modify
+    ;;@inputA the ptr to modify (Ptr must be 20 bytes length)
+    ;;@inputX the ptr to modify (Ptr must be 20 bytes length)
     ;;@modifyA
     ;;@modifyX
     ;;@modifyY

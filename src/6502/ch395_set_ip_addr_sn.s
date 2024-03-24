@@ -1,7 +1,6 @@
 .include "ch395.inc"
 .include "telestrat.inc"
 
-
 .export ch395_set_ip_addr_sn
 
 .proc ch395_set_ip_addr_sn
@@ -9,12 +8,11 @@
     ;;@inputA Socket id
     ;;@inputY low ptr ip
     ;;@inputX high ptr ip
-    ;;@modifyMEM8RES tmp
+    ;;@modifyMEM_RES tmp
 
     sty     RES
     stx     RES+1
 
-entry_point_c:
     ldx     #CH395_SET_IP_ADDR_SN
     stx     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id

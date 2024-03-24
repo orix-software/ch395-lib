@@ -1,6 +1,5 @@
 .include "ch395.inc"
 
-.importzp ptr1
 .import popax
 
 .export _ch395_set_ip_addr_sn
@@ -11,8 +10,7 @@
     ;;@bried Set ip addr socket
     pha
     jsr     popax ; get ip_addr
-    sta     ptr1
-    stx     ptr1+1
+    tay
     pla
-;    jmp     ch395_set_ip_addr_sn::entry_point_c
+    jmp     ch395_set_ip_addr_sn
 .endproc
