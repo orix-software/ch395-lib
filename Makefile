@@ -39,7 +39,7 @@ tool:
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/wget.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/wget
 
 docs:
-	docs/builddocs.sh && mkdocs build
+	docs/builddocs.sh && cd docs && mkdocs build
 
 clean:
 	rm src/6502/*.o

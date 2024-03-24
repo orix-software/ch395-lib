@@ -321,8 +321,8 @@ Get ip info
 
 ***Input***
 
-* Accumulator : the ptr to modify
-* X Register : the ptr to modify
+* Accumulator : the ptr to modify (Ptr must be 20 bytes length)
+* X Register : the ptr to modify (Ptr must be 20 bytes length)
 
 ***Modify***
 
@@ -682,7 +682,7 @@ This command is used to set the destination IP address of Socket. It is necessar
 
 ***Modify***
 
-
+* REStmp
 
 
 ---

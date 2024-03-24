@@ -63,7 +63,7 @@ Get General interrupt Status
 
 ***Description***
 
-;;@brief This command is used to get the chip and firmware versions. 1 byte of data returned is the version number, the bit 7 is 0, the bit 6 is 1, and the bits 5-0 are the version number. If the returned value is 41H, remove bits 7 and 6, and the version number will be 01H. It is called chip version in this text
+This command is used to get the chip and firmware versions. 1 byte of data returned is the version number, the bit 7 is 0, the bit 6 is 1, and the bits 5-0 are the version number. If the returned value is 41H, remove bits 7 and 6, and the version number will be 01H. It is called chip version in this text
 
 
 
@@ -101,7 +101,7 @@ Check interrupt socket status
 
 ***Description***
 
-Get ip info
+Get ip info : ip_infos must be 20 bytes length)
 
 
 
@@ -158,7 +158,7 @@ Returns in A socket status (close/open ... )
 
 ***Description***
 
-Initialize ch395
+;;@brief This command is used to initialize CH395, including initializing MAC, PHY and TCP/IP stack of CH395. Generally, it takes 350mS to execute the command. MCU can send GET_CMD_STATUS to query whether the execution has finished and the execution status.
 
 
 
@@ -234,7 +234,7 @@ Set ipraw protocol on socket
 
 
 
-## void ch395_set_proto_type_sn(unsigned char proto,unsigned char ID_SOCKET)
+## void ch395_set_proto_type_sn(unsigned char proto, unsigned char ID_SOCKET)
 
 ***Input***
 
