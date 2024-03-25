@@ -47,13 +47,27 @@ entry_point_c:
     iny
     cpy     RESB
     bne     @loop
+    tya
+    clc
+    adc     RES
+    bcc     @S1
+    inc     RES+1
+
+@S1:
+    sta     RES
 
 @decrement:
-    lda     RESB+1
-    beq     @exit
-    lda     #$FF
-    sta     RESB
-    bne     @restart
+    ldx     RESB+1
+    ldy     #$00
+
+@L1:
+    lda     (RES),y
+    sta     CH395_DATA_PORT
+    iny
+    bne     @L1
+    inc     RES+1
+    dex
+    bpl     @L1
 
 @exit:
     rts

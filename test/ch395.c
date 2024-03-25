@@ -83,11 +83,16 @@ int main() {
 
     ch395_set_ip_addr_sn(ip,0);
     ch395_set_des_port_sn(port,0);
-    ch395_set_sour_port_sn(200,0)
-
+    ch395_set_sour_port_sn(200,0);
 
     ch395_open_socket_sn(0);
 
+    val = ch395_get_cmd_status();
+
+    retry = 0;
+
     val = ch395_get_socket_status_sn(0);
+
+    ch395_close_socket_sn(0);
 
 }
