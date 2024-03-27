@@ -12,6 +12,7 @@
     ;;@explain This command must be executed before CMD_OPEN_SOCKET_SN. Refer to 8.3 Application Reference
     ;;@explain Steps for detailed steps.
     ;;@inputA Socket id
+    ;;@inputX Proto mode
     ldy     #CH395_SET_PROTO_TYPE_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id
