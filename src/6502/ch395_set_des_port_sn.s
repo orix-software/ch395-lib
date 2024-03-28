@@ -11,7 +11,7 @@
     ;;@modifyMEM_RES tmp
     ;;@```ca65
     ;;@`  lda  #$01
-    ;;@`  ldx  #80
+    ;;@`  ldy  #80
     ;;@`  ldx  #$00
     ;;@`  jsr ch395_set_des_port_sn
     ;;@`  rts
