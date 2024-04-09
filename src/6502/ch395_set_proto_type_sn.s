@@ -13,6 +13,12 @@
     ;;@explain Steps for detailed steps.
     ;;@inputA Socket id
     ;;@inputX Proto mode
+    ;;@modifyY tmp
+    ;;@```ca65
+    ;;@`  lda       #$00 ; Socket
+    ;;@`  ldx       #CH395_PROTO_TYPE_TCP
+    ;;@`  jsr       ch395_set_proto_type_sn
+    ;;@```
     ldy     #CH395_SET_PROTO_TYPE_SN
     sty     CH395_COMMAND_PORT
     sta     CH395_DATA_PORT ; Send socket id

@@ -3,6 +3,7 @@
 .export ch395_tcp_connect_sn
 
 .proc ch395_tcp_connect_sn
+    ;;@brief Performs tcp connect
     ;;@inputA Socket id
     ldy     #CH395_TCP_CONNECT_SN
     sty     CH395_COMMAND_PORT
