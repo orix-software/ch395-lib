@@ -618,7 +618,7 @@ This command is used to set the Socket destination port. It is necessary to inpu
 
 ```ca65
  lda #$01
- ldx #80
+ ldy #80
  ldx #$00
  jsr ch395_set_des_port_sn
  rts
@@ -777,6 +777,20 @@ Steps for detailed steps.
 ***Input***
 
 * Accumulator : Socket id
+* X Register : Proto mode
+
+***Modify***
+
+* Y Register tmp
+
+***Example***
+
+```ca65
+ lda #$00 ; Socket
+ ldx #CH395_PROTO_TYPE_TCP
+ jsr ch395_set_proto_type_sn
+```
+
 
 
 ---
@@ -835,8 +849,8 @@ This command is used to set the source port of Socket. It is necessary to input 
 ***Input***
 
 * Accumulator : Socket id
-* Y Register : Low ptr address
-* X Register : High ptr address
+* Y Register : Low port
+* X Register : High port
 
 ***Modify***
 
@@ -864,6 +878,10 @@ This command is used to set Socket TTL. It is necessary to input 1 byte of Socke
 ---
 
 ## ch395_tcp_connect_sn
+
+***Description***
+
+Performs tcp connect
 
 ***Input***
 

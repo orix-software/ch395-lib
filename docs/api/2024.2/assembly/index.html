@@ -1556,7 +1556,7 @@
 </ul>
 <p><strong><em>Example</em></strong></p>
 <div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$01</span>
-<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mi">80</span>
+<span class="w"> </span><span class="k">ldy</span><span class="w"> </span><span class="p">#</span><span class="mi">80</span>
 <span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="mh">$00</span>
 <span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_set_des_port_sn</span>
 <span class="w"> </span><span class="k">rts</span>
@@ -1663,7 +1663,17 @@
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
+<li>X Register : Proto mode</li>
 </ul>
+<p><strong><em>Modify</em></strong></p>
+<ul>
+<li>Y Register tmp</li>
+</ul>
+<p><strong><em>Example</em></strong></p>
+<div class="highlight"><pre><span></span><code><span class="w"> </span><span class="k">lda</span><span class="w"> </span><span class="p">#</span><span class="mh">$00</span><span class="w"> </span><span class="c1">; Socket</span>
+<span class="w"> </span><span class="k">ldx</span><span class="w"> </span><span class="p">#</span><span class="n">CH395_PROTO_TYPE_TCP</span>
+<span class="w"> </span><span class="k">jsr</span><span class="w"> </span><span class="n">ch395_set_proto_type_sn</span>
+</code></pre></div>
 <hr>
 <h2 id="ch395_set_retran_count">ch395_set_retran_count</h2>
 <p><strong><em>Description</em></strong></p>
@@ -1702,8 +1712,8 @@
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
-<li>Y Register : Low ptr address</li>
-<li>X Register : High ptr address</li>
+<li>Y Register : Low port</li>
+<li>X Register : High port</li>
 </ul>
 <p><strong><em>Modify</em></strong></p>
 <ul>
@@ -1724,6 +1734,8 @@
 </ul>
 <hr>
 <h2 id="ch395_tcp_connect_sn">ch395_tcp_connect_sn</h2>
+<p><strong><em>Description</em></strong></p>
+<p>Performs tcp connect</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
