@@ -1455,6 +1455,23 @@
 <h2 id="ch395_get_socket_status_sn">ch395_get_socket_status_sn</h2>
 <p><strong><em>Description</em></strong></p>
 <p>This command is used to get Socket status. It is necessary to input a 1 byte of Socket index value. CH395 will output a 2-byte status code when receiving this command. The first status code is the status code of Socket. The status code of Socket is defined as follows:</p>
+<p>00H SOCKET_CLOSED</p>
+<p>05H SOCKET_OPEN</p>
+<p>The second status code is TCP status code, which is only meaningful when TCP mode has been on. TCP</p>
+<p>status code is defined as follows:</p>
+<p>Code Name Description</p>
+<p>00H TCP_CLOSED Closed</p>
+<p>01H TCP_LISTEN Monitoring</p>
+<p>02H TCP_SYN_SENT SYN sent</p>
+<p>03H TCP_SYN_RCVD SYN received</p>
+<p>04H TCP_ESTABLISHED TCP connection established</p>
+<p>05H TCP_FIN_WAIT_1 The active closing side first sends FIN</p>
+<p>06H TCP_FIN_WAIT_2 The active closing side receives an ACK from FIN</p>
+<p>07H TCP_CLOSE_WAIT The passive closing side receives FIN</p>
+<p>08H TCP_CLOSING Closing</p>
+<p>09H TCP_LAST_ACK The passive closing side sends FIN</p>
+<p>0AH TCP_TIME_WAIT 2MLS waiting status</p>
+<p>TCP status is defined in TCP/IP protocol. Please refer to TCP/IP protocol for the detailed meaning</p>
 <p><strong><em>Input</em></strong></p>
 <ul>
 <li>Accumulator : Socket id</li>
@@ -1774,7 +1791,7 @@
   <small>
     
       Last update:
-      2024-03-25
+      2024-04-09
     
   </small>
 </div>
