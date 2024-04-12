@@ -48,17 +48,10 @@ entry_point_c:
     iny
     cpy     RESB
     bne     @loop
-    tya
-    clc
-    adc     RES
-    bcc     @S1
-    inc     RES+1
 
-@S1:
-    sta     RES
 
 @decrement:
-    ldx     #$00
+    ldx     RESB
     ldy     #$00
 
 @L1:

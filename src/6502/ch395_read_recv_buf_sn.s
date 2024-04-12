@@ -21,7 +21,7 @@
     sta     CH395_DATA_PORT ; set ptr2
     stx     CH395_DATA_PORT ; set ptr2
 
-    lda     RESB
+    lda     RESB+1
     beq     @decrement
 
 
@@ -44,16 +44,13 @@
 
 
 @decrement:
-    ldx     RESB+1
+    ldx     RESB
     ldy     #$00
 
 @L1:
-
     lda     CH395_DATA_PORT
     sta     (RES),y
     iny
-    bne     @L1
-    inc     RES+1
     dex
     bpl     @L1
 
