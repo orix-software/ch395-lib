@@ -31,6 +31,7 @@
 @loop2:
     lda     CH395_DATA_PORT ; set ptr2
     sta     (RES),y
+    iny
     bne     @loop2
     inx
     cpx     RESB+1
