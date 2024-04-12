@@ -31,12 +31,14 @@ $(OBJECTS8): $(SOURCES8)
 
 test:
 	$(CC) -ttelestrat -I src/include test/ch395.c target/telestrat/lib/ch395-8.lib -o ch395
+	cl65 -ttelestrat -I src/include test/getstate.c target/telestrat/lib/ch395-8.lib -o getstate
 
 tool:
 	@mkdir -p target/telestrat/ch395cfg/
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/main.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/ch395cfg
 	#$(CC) -ttelestrat -I src/include tools/ch395cfg/src/telnetd.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/telnetd
 	$(CC) -ttelestrat -I src/include tools/ch395cfg/src/wget.c target/telestrat/lib/ch395-8.lib -o target/telestrat/ch395cfg/wget
+
 
 docs:
 	docs/builddocs.sh && cd docs && mkdocs build

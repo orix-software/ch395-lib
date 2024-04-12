@@ -8,11 +8,12 @@
     ;;@inputA Socket ID
     ;;@inputY Low length
     ;;@inputX High length
+    ;;@inputMEM Ptr of the data to send
     ;;@inputMEM_RESB Adress ptr to read
     ;;@modifyMEM_RES Tmp
     ;;@```ca65
-    ;;@sta     RESB    ; Ptr low to write
-    ;;@sty     RESB+1  ; ptr high to write
+    ;;@sta     RES    ; Ptr low to write
+    ;;@sty     RES+1  ; ptr high to write
     ;;@ldy     #<1000 ; Low length
     ;;@ldx     #>1000 ; High length
     ;;@lda     #$00 ; socket 0
@@ -21,7 +22,7 @@
     ;;@```
 
     sty     RESB     ; Save low length
-    stx     RESB+1   ; Save low length
+    stx     RESB+1   ; Save high length
 
     ; A contains Socket
 
@@ -35,7 +36,7 @@ entry_point_c:
     stx     CH395_DATA_PORT ; set length high
 
 
-    lda     RESB
+    ldx     RESB+1
     beq     @decrement
 
 @restart:
@@ -57,15 +58,13 @@ entry_point_c:
     sta     RES
 
 @decrement:
-    ldx     RESB+1
+    ldx     #$00
     ldy     #$00
 
 @L1:
     lda     (RES),y
     sta     CH395_DATA_PORT
     iny
-    bne     @L1
-    inc     RES+1
     dex
     bpl     @L1
 
