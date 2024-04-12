@@ -36,30 +36,32 @@ entry_point_c:
     stx     CH395_DATA_PORT ; set length high
 
 
-    ldx     RESB+1
-    beq     @decrement
+    ldx     RESB+1 ; High byte equal to 0 ?
+    beq     @decrement  ; Yes only dec Low byte
 
 @restart:
+    ldx     #$00
     ldy     #$00
 
 @loop:
     lda     (RES),y
     sta     CH395_DATA_PORT
     iny
-    cpy     RESB
+    bne     @loop
+    inx
+    cpx     RESB+1
     bne     @loop
 
 
 @decrement:
-    ldx     RESB
     ldy     #$00
 
 @L1:
     lda     (RES),y
     sta     CH395_DATA_PORT
     iny
-    dex
-    bpl     @L1
+    cpy     RESB
+    bne     @L1
 
 @exit:
     rts

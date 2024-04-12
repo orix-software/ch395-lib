@@ -26,33 +26,25 @@
 
 
     ldy     #$00
+    ldx     #$00
 
 @loop2:
     lda     CH395_DATA_PORT ; set ptr2
     sta     (RES),y
-    iny
-    cpy     RESB
     bne     @loop2
-    tya
-    clc
-    adc     RES
-    bcc     @S1
-    inc     RES+1
-
-@S1:
-    sta     RES
-
+    inx
+    cpx     RESB+1
+    bne     @loop2
 
 @decrement:
-    ldx     RESB
     ldy     #$00
 
 @L1:
     lda     CH395_DATA_PORT
     sta     (RES),y
     iny
-    dex
-    bpl     @L1
+    cpy     RESB
+    bne     @L1
 
     rts
 .endproc
