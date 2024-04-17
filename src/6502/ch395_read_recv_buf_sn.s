@@ -8,7 +8,7 @@
     ;;@inputA Socket id
     ;;@inputY Length low
     ;;@inputX length high
-    ;;@inputMEM_RES tr to fill
+    ;;@inputMEM_RES ptr to fill
     ;;@modifyMEM_RESB tmp value
     sty     RESB        ; Save length
     stx     RESB+1
@@ -18,8 +18,8 @@
     sta     CH395_DATA_PORT
 
     lda     RESB
-    sta     CH395_DATA_PORT ; set ptr2
-    stx     CH395_DATA_PORT ; set ptr2
+    sta     CH395_DATA_PORT ; set length
+    stx     CH395_DATA_PORT ; set length to receive
 
     lda     RESB+1
     beq     @decrement
@@ -33,6 +33,7 @@
     sta     (RES),y
     iny
     bne     @loop2
+    inc     RES+1
     inx
     cpx     RESB+1
     bne     @loop2
