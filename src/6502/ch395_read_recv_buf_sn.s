@@ -24,7 +24,6 @@
     lda     RESB+1
     beq     @decrement
 
-
     ldy     #$00
     ldx     #$00
 
