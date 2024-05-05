@@ -4,6 +4,8 @@
 
 .proc ch395_get_glob_int_status
     ;;@brief This command is used to get the global interrupt status. CH395 will output 1 byte of global interrupt status after receiving this command. Global interrupt status is defined as follows:
+    ;;@returnsA int status state CH395_GINT_STAT_SOCK0 CH395_GINT_STAT_SOCK1 CH395_GINT_STAT_SOCK2 CH395_GINT_STAT_SOCK3 CH395_GINT_STAT_DHCP CH395_GINT_STAT_PHY_CHANGE CH395_GINT_STAT_IP_CONFLI CH395_GINT_STAT_UNREACH
+    ;;@modifyA
     ;;@explain Bit Name Description
     ;;@explain 7 GINT_STAT_SOCK3 Socket3 interrupt
     ;;@explain 6 GINT_STAT_SOCK2 Socket2 interrupt

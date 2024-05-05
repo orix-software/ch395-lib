@@ -17,7 +17,7 @@ void display_state(){
         if (socket_state == CH395_SOCKET_OPEN) {
             printf("Opened");
         }
-        if (socket_state== CH395_SOCKET_CLOSED) {
+        if (socket_state == CH395_SOCKET_CLOSED) {
             printf("Closed");
         }
         switch(socket_tcp_state){

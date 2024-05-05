@@ -139,8 +139,10 @@ CH395_TCP_CLOSING                   = $08
 CH395_TCP_LAST_ACK                  = $09
 CH395_TCP_TIME_WAIT                 = $0A
 
-GINT_STAT_DHCP                      = $08 ; Duplicate and should be removed
 CH395_GINT_STAT_DHCP                = $08
+CH395_GINT_STAT_PHY_CHANGE          = $04
+CH395_GINT_STAT_IP_CONFLI           = $02
+CH395_GINT_STAT_UNREACH             = $01
 
 CH395_FUN_PARA_FLAG_TCP_SERVER      = $02
 CH395_FUN_PARA_FLAG_LOW_PWR         = $04
@@ -151,3 +153,8 @@ CH395_GINT_STAT_SOCK0               = 16
 CH395_GINT_STAT_SOCK1               = 32
 CH395_GINT_STAT_SOCK2               = 64
 CH395_GINT_STAT_SOCK3               = 128
+
+CH395_GINT_STAT_SOCK4               = 1
+CH395_GINT_STAT_SOCK5               = 2
+CH395_GINT_STAT_SOCK6               = 3
+CH395_GINT_STAT_SOCK7               = 4

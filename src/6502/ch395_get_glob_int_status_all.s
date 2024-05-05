@@ -1,5 +1,19 @@
+.include "ch395.inc"
+
+.export ch395_get_glob_int_status_all
+
 .proc ch395_get_glob_int_status_all
     ;;@brief This command is used to get the global interrupt status. CH395 will output 2 bytes of global interrupt status after receiving this command. Global interrupt status is defined as follows:
+    ;;@returnsA int status state CH395_GINT_STAT_SOCK0 CH395_GINT_STAT_SOCK1 CH395_GINT_STAT_SOCK2 CH395_GINT_STAT_SOCK3 CH395_GINT_STAT_DHCP CH395_GINT_STAT_PHY_CHANGE CH395_GINT_STAT_IP_CONFLI CH395_GINT_STAT_UNREACH
+    ;;@modifyA
+    ;;@returnsX int status state CH395_GINT_STAT_SOCK4 CH395_GINT_STAT_SOCK5 CH395_GINT_STAT_SOCK6 CH395_GINT_STAT_SOCK7
+    ;;@modifyX
+    ;;@```ca65
+    ;;@`  jsr       ch395_get_glob_int_status_all
+    ;;@`  ; check accumulator to get interrupts states
+    ;;@`  ; check X to get interrupts states
+    ;;@```
+
     ;;Bit Name Description
     ;;[12：18] - Reserved
     ;;11 GINT_STAT_SOCK7 Socket7 interrupt
@@ -27,4 +41,9 @@
     ;;CMD_GET_GLOB_INT_STATUS_ALL can be used. If the chip version number is less than 0X44, the
     ;;command CMD_GET_GLOB_INT_STATUS_ALL will not be supported
     ;;@failure Does not work
+    lda     #CH395_GET_GLOB_INT_STATUS_ALL
+    sta     CH395_COMMAND_PORT
+    lda     CH395_DATA_PORT
+    ldx     CH395_DATA_PORT
+    rts
 .endproc
