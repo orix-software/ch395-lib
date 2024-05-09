@@ -86,8 +86,9 @@ void          ch395_set_ttl(unsigned char ID_SOCKET, unsigned char ttl_value);
 
 #define CH395_SINT_STAT_TIM_OUT     0x40
 #define CH395_SINT_STAT_DISCONNECT  0x10
+
 #define CH395_SINT_STAT_CONNECT     0x08
-#define CHE95_SINT_STAT_RECV        0x04
+#define CH395_SINT_STAT_RECV        0x04
 #define CH395_SINT_STAT_SEND_OK     0x02
 #define CH395_SINT_STAT_SENBUF_FREE 0x01
 

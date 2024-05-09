@@ -12,5 +12,5 @@
     ;;@`  printf("CH396 version %d\n",val)
     ;;@`  rts
     ;;@```
-    jmp ch395_get_ic_ver
+    jmp     ch395_get_ic_ver
 .endproc
