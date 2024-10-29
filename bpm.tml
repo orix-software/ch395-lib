@@ -1,5 +1,5 @@
 [package]
-name = "ch395lib"
+name = "ch395"
 version = "2024.4"
 authors = [ "nobody@nobody.fr",]
 license = "MIT OR Apache-2.0"
