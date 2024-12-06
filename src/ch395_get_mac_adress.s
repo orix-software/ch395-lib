@@ -13,6 +13,17 @@
     ;;@modifyMEM_RES Tmp value
     ;;@returnsA the content of ptr modified
     ;;@returnsX the content of ptr modified
+
+    ;;@```ca65
+    ;;@`  lda  #<mac_address
+    ;;@`  ldx  #>mac_address
+    ;;@`  ldx  #$00
+    ;;@`  jsr  ch395_get_mac_adress
+    ;;@`  rts
+    ;;@`mac_address:
+    ;;@`  .res 10
+    ;;@```
+
     sta     RES
     stx     RES+1
 	lda     #CH395_GET_MAC_ADDR
