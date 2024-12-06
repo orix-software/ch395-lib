@@ -2,6 +2,14 @@
 #include <conio.h>
 #include "ch395.h"
 
+void check_dhcp_status() {
+    unsigned char val;
+    val = ch395_get_dhcp_status();
+    if (val == CH395_DHCP_STATUS_ENABLED)
+        printf("DHCP Already enabled\n");
+    else
+        printf("DHCP disabled\n");
+}
 
 int init_chip() {
     unsigned char val;
@@ -57,6 +65,7 @@ void menu() {
     printf("4. Ic version\n");
     printf("5. Check cable\n");
     printf("6. Get ip\n");
+    printf("7. Get dhcp status\n");
     printf("0. Exit \n");
 
 }
@@ -148,6 +157,9 @@ int main() {
         if (key == '6')
             get_ip_inf();
 
+        if (key == '7')
+            check_dhcp_status();
+
         if (key == '0') {
             clrscr();
             return 0;
@@ -178,11 +190,7 @@ int main() {
     }
     printf("Cable is connected, Starting dhcp\n");
 
-    val = ch395_get_dhcp_status();
-    if (val == CH395_DHCP_STATUS_ENABLED)
-        printf("DHCP Already enabled\n");
-    else
-        dhcp_enable();
+
 
 
 

@@ -19,7 +19,7 @@ echo $VERSION
 
 cat  src/include/ch395.inc | python3 docs/ca65todoc.py >> docs/code/$VERSION/assembly.md
 
-for I in `ls src/6502/*.s`; do
+for I in `ls src/*.s`; do
 echo $I
 cat  $I | python3 docs/ca65todoc.py >> docs/code/$VERSION/assembly.md
 cat  $I | python3 docs/ca65todoc_c_proto.py >> docs/code/$VERSION/c.md
